@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:infi_wheel/screens/login_screen/login_view.dart';
+import 'package:infi_wheel/features/login_signup/presentation/ui/login_view.dart';
 
 void main() {
   runApp(const MyApp());
