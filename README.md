@@ -1,6 +1,6 @@
 # infi_wheel
 
-A new Flutter project.
+P2P car-sharing app
 
 ## Getting Started
 
