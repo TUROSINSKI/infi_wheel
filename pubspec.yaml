@@ -15,6 +15,12 @@ dependencies:
   equatable: ^2.0.5
   http: ^1.1.0
   json_annotation: ^4.8.1
+  get_it: ^7.6.4
+  intl: ^0.18.1
+  retrofit: ^4.0.3
+  flutter_hooks: ^0.20.3
+  cached_network_image: ^3.3.0
+  dio: ^5.3.3
 
   cupertino_icons: ^1.0.2
 
@@ -23,8 +29,18 @@ dev_dependencies:
     sdk: flutter
 
   json_serializable: ^6.7.1
+  flutter_launcher_icons: ^0.13.1
+  retrofit_generator: ^8.0.3
+  build_runner: ^2.4.6
 
   flutter_lints: ^3.0.0
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icons/applogo.png"
+  adaptive_icon_background: "#ffffff"
+  adaptive_icon_foreground: "assets/icons/applogo_foreground.png"
 
 flutter:
   uses-material-design: true

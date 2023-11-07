@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:infi_wheel/utils/colors.dart';
+import 'package:infi_wheel/core/utils/colors.dart';
 
 const lightColorScheme = ColorScheme(
   brightness: Brightness.light,
