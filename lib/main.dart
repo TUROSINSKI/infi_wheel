@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:infi_wheel/features/login_signup/presentation/ui/login_view.dart';
+import 'package:infi_wheel/config/theme/theme_data.dart';
+import 'package:infi_wheel/features/login_signup/presentation/ui/login_screen.dart';
+import 'package:infi_wheel/features/login_signup/presentation/ui/onboarding_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +15,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'InfiWheel',
       debugShowCheckedModeBanner: false,
-      home: LoginView(),
+      theme: lightThemeData,
+      darkTheme: darkThemeData,
+      home: OnboardingScreen(),
     );
   }
 }
