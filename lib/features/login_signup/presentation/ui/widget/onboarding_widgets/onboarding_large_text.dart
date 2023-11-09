@@ -19,7 +19,8 @@ class OnboardinglargeText extends StatelessWidget {
       style: TextStyle(
         color: color,
         fontSize: size,
-        fontWeight: FontWeight.bold
+        fontWeight: FontWeight.bold,
+        letterSpacing: 1.2,
       ),
     );
   }
