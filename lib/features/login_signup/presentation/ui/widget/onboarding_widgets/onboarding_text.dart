@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:infi_wheel/core/utils/colors.dart';
 
-class OnboardinglargeText extends StatelessWidget {
+class OnboardingText extends StatelessWidget {
   double size;
   final String text;
   final Color color;
-  OnboardinglargeText({
+  OnboardingText({
     super.key,
-    this.size = 30,
+    this.size = 16,
     required this.text,
-    this.color = Colors.black,
+    this.color = TextColors.kOnBoardText,
   });
 
   @override
@@ -18,7 +19,6 @@ class OnboardinglargeText extends StatelessWidget {
       style: TextStyle(
         color: color,
         fontSize: size,
-        fontWeight: FontWeight.bold
       ),
     );
   }
