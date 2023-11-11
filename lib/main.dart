@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:infi_wheel/config/theme/theme_data.dart';
 import 'package:infi_wheel/features/login_signup/presentation/ui/onboarding_screen.dart';
+import 'package:infi_wheel/features/login_signup/presentation/ui/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: lightThemeData,
       darkTheme: darkThemeData,
-      home: OnboardingScreen(),
+      home: LoginScreen(),
     );
   }
 }

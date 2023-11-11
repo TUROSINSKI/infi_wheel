@@ -13,7 +13,7 @@ class NextButton extends StatelessWidget {
       width: width,
       height: 60,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(16),
         color: AppColors.kOrangeWeb
       ),
       child: Row(
