@@ -21,27 +21,31 @@ class LoginInputField extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 10),
-      child: Container(
-        height: size.height*0.08,
-        width: size.width*0.8,
-        decoration: BoxDecoration(
-          color: AppColors.kPlatinum,
-          borderRadius: BorderRadius.circular(16)
-        ),
-        child: TextField(
-          decoration: InputDecoration(
-            border: InputBorder.none,
-            prefixIcon: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Icon(icon, size: 30, color: AppColors.kOxfordBlue,)),
-            hintText: hint,
-            hintStyle: TextStyle(
-              color: TextColors.kOnBoardText
-            )
+      child: Material(
+        elevation: 8,
+        borderRadius: BorderRadius.circular(16),
+        child: Container(
+          height: size.height*0.08,
+          width: size.width*0.8,
+          decoration: BoxDecoration(
+            color: AppColors.kPlatinum,
+            borderRadius: BorderRadius.circular(16),
           ),
-          obscureText: obscure,
-          keyboardType: inputType,
-          textInputAction: inputAction,
+          child: TextField(
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              prefixIcon: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Icon(icon, size: 30, color: AppColors.kOxfordBlue,)),
+              hintText: hint,
+              hintStyle: TextStyle(
+                color: TextColors.kOnBoardText
+              )
+            ),
+            obscureText: obscure,
+            keyboardType: inputType,
+            textInputAction: inputAction,
+          ),
         ),
       ),
     );
