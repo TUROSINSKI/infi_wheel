@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:infi_wheel/core/utils/colors.dart';
-import 'package:infi_wheel/features/login_signup/presentation/ui/widget/login_widgets/login_button.dart';
-import 'package:infi_wheel/features/login_signup/presentation/ui/widget/login_widgets/login_input_field.dart';
-import 'package:infi_wheel/features/login_signup/presentation/ui/widget/login_widgets/login_large_text.dart';
+import 'package:infi_wheel/features/login_signup_onboard/presentation/widgets/login_widgets/login_button.dart';
+import 'package:infi_wheel/features/login_signup_onboard/presentation/widgets/login_widgets/login_input_field.dart';
+import 'package:infi_wheel/features/login_signup_onboard/presentation/widgets/login_widgets/login_large_text.dart';
 
-import 'widget/onboarding_widgets/background_custom_painter.dart';
+import '../widgets/onboarding_widgets/background_custom_painter.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});

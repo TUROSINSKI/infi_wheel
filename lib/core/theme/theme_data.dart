@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:infi_wheel/config/theme/color_schemes.dart';
+import 'package:infi_wheel/core/theme/color_schemes.dart';
 
 final ThemeData lightThemeData = ThemeData(
   colorScheme: lightColorScheme,

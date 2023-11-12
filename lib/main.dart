@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:infi_wheel/config/theme/theme_data.dart';
-import 'package:infi_wheel/features/login_signup/presentation/ui/onboarding_screen.dart';
-import 'package:infi_wheel/features/login_signup/presentation/ui/login_screen.dart';
+import 'package:infi_wheel/core/theme/theme_data.dart';
+import 'package:infi_wheel/features/login_signup_onboard/presentation/ui/onboarding_screen.dart';
+import 'package:infi_wheel/features/login_signup_onboard/presentation/ui/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
