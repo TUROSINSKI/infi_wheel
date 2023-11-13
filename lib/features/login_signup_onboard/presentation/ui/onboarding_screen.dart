@@ -39,7 +39,7 @@ class OnboardingScreen extends StatelessWidget {
               top: 0,
               bottom: 0,
               child: PageView.builder(
-                  // physics: CustomPhysics(),
+                controller: context.read<OnboardingBloc>().pageController,
                   onPageChanged: (index) {
                     state.page = index;
                     BlocProvider.of<OnboardingBloc>(context)
