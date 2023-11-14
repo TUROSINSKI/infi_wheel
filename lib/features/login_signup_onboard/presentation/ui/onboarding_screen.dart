@@ -17,29 +17,26 @@ class OnboardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Image.asset(
+          "assets/icons/applogo.png",
+          fit: BoxFit.cover,
+          height: 150,
+        ),
+        backgroundColor: AppColors.kWhite,
+      ),
       body: BlocBuilder<OnboardingBloc, OnboardingState>(
         builder: (context, state) {
           return Stack(children: <Widget>[
-            Align(
-              alignment: Alignment
-                  .topCenter, // Aligns the image to the top center of the stack
-              child: Container(
-                width: 150, // Sets the width of the image
-                child: Image.asset("assets/icons/applogo.png"),
-              ),
-            ),
             CustomPaint(
-              size: Size(double.infinity,
-                  double.infinity), // Size as big as the parent
+              size: Size(double.infinity, double.infinity),
               painter: BackgroundPainter(),
             ),
-            Positioned(
-              left: 0,
-              right: 0,
-              top: 0,
-              bottom: 0,
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 1 / 2,
               child: PageView.builder(
-                controller: context.read<OnboardingBloc>().pageController,
+                  controller: context.read<OnboardingBloc>().pageController,
                   onPageChanged: (index) {
                     state.page = index;
                     BlocProvider.of<OnboardingBloc>(context)
@@ -81,14 +78,13 @@ class OnboardingScreen extends StatelessWidget {
                   }),
             ),
             Positioned(
-              top: 150, 
-              right: 20, 
+              top: 150,
+              right: 20,
               child: Column(
                 children: List.generate(3, (indexDots) {
                   return AnimatedContainer(
-                    duration: const Duration(
-                        milliseconds: 200), 
-                    curve: Curves.easeInOut, 
+                    duration: const Duration(milliseconds: 200),
+                    curve: Curves.easeInOut,
                     margin: const EdgeInsets.only(bottom: 2),
                     width: 8,
                     height: state.page.toDouble() == indexDots ? 25 : 8,
