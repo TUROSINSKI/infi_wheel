@@ -22,7 +22,7 @@ class LoginInputField extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 10),
       child: Material(
-        elevation: 8,
+        elevation: 2,
         borderRadius: BorderRadius.circular(16),
         child: Container(
           height: size.height*0.08,

@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: lightThemeData,
         darkTheme: darkThemeData,
-        home: OnboardingScreen(),
+        home: LoginScreen(),
       ),
     );
   }

@@ -101,7 +101,7 @@ class OnboardingScreen extends StatelessWidget {
             Align(
               alignment: Alignment.bottomRight,
               child: Padding(
-                padding: const EdgeInsets.all(20.0), // Add some padding
+                padding: const EdgeInsets.all(20.0),
                 child: GestureDetector(
                     onTap: () {}, child: NextButton(width: 120)),
               ),

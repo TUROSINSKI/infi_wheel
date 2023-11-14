@@ -29,7 +29,7 @@ const lightColorScheme = ColorScheme(
   onInverseSurface: AppColors.kWhite,
   inverseSurface: AppColors.kWhite,
   inversePrimary: AppColors.kWhite,
-  shadow: AppColors.kWhite,
+  shadow: AppColors.kBlack,
   surfaceTint: AppColors.kWhite,
   outlineVariant: AppColors.kWhite,
   scrim: AppColors.kWhite,

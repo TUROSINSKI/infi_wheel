@@ -4,6 +4,7 @@ import 'package:infi_wheel/core/utils/colors.dart';
 import 'package:infi_wheel/features/login_signup_onboard/presentation/widgets/login_widgets/login_button.dart';
 import 'package:infi_wheel/features/login_signup_onboard/presentation/widgets/login_widgets/login_input_field.dart';
 import 'package:infi_wheel/features/login_signup_onboard/presentation/widgets/login_widgets/login_large_text.dart';
+import 'package:infi_wheel/features/login_signup_onboard/presentation/widgets/login_widgets/social_button.dart';
 
 import '../widgets/onboarding_widgets/background_custom_painter.dart';
 
@@ -16,7 +17,7 @@ class LoginScreen extends StatelessWidget {
         body: Stack(children: [
       CustomPaint(
         size:
-            Size(double.infinity, double.infinity), // Size as big as the parent
+            Size(double.infinity, double.infinity), 
         painter: BackgroundPainter(),
       ),
       Column(
@@ -25,9 +26,9 @@ class LoginScreen extends StatelessWidget {
           Flexible(child: LoginlargeText(text: "InfiWheel")),
           Align(
             alignment: Alignment
-                .topCenter, // Aligns the image to the top center of the stack
+                .topCenter, 
             child: Container(
-              width: 200, // Sets the width of the image
+              width: 200, 
               child: Image.asset("assets/icons/applogo.png"),
             ),
           ),
@@ -54,9 +55,19 @@ class LoginScreen extends StatelessWidget {
               ),
               SizedBox(height: 20),
               LoginButton(),
-              SizedBox(height: 20),
+              SizedBox(height: 40),
+              
             ],
           ),
+          Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // TODO: change icons and add press functionality
+                  SocialButton(icon: "assets/icons/applogo.png", press: (){}),
+                  SocialButton(icon: "assets/icons/applogo.png", press: (){}),
+                  SocialButton(icon: "assets/icons/applogo.png", press: (){}),
+                ],
+              )
         ],
       ),
     ]));

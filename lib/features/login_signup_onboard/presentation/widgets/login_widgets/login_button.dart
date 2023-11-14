@@ -10,7 +10,7 @@ class LoginButton extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Material(
-      elevation: 8,
+      elevation: 2,
       borderRadius: BorderRadius.circular(16),
       child: Container(
         height: size.height*0.08,
