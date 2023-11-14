@@ -50,7 +50,7 @@ class OnboardingScreen extends StatelessWidget {
                       height: double.maxFinite,
                       child: Container(
                         margin: const EdgeInsets.only(
-                            top: 150, left: 20, right: 20),
+                            top: 100, left: 20, right: 20),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [

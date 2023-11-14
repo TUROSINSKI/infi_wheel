@@ -8,7 +8,7 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
   OnboardingBloc() : super(OnboardingState()) {
     on<OnboardingEvent>((event, emit) {
       pageController.animateToPage(state.page,
-          duration: Duration(milliseconds: 500), curve: Curves.elasticOut);
+          duration: Duration(milliseconds: 500), curve: Curves.decelerate);
       emit(OnboardingState(page: state.page));
     });
   }
