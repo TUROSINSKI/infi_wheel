@@ -31,20 +31,22 @@ class LoginInputField extends StatelessWidget {
             color: AppColors.kPlatinum,
             borderRadius: BorderRadius.circular(16),
           ),
-          child: TextField(
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              prefixIcon: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                child: Icon(icon, size: 30, color: AppColors.kOxfordBlue,)),
-              hintText: hint,
-              hintStyle: TextStyle(
-                color: TextColors.kOnBoardText
-              )
+          child: Center(
+            child: TextField(
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                prefixIcon: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Icon(icon, size: 30, color: AppColors.kOxfordBlue,)),
+                hintText: hint,
+                hintStyle: TextStyle(
+                  color: TextColors.kOnBoardText
+                )
+              ),
+              obscureText: obscure,
+              keyboardType: inputType,
+              textInputAction: inputAction,
             ),
-            obscureText: obscure,
-            keyboardType: inputType,
-            textInputAction: inputAction,
           ),
         ),
       ),

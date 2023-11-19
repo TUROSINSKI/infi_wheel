@@ -23,6 +23,7 @@ class SignUpScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // Flexible(child: LoginlargeText(text: "InfiWheel")),
+                SizedBox(height: 40),
                 Align(
                   alignment: Alignment.topCenter,
                   child: Container(
@@ -31,7 +32,6 @@ class SignUpScreen extends StatelessWidget {
                   ),
                 ),
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     LoginInputField(
                       hint: "Username",
@@ -70,7 +70,7 @@ class SignUpScreen extends StatelessWidget {
                     // ),
                     SizedBox(height: 20),
                     SignUpButton(),
-                    SizedBox(height: 40),
+                    // SizedBox(height: 40),
                   ],
                 ),
               ],
