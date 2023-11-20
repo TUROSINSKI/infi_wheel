@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infi_wheel/core/utils/colors.dart';
-import 'package:infi_wheel/features/login_signup_onboard/presentation/providers/onboarding_providers/onboarding_blocs.dart';
-import 'package:infi_wheel/features/login_signup_onboard/presentation/providers/onboarding_providers/onboarding_events.dart';
-import 'package:infi_wheel/features/login_signup_onboard/presentation/providers/onboarding_providers/onboarding_states.dart';
-import 'package:infi_wheel/features/login_signup_onboard/presentation/widgets/onboarding_widgets/background_custom_painter.dart';
-import 'package:infi_wheel/features/login_signup_onboard/presentation/widgets/onboarding_widgets/custom_pageview_phisics.dart';
-import 'package:infi_wheel/features/login_signup_onboard/presentation/widgets/onboarding_widgets/onboarding_large_text.dart';
-import 'package:infi_wheel/features/login_signup_onboard/presentation/widgets/onboarding_widgets/onboarding_slides.dart';
-import 'package:infi_wheel/features/login_signup_onboard/presentation/widgets/onboarding_widgets/onboarding_text.dart';
+import 'package:infi_wheel/features/authentication/presentation/providers/onboarding_providers/onboarding_blocs.dart';
+import 'package:infi_wheel/features/authentication/presentation/providers/onboarding_providers/onboarding_events.dart';
+import 'package:infi_wheel/features/authentication/presentation/providers/onboarding_providers/onboarding_states.dart';
+import 'package:infi_wheel/features/authentication/presentation/widgets/onboarding_widgets/background_custom_painter.dart';
+import 'package:infi_wheel/features/authentication/presentation/widgets/onboarding_widgets/custom_pageview_phisics.dart';
+import 'package:infi_wheel/features/authentication/presentation/widgets/onboarding_widgets/onboarding_large_text.dart';
+import 'package:infi_wheel/features/authentication/presentation/widgets/onboarding_widgets/onboarding_slides.dart';
+import 'package:infi_wheel/features/authentication/presentation/widgets/onboarding_widgets/onboarding_text.dart';
 import 'package:infi_wheel/shared/widgets/go_next_button.dart';
 
 class OnboardingScreen extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:infi_wheel/features/login_signup_onboard/presentation/providers/onboarding_providers/onboarding_events.dart';
-import 'package:infi_wheel/features/login_signup_onboard/presentation/providers/onboarding_providers/onboarding_states.dart';
+import 'package:infi_wheel/features/authentication/presentation/providers/onboarding_providers/onboarding_events.dart';
+import 'package:infi_wheel/features/authentication/presentation/providers/onboarding_providers/onboarding_states.dart';
 
 class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
   final PageController pageController = PageController();

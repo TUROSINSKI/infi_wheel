@@ -2,7 +2,7 @@ import 'dart:js';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:infi_wheel/features/login_signup_onboard/presentation/ui/onboarding_screen.dart';
+import 'package:infi_wheel/features/authentication/presentation/ui/onboarding_screen.dart';
 
 class InfiWheelRouter {
 

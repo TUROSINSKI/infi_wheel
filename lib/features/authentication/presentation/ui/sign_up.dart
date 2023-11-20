@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:infi_wheel/core/utils/colors.dart';
-import 'package:infi_wheel/features/login_signup_onboard/presentation/widgets/login_widgets/login_button.dart';
-import 'package:infi_wheel/features/login_signup_onboard/presentation/widgets/login_widgets/login_input_field.dart';
-import 'package:infi_wheel/features/login_signup_onboard/presentation/widgets/login_widgets/login_large_text.dart';
-import 'package:infi_wheel/features/login_signup_onboard/presentation/widgets/onboarding_widgets/background_custom_painter.dart';
-import 'package:infi_wheel/features/login_signup_onboard/presentation/widgets/sign_up_widgets/sign_up_button.dart';
+import 'package:infi_wheel/features/authentication/presentation/widgets/login_widgets/login_button.dart';
+import 'package:infi_wheel/features/authentication/presentation/widgets/login_widgets/login_input_field.dart';
+import 'package:infi_wheel/features/authentication/presentation/widgets/login_widgets/login_large_text.dart';
+import 'package:infi_wheel/features/authentication/presentation/widgets/onboarding_widgets/background_custom_painter.dart';
+import 'package:infi_wheel/features/authentication/presentation/widgets/sign_up_widgets/sign_up_button.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});

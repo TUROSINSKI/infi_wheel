@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "468678525993",
+    "project_id": "infiwheel-a2926",
+    "storage_bucket": "infiwheel-a2926.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:468678525993:android:8e0525b73f86b09c98c838",
+        "android_client_info": {
+          "package_name": "com.example.infi_wheel"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZ0miNWrG-zDbXfPcwO5tc-Ml51bWCWSM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
