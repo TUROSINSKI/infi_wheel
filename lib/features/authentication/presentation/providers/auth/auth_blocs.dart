@@ -1,19 +1,22 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:infi_wheel/features/authentication/data/repositories/auth_repository.dart';
 import 'package:infi_wheel/features/authentication/presentation/providers/auth/auth_events.dart';
 import 'package:infi_wheel/features/authentication/presentation/providers/auth/auth_states.dart';
 
-class AuthBloc extends Bloc<AuthEvent, AuthState>{
-  final AuthRepository authRepository;
-  AuthBloc({required this.authRepository}) : super(UnAuthenticated()){
-    on<SignUpRequested>((event, state) async{
-      emit(Loading());
-      try{
-        await authRepository.signUp(email: event.email, password: event.password);
-      }catch(e){
-        emit(UnAuthenticated());
-      }
-    });
+class AuthBloc extends Bloc<AuthEvent, AuthState> {
+  AuthBloc() : super(AuthState()) {
+    
+    on<EmailEvent>(_emailEvent);
+
+    on<PasswordEvent>(_passwordEvent);
   }
-  
+
+  void _emailEvent(EmailEvent event, Emitter<AuthState> emit) {
+    print("Email is ${event.email}");
+    emit(state.copyWith(email: event.email));
+  }
+
+  void _passwordEvent(PasswordEvent event, Emitter<AuthState> emit){
+    print("Password is ${event.password}");
+    emit(state.copyWith(password: event.password));
+  }
 }

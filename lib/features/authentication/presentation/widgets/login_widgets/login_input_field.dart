@@ -1,25 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:infi_wheel/core/utils/colors.dart';
 
-class LoginInputField extends StatelessWidget {
-  IconData icon;
-  TextInputType inputType;
-  TextInputAction inputAction;
-  String hint;
-  bool obscure;
-  LoginInputField({
-    super.key,
-    required this.hint,
-    required this.icon,
-    required this.inputAction,
-    required this.inputType,
-    required this.obscure
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    return Padding(
+Widget loginInputField(BuildContext context,IconData icon, TextInputType inputType,
+    TextInputAction inputAction, String hint, bool obscure, void Function(String value)? function)
+     {
+      Size size = MediaQuery.of(context).size;
+      return Padding(
       padding: EdgeInsets.symmetric(vertical: 10),
       child: Material(
         elevation: 2,
@@ -33,6 +20,7 @@ class LoginInputField extends StatelessWidget {
           ),
           child: Center(
             child: TextField(
+              onChanged: (value)=>function!(value),
               decoration: InputDecoration(
                 border: InputBorder.none,
                 prefixIcon: Padding(
@@ -51,5 +39,4 @@ class LoginInputField extends StatelessWidget {
         ),
       ),
     );
-  }
-}
+    }

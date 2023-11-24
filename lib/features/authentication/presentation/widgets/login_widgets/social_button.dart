@@ -17,17 +17,20 @@ class SocialButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: press,
-      child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 10),
-        padding: EdgeInsets.all(2),
-        height: 60,
-        width: 60,
-        decoration: BoxDecoration(
-          color: AppColors.kOxfordBlue,
-          shape: BoxShape.rectangle,
-          borderRadius: BorderRadius.circular(16),
+      child: SizedBox(
+        height: 50,
+        child: Container(
+          margin: EdgeInsets.symmetric(horizontal: 10),
+          padding: EdgeInsets.all(2),
+          height: 60,
+          width: 60,
+          decoration: BoxDecoration(
+            color: AppColors.kOxfordBlue,
+            shape: BoxShape.rectangle,
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: SvgPicture.asset(icon,),
         ),
-        child: Image.asset(icon),
       ),
     );
   }
