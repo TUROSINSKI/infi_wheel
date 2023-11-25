@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:infi_wheel/core/utils/colors.dart';
 
 Widget loginInputField(BuildContext context,IconData icon, TextInputType inputType,
@@ -12,8 +13,8 @@ Widget loginInputField(BuildContext context,IconData icon, TextInputType inputTy
         elevation: 2,
         borderRadius: BorderRadius.circular(16),
         child: Container(
-          height: size.height*0.08,
-          width: size.width*0.8,
+          height: 56.h,
+          width: 300.w,
           decoration: BoxDecoration(
             color: AppColors.kPlatinum,
             borderRadius: BorderRadius.circular(16),

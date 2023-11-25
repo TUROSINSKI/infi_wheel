@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:infi_wheel/core/theme/theme_data.dart';
 import 'package:infi_wheel/features/authentication/data/repositories/auth_repository.dart';
 import 'package:infi_wheel/features/authentication/presentation/providers/auth/auth_blocs.dart';
@@ -10,6 +11,7 @@ import 'package:infi_wheel/features/authentication/presentation/ui/onboarding_sc
 import 'package:infi_wheel/features/authentication/presentation/ui/login_screen.dart';
 import 'package:infi_wheel/features/authentication/presentation/ui/sign_up.dart';
 import 'package:infi_wheel/firebase_options.dart';
+import 'package:infi_wheel/shared/bloc_providers.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,16 +29,15 @@ class MyApp extends StatelessWidget {
     return RepositoryProvider(
       create: (context)=>AuthRepository(),
       child: MultiBlocProvider(
-        providers: [
-          BlocProvider<OnboardingBloc>(create: (context)=>OnboardingBloc(),),
-          BlocProvider<AuthBloc>(create: (context)=>AuthBloc()),
-        ],
-        child: MaterialApp(
-          title: 'InfiWheel',
-          debugShowCheckedModeBanner: false,
-          theme: lightThemeData,
-          darkTheme: darkThemeData,
-          home: LoginScreen(),
+        providers: BlocProviders.allBlocProviders,
+        child: ScreenUtilInit(
+          builder: (context, child)=> MaterialApp(
+            title: 'InfiWheel',
+            debugShowCheckedModeBanner: false,
+            theme: lightThemeData,
+            darkTheme: darkThemeData,
+            home: LoginScreen(),
+          ),
         ),
       ),
     );

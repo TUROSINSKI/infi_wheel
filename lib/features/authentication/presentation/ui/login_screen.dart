@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:infi_wheel/core/utils/colors.dart';
+import 'package:infi_wheel/features/authentication/presentation/controllers/auth_controller.dart';
 import 'package:infi_wheel/features/authentication/presentation/providers/auth/auth_blocs.dart';
 import 'package:infi_wheel/features/authentication/presentation/providers/auth/auth_events.dart';
 import 'package:infi_wheel/features/authentication/presentation/providers/auth/auth_states.dart';
@@ -18,56 +20,65 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Stack(children: [
-      CustomPaint(
-        size: Size(double.infinity, double.infinity),
-        painter: BackgroundPainter(),
-      ),
-      BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Flexible(child: LoginlargeText(text: "InfiWheel")),
-            Align(
-              alignment: Alignment.topCenter,
-              child: Container(
-                width: 200,
-                child: Image.asset("assets/icons/applogo.png"),
+          CustomPaint(
+            size: Size(double.infinity, double.infinity),
+            painter: BackgroundPainter(),
+          ),
+          BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
+            return SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(height: 60.h),
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: Container(
+                      width: 200,
+                      child: Image.asset("assets/icons/applogo.png"),
+                    ),
+                  ),
+                  socialBar(),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      loginInputField(
+                          context,
+                          Icons.email,
+                          TextInputType.emailAddress,
+                          TextInputAction.next,
+                          "Email",
+                          false, (value) {
+                        context.read<AuthBloc>().add(EmailEvent(value));
+                      }),
+                      loginInputField(
+                          context,
+                          Icons.lock,
+                          TextInputType.visiblePassword,
+                          TextInputAction.done,
+                          "Password",
+                          true, (value) {
+                        context.read<AuthBloc>().add(PasswordEvent(value));
+                      }),
+                      Text(
+                        "Forgot password?",
+                        style: TextStyle(color: AppColors.kPlatinum),
+                      ),
+                      SizedBox(height: 24.h),
+                      loginAndRegButton("Login", () {
+                        AuthController(context: context).handleAuth("email");
+                      }),
+                      SizedBox(height: 40),
+                      loginAndRegButton("Register", () {}),
+                    ],
+                  ),
+                  // socialBar(),
+                ],
               ),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                loginInputField(
-                  context,
-                  Icons.email,
-                  TextInputType.emailAddress,
-                  TextInputAction.next,
-                  "Email",
-                  false,
-                  (value){context.read<AuthBloc>().add(EmailEvent(value));}
-                ),
-                loginInputField(
-                  context,
-                  Icons.lock,
-                  TextInputType.visiblePassword,
-                  TextInputAction.done,
-                  "Password",
-                  true,
-                  (value){context.read<AuthBloc>().add(PasswordEvent(value));}
-                ),
-                Text(
-                  "Forgot password?",
-                  style: TextStyle(color: AppColors.kPlatinum),
-                ),
-                SizedBox(height: 20),
-                LoginButton(),
-                SizedBox(height: 40),
-              ],
-            ),
-            socialBar(),
-          ],
-        );
-      })
-    ]));
+            );
+          })
+        ]));
   }
 }

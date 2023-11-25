@@ -25,7 +25,7 @@ class SocialButton extends StatelessWidget {
           height: 60,
           width: 60,
           decoration: BoxDecoration(
-            color: AppColors.kOxfordBlue,
+            color: Colors.transparent,
             shape: BoxShape.rectangle,
             borderRadius: BorderRadius.circular(16),
           ),

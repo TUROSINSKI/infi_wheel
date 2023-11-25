@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infi_wheel/features/authentication/presentation/providers/auth/auth_blocs.dart';
+import 'package:infi_wheel/shared/widgets/toast.dart';
 
 class AuthController {
   final BuildContext context;
@@ -14,26 +15,40 @@ class AuthController {
         final state = context.read<AuthBloc>().state;
         String email = state.email;
         String password = state.password;
-        if (email.isEmpty) {}
-        if (password.isEmpty) {}
+        if (email.isEmpty) {
+          toastInfo(message: "Fill email input");
+        }
+        if (password.isEmpty) {
+          toastInfo(message: "Fill password input");
+        }
         try {
-          final credential = await FirebaseAuth.instance
+          UserCredential credential = await FirebaseAuth.instance
               .signInWithEmailAndPassword(email: email, password: password);
           if (credential.user==null){
-
+            print("user doesnt exist");
           }
           if (!credential.user!.emailVerified){
-
+            toastInfo(message: "Verify your email first");
           }
 
           var user = credential.user;
           if (user!=null){
-
+            toastInfo(message: "User exists");
           }else{
             
           }
-        } catch (e) {}
+        } on FirebaseAuthException catch (e) {
+          if (e.code == 'user-not-found'){
+            toastInfo(message: "User doesn't exist");
+          }else if(e.code == 'wrong-password'){
+            toastInfo(message: "Wrong password");
+          }else if(e.code == 'invalid-email'){
+            toastInfo(message: "Correct your email");
+          }
+        }
       }
-    } catch (e) {}
+    } catch (e) {
+      // print(e.toString());
+    }
   }
 }

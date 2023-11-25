@@ -19,16 +19,15 @@ dependencies:
   json_annotation: ^4.8.1
   get_it: ^7.6.4
   intl: ^0.18.1
-  retrofit: ^4.0.3
   flutter_hooks: ^0.20.3
-  cached_network_image: ^3.3.0
-  dio: ^5.3.3
   flutter_svg: ^2.0.9
   permission_handler: ^11.0.1
   firebase_core: ^2.22.0
   firebase_auth: ^4.14.0
   cloud_firestore: ^4.13.2
   firebase_storage: ^11.5.2
+  flutter_screenutil: ^5.9.0
+  fluttertoast: ^8.2.4
 
   cupertino_icons: ^1.0.2
 
@@ -38,7 +37,6 @@ dev_dependencies:
 
   json_serializable: ^6.7.1
   flutter_launcher_icons: ^0.13.1
-  retrofit_generator: ^8.0.3
   build_runner: ^2.4.6
 
   flutter_lints: ^3.0.0

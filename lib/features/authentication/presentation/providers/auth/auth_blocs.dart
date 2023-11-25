@@ -11,12 +11,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   void _emailEvent(EmailEvent event, Emitter<AuthState> emit) {
-    print("Email is ${event.email}");
     emit(state.copyWith(email: event.email));
   }
 
   void _passwordEvent(PasswordEvent event, Emitter<AuthState> emit){
-    print("Password is ${event.password}");
     emit(state.copyWith(password: event.password));
   }
 }
