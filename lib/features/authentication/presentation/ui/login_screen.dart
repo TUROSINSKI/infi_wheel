@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:infi_wheel/core/utils/colors.dart';
-import 'package:infi_wheel/features/authentication/presentation/controllers/auth_controller.dart';
+import 'package:infi_wheel/features/authentication/data/services/auth_controller.dart';
 import 'package:infi_wheel/features/authentication/presentation/providers/auth/auth_blocs.dart';
 import 'package:infi_wheel/features/authentication/presentation/providers/auth/auth_events.dart';
 import 'package:infi_wheel/features/authentication/presentation/providers/auth/auth_states.dart';
@@ -41,11 +41,14 @@ class LoginScreen extends StatelessWidget {
                   SizedBox(
                     height: 20.h,
                   ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text("Or login with your email", style: TextStyle(color: AppColors.kOxfordBlue),),
+                  ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       loginInputField(
-                          context,
                           Icons.email,
                           TextInputType.emailAddress,
                           TextInputAction.next,
@@ -54,7 +57,6 @@ class LoginScreen extends StatelessWidget {
                         context.read<AuthBloc>().add(EmailEvent(value));
                       }),
                       loginInputField(
-                          context,
                           Icons.lock,
                           TextInputType.visiblePassword,
                           TextInputAction.done,
@@ -67,11 +69,11 @@ class LoginScreen extends StatelessWidget {
                         style: TextStyle(color: AppColors.kPlatinum),
                       ),
                       SizedBox(height: 24.h),
-                      loginAndRegButton("Login", () {
+                      loginAndRegButton("Login", AppColors.kOrangeWeb, AppColors.kOxfordBlue, () {
                         AuthController(context: context).handleAuth("email");
                       }),
                       SizedBox(height: 40),
-                      loginAndRegButton("Register", () {}),
+                      loginAndRegButton("Register", AppColors.kOxfordBlue, AppColors.kWhite, () {}),
                     ],
                   ),
                   // socialBar(),

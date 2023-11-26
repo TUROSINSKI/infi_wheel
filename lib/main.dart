@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:infi_wheel/core/routes/route_config.dart';
 import 'package:infi_wheel/core/theme/theme_data.dart';
 import 'package:infi_wheel/features/authentication/data/repositories/auth_repository.dart';
 import 'package:infi_wheel/features/authentication/presentation/providers/auth/auth_blocs.dart';
@@ -31,12 +32,14 @@ class MyApp extends StatelessWidget {
       child: MultiBlocProvider(
         providers: BlocProviders.allBlocProviders,
         child: ScreenUtilInit(
-          builder: (context, child)=> MaterialApp(
+          builder: (context, child)=> MaterialApp.router(
             title: 'InfiWheel',
             debugShowCheckedModeBanner: false,
             theme: lightThemeData,
             darkTheme: darkThemeData,
-            home: LoginScreen(),
+            routeInformationProvider: InfiWheelRouter.router.routeInformationProvider,
+            routeInformationParser: InfiWheelRouter.router.routeInformationParser,
+            routerDelegate: InfiWheelRouter.router.routerDelegate,
           ),
         ),
       ),

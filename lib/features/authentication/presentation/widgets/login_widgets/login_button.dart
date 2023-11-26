@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:infi_wheel/core/utils/colors.dart';
 
-Widget loginAndRegButton(String buttonText, void Function()? function){
+Widget loginAndRegButton(String buttonText, Color backgroundColor, Color textColor, void Function()? function){
   return Material(
       elevation: 2,
       borderRadius: BorderRadius.circular(16),
@@ -13,12 +13,13 @@ Widget loginAndRegButton(String buttonText, void Function()? function){
           width: 300.w,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
-            color: AppColors.kOrangeWeb,
+            border: Border.all(color: AppColors.kOrangeWeb),
+            color: backgroundColor,
           ),
           child: Center(
             child: Text(
               buttonText,
-              style: TextStyle(color: AppColors.kOxfordBlue, fontSize: 16),
+              style: TextStyle(color: textColor, fontSize: 16),
             ),
           ),
         ),

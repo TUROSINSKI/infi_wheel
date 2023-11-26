@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:infi_wheel/core/utils/colors.dart';
 import 'package:infi_wheel/features/authentication/presentation/providers/onboarding_providers/onboarding_blocs.dart';
 import 'package:infi_wheel/features/authentication/presentation/providers/onboarding_providers/onboarding_events.dart';
@@ -102,7 +103,7 @@ class OnboardingScreen extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: GestureDetector(
-                    onTap: () {}, child: NextButton(width: 120)),
+                    onTap: () {GoRouter.of(context).go('/login');}, child: NextButton(width: 120)),
               ),
             ),
           ]);

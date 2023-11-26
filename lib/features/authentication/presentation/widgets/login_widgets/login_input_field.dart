@@ -3,10 +3,9 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:infi_wheel/core/utils/colors.dart';
 
-Widget loginInputField(BuildContext context,IconData icon, TextInputType inputType,
+Widget loginInputField(IconData icon, TextInputType inputType,
     TextInputAction inputAction, String hint, bool obscure, void Function(String value)? function)
      {
-      Size size = MediaQuery.of(context).size;
       return Padding(
       padding: EdgeInsets.symmetric(vertical: 10),
       child: Material(
@@ -22,6 +21,7 @@ Widget loginInputField(BuildContext context,IconData icon, TextInputType inputTy
           child: Center(
             child: TextField(
               onChanged: (value)=>function!(value),
+              style: TextStyle(color: AppColors.kBlack),
               decoration: InputDecoration(
                 border: InputBorder.none,
                 prefixIcon: Padding(
