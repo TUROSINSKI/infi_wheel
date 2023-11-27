@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:infi_wheel/core/utils/colors.dart';
 import 'package:infi_wheel/features/authentication/data/services/auth_controller.dart';
 import 'package:infi_wheel/features/authentication/presentation/providers/auth/auth_blocs.dart';
@@ -73,7 +74,7 @@ class LoginScreen extends StatelessWidget {
                         AuthController(context: context).handleAuth("email");
                       }),
                       SizedBox(height: 40),
-                      loginAndRegButton("Register", AppColors.kOxfordBlue, AppColors.kWhite, () {}),
+                      loginAndRegButton("Register", AppColors.kOxfordBlue, AppColors.kWhite, () {GoRouter.of(context).go('/signup');}),
                     ],
                   ),
                   // socialBar(),
