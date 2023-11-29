@@ -5,7 +5,7 @@ import 'package:infi_wheel/core/utils/colors.dart';
 import 'package:infi_wheel/features/authentication/presentation/providers/onboarding_providers/onboarding_blocs.dart';
 import 'package:infi_wheel/features/authentication/presentation/providers/onboarding_providers/onboarding_events.dart';
 import 'package:infi_wheel/features/authentication/presentation/providers/onboarding_providers/onboarding_states.dart';
-import 'package:infi_wheel/features/authentication/presentation/widgets/onboarding_widgets/background_custom_painter.dart';
+import 'package:infi_wheel/shared/widgets/background_custom_painter.dart';
 import 'package:infi_wheel/features/authentication/presentation/widgets/onboarding_widgets/onboarding_large_text.dart';
 import 'package:infi_wheel/features/authentication/presentation/widgets/onboarding_widgets/onboarding_slides.dart';
 import 'package:infi_wheel/features/authentication/presentation/widgets/onboarding_widgets/onboarding_text.dart';

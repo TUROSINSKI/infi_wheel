@@ -12,7 +12,7 @@ import 'package:infi_wheel/features/authentication/presentation/widgets/login_wi
 import 'package:infi_wheel/features/authentication/presentation/widgets/login_widgets/login_large_text.dart';
 import 'package:infi_wheel/features/authentication/presentation/widgets/login_widgets/social_bar.dart';
 
-import '../widgets/onboarding_widgets/background_custom_painter.dart';
+import '../../../../shared/widgets/background_custom_painter.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
