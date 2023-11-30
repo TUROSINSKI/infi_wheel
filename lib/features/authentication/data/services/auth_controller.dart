@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:infi_wheel/features/authentication/presentation/providers/auth/auth_blocs.dart';
 import 'package:infi_wheel/shared/widgets/toast.dart';
 
@@ -34,6 +35,7 @@ class AuthController {
           var user = credential.user;
           if (user!=null){
             toastInfo(message: "User exists");
+            GoRouter.of(context).go('/home');
           }else{
             
           }
