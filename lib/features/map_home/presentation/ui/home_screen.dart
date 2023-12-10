@@ -15,28 +15,45 @@ class HomeScreen extends StatelessWidget {
         body: Stack(
       children: <Widget>[
         GoogleMap(
+          zoomControlsEnabled: false,
           initialCameraPosition: CameraPosition(
             target: Location.pPolitechnikaBialostocka,
             zoom: 17,
           ),
         ),
         DraggableScrollableSheet(
-          initialChildSize: 0.1.h,
-          minChildSize: 0.1.h,
+          initialChildSize: 0.05.h,
+          minChildSize: 0.05.h,
           maxChildSize: 0.6.h,
           builder: (context, controller) => Material(
-            elevation: 16.0,
-            child: Container(
-              color: AppColors.kWhite,
-              child: ListView.builder(
-                controller: controller,
-                itemCount: 5,
-                itemBuilder: (context, index) {
-                  final int number = index;
-                  return buildList(number);
-                },
-              ),
+            elevation: 16,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(16),
+              topRight: Radius.circular(16)
             ),
+            child: Column(children: [
+              SizedBox(
+                height: 16.0.h,
+              ),
+              Container(
+                width: 40.0,
+                height: 5.0,
+                decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  borderRadius: BorderRadius.all(Radius.circular(2.5)),
+                ),
+              ),
+              Expanded(
+                child: ListView.builder(
+                  controller: controller,
+                  itemCount: 50,
+                  itemBuilder: (context, index) {
+                    final int number = index;
+                    return buildList(number);
+                  },
+                ),
+              ),
+            ]),
           ),
         ),
       ],
