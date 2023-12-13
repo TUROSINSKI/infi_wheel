@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:infi_wheel/features/map_home/domain/entities/user_entity.dart';
+import 'package:infi_wheel/features/authentication/domain/entities/user_entity.dart';
 
 class UserModel extends Equatable {
   final String id;
@@ -42,7 +42,7 @@ class UserModel extends Equatable {
     );
   }
 
-  UserModel fromEntity(UserEntity entity) {
+ static UserModel fromEntity(UserEntity entity) {
     return UserModel(
       id: entity.id,
       username: entity.username,

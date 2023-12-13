@@ -4,12 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:infi_wheel/core/routes/route_config.dart';
 import 'package:infi_wheel/core/theme/theme_data.dart';
-import 'package:infi_wheel/features/authentication/presentation/providers/auth/auth_blocs.dart';
-import 'package:infi_wheel/features/authentication/presentation/providers/auth/auth_states.dart';
-import 'package:infi_wheel/features/authentication/presentation/providers/onboarding_providers/onboarding_blocs.dart';
-import 'package:infi_wheel/features/authentication/presentation/ui/onboarding_screen.dart';
-import 'package:infi_wheel/features/authentication/presentation/ui/login_screen.dart';
-import 'package:infi_wheel/features/authentication/presentation/ui/sign_up.dart';
 import 'package:infi_wheel/firebase_options.dart';
 import 'package:infi_wheel/shared/bloc_providers.dart';
 

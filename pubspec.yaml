@@ -1,5 +1,5 @@
 name: infi_wheel
-description: "A new Flutter project."
+description: "P2P Car-Sharing app!"
 publish_to: 'none'
 version: 1.0.0+1
 
@@ -10,35 +10,38 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # google_maps_flutter: ^2.5.0
-  go_router: ^12.1.1
-  flutter_bloc: ^8.1.3
-  bloc: ^8.1.2
-  equatable: ^2.0.5
-  http: ^1.1.0
-  json_annotation: ^4.8.1
-  get_it: ^7.6.4
-  intl: ^0.18.1
-  flutter_hooks: ^0.20.3
-  flutter_svg: ^2.0.9
-  permission_handler: ^11.0.1
+  #firebase
   firebase_core: ^2.22.0
   firebase_auth: ^4.14.0
   cloud_firestore: ^4.13.2
   firebase_storage: ^11.5.2
+
+  #routing
+  go_router: ^12.1.1
+
+  #bloc
+  flutter_bloc: ^8.1.3
+  bloc: ^8.1.2
+  equatable: ^2.0.5
+
+  #locale
+  intl: ^0.18.1
+
+  #permissions
+  permission_handler: ^11.0.1
+
+  #UI
   flutter_screenutil: ^5.9.0
   fluttertoast: ^8.2.4
-  google_maps_flutter: ^2.5.0
-
+  flutter_svg: ^2.0.9
   cupertino_icons: ^1.0.2
+
+  #maps
+  google_maps_flutter: ^2.5.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-  json_serializable: ^6.7.1
-  flutter_launcher_icons: ^0.13.1
-  build_runner: ^2.4.6
 
   flutter_lints: ^3.0.0
 
