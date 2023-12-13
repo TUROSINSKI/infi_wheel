@@ -1,0 +1,2 @@
+const String onboardingText = "Share the Journey, Explore New Paths!";
+const String additionalOnboardingText = "Welcome to InfiWheel, the future of car-sharing! Quick, convenient, and eco-friendly, InfiWheel connects you with a community of drivers and riders at the tap of a button. Let's get you on the road!";

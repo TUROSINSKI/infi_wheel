@@ -65,6 +65,9 @@ flutter:
     - family: Lato
       fonts:
         - asset: "assets/fonts/Lato_Regular.ttf"
+    - family: Otterco
+      fonts:
+        - asset: "assets/fonts/OttercoDisplay-SemiBold.otf"
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
