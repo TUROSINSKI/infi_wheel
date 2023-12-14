@@ -1,16 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:infi_wheel/core/utils/colors.dart';
-import 'package:infi_wheel/features/authentication/data/services/register_controller.dart';
-import 'package:infi_wheel/features/authentication/presentation/providers/register/register_blocs.dart';
-import 'package:infi_wheel/features/authentication/presentation/providers/register/register_events.dart';
-import 'package:infi_wheel/features/authentication/presentation/providers/register/register_states.dart';
-import 'package:infi_wheel/features/authentication/presentation/widgets/login_widgets/login_button.dart';
-import 'package:infi_wheel/features/authentication/presentation/widgets/login_widgets/login_input_field.dart';
-import 'package:infi_wheel/shared/widgets/background_custom_painter.dart';
-import 'package:infi_wheel/features/authentication/presentation/widgets/sign_up_widgets/go_back_button.dart';
+import 'package:infi_wheel/core/utils/strings.dart';
+import 'package:infi_wheel/shared/widgets/agreement_text.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -18,86 +11,120 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Stack(
-      children: [
-        CustomPaint(
-          size: Size(double.infinity, double.infinity),
-          painter: BackgroundPainter(),
+      body: Stack(children: <Widget>[
+        Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  colors: [AppColors.kPlatinum, AppColors.kOrangeWeb],
+                  begin: Alignment.centerLeft,
+                  end: Alignment.topRight)),
         ),
-        BlocBuilder<RegisterBloc, RegisterState>(
-          builder: (context, state) {
-            return SingleChildScrollView(
-              child: Column(
-                children: [
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Container(
-                      width: 200,
-                      child: Image.asset("assets/icons/applogo.png"),
+        Column(
+          children: <Widget>[
+            // Upper Section (Image and Texts)
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: Align(
+                  alignment: Alignment.topCenter,
+                  child: Hero(
+                    tag: 'signuplogo-tag',
+                    child: Image.asset(
+                      "assets/images/logo_przezroczyste_granat.png",
+                      height: 80.h,
                     ),
                   ),
-                  Column(
+                ),
+              ),
+            ),
+            Material(
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(32), topRight: Radius.circular(32)),
+              elevation: 8,
+              child: Hero(
+                tag: 'signup-tag',
+                child: Container(
+                  height: MediaQuery.of(context).size.height * 0.8,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      color: AppColors.kWhite,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(32),
+                          topRight: Radius.circular(32))),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      loginInputField(Icons.person, TextInputType.name,
-                          TextInputAction.next, "Username", false, (value) {
-                        context
-                            .read<RegisterBloc>()
-                            .add(UsernameEvent(value));
-                      }),
-                      loginInputField(Icons.email, TextInputType.emailAddress,
-                          TextInputAction.next, "Email", false, (value) {
-                        context
-                            .read<RegisterBloc>()
-                            .add(EmailEvent(value));
-                      }),
-                      loginInputField(Icons.lock, TextInputType.visiblePassword,
-                          TextInputAction.next, "Password", true, (value) {
-                        context
-                            .read<RegisterBloc>()
-                            .add(PasswordEvent(value));
-                      }),
-                      loginInputField(
-                          Icons.key,
-                          TextInputType.visiblePassword,
-                          TextInputAction.done,
-                          "Confirm password",
-                          true, (value) {
-                        context
-                            .read<RegisterBloc>()
-                            .add(ConfirmPasswordEvent(value));
-                      }),
-                      SizedBox(
-                        height: 20.h,
-                      ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: Row(
-                          children: [
-                            Checkbox(
-                                value: false, onChanged: (bool? newValue) {}),
-                            Flexible(
-                                child: Text(
-                                    "By clicking here, I state that I am 18 years of age or older and I have read and understood the terms and conditions.")),
-                          ],
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          'Welcome to InfiWheel',
+                          style: TextStyle(
+                              color: AppColors.kOxfordBlue,
+                              fontSize: 24.h,
+                              fontWeight: FontWeight.bold),
                         ),
                       ),
-                      SizedBox(height: 20.h),
-                      loginAndRegButton("Create Account", AppColors.kOrangeWeb,
-                          AppColors.kOxfordBlue, () {
-                            RegisterController(context:context).handleEmailRegister();
-                          }),
-                      SizedBox(height: 20.h),
-                      goBackButton(() {
-                        GoRouter.of(context).go('/login');
-                      }),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          onboardingText,
+                          style: TextStyle(
+                            color: AppColors.kOxfordBlue,
+                            fontSize: 16.h,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 28.h),
+                      OnboardButton(
+                        text: "Sign Up",
+                        color: AppColors.kOrangeWeb,
+                        fun: () {
+                          GoRouter.of(context).go('/signup');
+                        },
+                      ),
+                      OnboardButton(
+                        text: "Go back",
+                        color: AppColors.kPlatinum, fun: () {GoRouter.of(context).go('/');},
+                      ),
+                      SizedBox(height: 28.h),
+                      AgreementText(),
                     ],
                   ),
-                ],
+                ),
               ),
-            );
-          },
-        )
-      ],
-    ));
+            ),
+          ],
+        ),
+      ]),
+    );
+  }
+}
+
+class OnboardButton extends StatelessWidget {
+  const OnboardButton(
+      {super.key, required this.text, required this.color, required this.fun});
+
+  final String text;
+  final Color color;
+  final void Function() fun;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ElevatedButton(
+        onPressed: fun,
+        child: Text(
+          text,
+          style: TextStyle(fontSize: 16.h),
+        ),
+        style: ElevatedButton.styleFrom(
+            fixedSize: Size(300, 48),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+            backgroundColor: color,
+            foregroundColor: AppColors.kBlack),
+      ),
+    );
   }
 }

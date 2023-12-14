@@ -1,125 +1,9 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:go_router/go_router.dart';
-// import 'package:infi_wheel/core/utils/colors.dart';
-// import 'package:infi_wheel/features/authentication/presentation/providers/onboarding_providers/onboarding_blocs.dart';
-// import 'package:infi_wheel/features/authentication/presentation/providers/onboarding_providers/onboarding_events.dart';
-// import 'package:infi_wheel/features/authentication/presentation/providers/onboarding_providers/onboarding_states.dart';
-// import 'package:infi_wheel/shared/widgets/background_custom_painter.dart';
-// import 'package:infi_wheel/features/authentication/presentation/widgets/onboarding_widgets/onboarding_large_text.dart';
-// import 'package:infi_wheel/features/authentication/presentation/widgets/onboarding_widgets/onboarding_slides.dart';
-// import 'package:infi_wheel/features/authentication/presentation/widgets/onboarding_widgets/onboarding_text.dart';
-// import 'package:infi_wheel/shared/widgets/go_next_button.dart';
-
-// class OnboardingScreen extends StatelessWidget {
-//   const OnboardingScreen({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         centerTitle: true,
-//         title: Image.asset(
-//           "assets/icons/applogo.png",
-//           fit: BoxFit.cover,
-//           height: 150,
-//         ),
-//         backgroundColor: AppColors.kWhite,
-//       ),
-//       body: BlocBuilder<OnboardingBloc, OnboardingState>(
-//         builder: (context, state) {
-//           return Stack(children: <Widget>[
-//             CustomPaint(
-//               size: Size(double.infinity, double.infinity),
-//               painter: BackgroundPainter(),
-//             ),
-//             SizedBox(
-//               height: MediaQuery.of(context).size.height * 1 / 2,
-//               child: PageView.builder(
-//                   controller: context.read<OnboardingBloc>().pageController,
-//                   onPageChanged: (index) {
-//                     state.page = index;
-//                     BlocProvider.of<OnboardingBloc>(context)
-//                         .add(OnboardingEvent());
-//                   },
-//                   scrollDirection: Axis.vertical,
-//                   itemCount: 3,
-//                   itemBuilder: (_, index) {
-//                     return Container(
-//                       width: double.maxFinite,
-//                       height: double.maxFinite,
-//                       child: Container(
-//                         margin: const EdgeInsets.only(
-//                             top: 100, left: 20, right: 20),
-//                         child: Column(
-//                           crossAxisAlignment: CrossAxisAlignment.start,
-//                           children: [
-//                             OnboardinglargeText(text: "InfiWheel"),
-//                             OnboardingText(
-//                               text: onboardingTitle[index],
-//                               size: 24,
-//                             ),
-//                             SizedBox(
-//                               height: 20,
-//                             ),
-//                             Container(
-//                               width: 250,
-//                               child:
-//                                   OnboardingText(text: onboardingTexts[index]),
-//                             ),
-//                             SizedBox(
-//                               height: 40,
-//                             ),
-//                             // NextButton(width: 120,),
-//                           ],
-//                         ),
-//                       ),
-//                     );
-//                   }),
-//             ),
-//             Positioned(
-//               top: 150,
-//               right: 20,
-//               child: Column(
-//                 children: List.generate(3, (indexDots) {
-//                   return AnimatedContainer(
-//                     duration: const Duration(milliseconds: 200),
-//                     curve: Curves.easeInOut,
-//                     margin: const EdgeInsets.only(bottom: 2),
-//                     width: 8,
-//                     height: state.page.toDouble() == indexDots ? 25 : 8,
-//                     decoration: BoxDecoration(
-//                       borderRadius: BorderRadius.circular(8),
-//                       color: state.page.toDouble() == indexDots
-//                           ? AppColors.kOrangeWeb
-//                           : AppColors.kOrangeWeb.withOpacity(0.3),
-//                     ),
-//                   );
-//                 }),
-//               ),
-//             ),
-//             Align(
-//               alignment: Alignment.bottomRight,
-//               child: Padding(
-//                 padding: const EdgeInsets.all(20.0),
-//                 child: GestureDetector(
-//                     onTap: () {GoRouter.of(context).go('/login');}, child: NextButton(width: 120)),
-//               ),
-//             ),
-//           ]);
-//         },
-//       ),
-//     );
-//   }
-// }
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:infi_wheel/core/utils/colors.dart';
 import 'package:infi_wheel/core/utils/strings.dart';
-import 'package:infi_wheel/features/authentication/presentation/widgets/login_widgets/login_button.dart';
+import 'package:infi_wheel/shared/widgets/agreement_text.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -133,47 +17,98 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(children: <Widget>[
-        Background(),
+        Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  colors: [AppColors.kPlatinum, AppColors.kOrangeWeb],
+                  begin: Alignment.centerLeft,
+                  end: Alignment.topRight)),
+        ),
         Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Center(
-              child: Image.asset(
-                "assets/images/logo_przezroczyste_granat.png",
-                height: 140,
+          children: <Widget>[
+            // Upper Section (Image and Texts)
+            Expanded(
+              child: Center(
+                child: Hero(
+                  tag: 'signuplogo-tag',
+                  child: Image.asset(
+                    "assets/images/logo_przezroczyste_granat.png",
+                    height: 100.h,
+                  ),
+                ),
               ),
             ),
-            Center(
-              child: Text(
-                "InfiWheel",
-                style: TextStyle(
-                    color: AppColors.kOxfordBlue,
-                    fontSize: 80,
-                    fontWeight: FontWeight.bold),
+            Material(
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(32), topRight: Radius.circular(32)),
+              elevation: 8,
+              child: Hero(
+                tag: 'signup-tag',
+                flightShuttleBuilder: (
+                  BuildContext flightContext,
+                  Animation<double> animation,
+                  HeroFlightDirection flightDirection,
+                  BuildContext fromHeroContext,
+                  BuildContext toHeroContext,
+                ) {
+                  return DefaultTextStyle(
+                    style: DefaultTextStyle.of(toHeroContext).style,
+                    child: toHeroContext.widget,
+                  );
+                },
+                child: Container(
+                  height: MediaQuery.of(context).size.height * 0.5,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      color: AppColors.kWhite,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(32),
+                          topRight: Radius.circular(32))),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          'Welcome to InfiWheel',
+                          style: TextStyle(
+                              color: AppColors.kOxfordBlue,
+                              fontSize: 24.h,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          onboardingText,
+                          style: TextStyle(
+                            color: AppColors.kOxfordBlue,
+                            fontSize: 16.h,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 28.h),
+                      OnboardButton(
+                        text: "Sign Up",
+                        color: AppColors.kOrangeWeb,
+                        fun: () {
+                          GoRouter.of(context).go('/signup');
+                        },
+                      ),
+                      OnboardButton(
+                        text: "Sign In",
+                        color: AppColors.kPlatinum,
+                        fun: () {
+                          GoRouter.of(context).go('/login');
+                        },
+                      ),
+                      SizedBox(height: 28.h),
+                      AgreementText(),
+                    ],
+                  ),
+                ),
               ),
             ),
-            Text(
-              onboardingText,
-              style: TextStyle(color: AppColors.kBlack, fontSize: 20, ),
-            ),
-            SizedBox(
-              height: 80.h,
-            ),
-            loginAndRegButton(
-              "Sign In",
-              AppColors.kOrangeWeb,
-              AppColors.kOxfordBlue,
-              () {GoRouter.of(context).go('/login');},
-            ),
-            SizedBox(
-              height: 20.h,
-            ),
-            loginAndRegButton(
-              "Sign Up",
-              AppColors.kOxfordBlue,
-              AppColors.kWhite,
-              () {GoRouter.of(context).go('/signup');},
-            )
           ],
         ),
       ]),
@@ -181,33 +116,30 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 }
 
-class Background extends StatelessWidget {
-  const Background({
-    super.key,
-  });
+class OnboardButton extends StatelessWidget {
+  const OnboardButton(
+      {super.key, required this.text, required this.color, required this.fun});
+
+  final String text;
+  final Color color;
+  final void Function() fun;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage("assets/images/onboarding_image.jpg"),
-          fit: BoxFit.cover,
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ElevatedButton(
+        onPressed: fun,
+        child: Text(
+          text,
+          style: TextStyle(fontSize: 16.h),
         ),
-      ),
-      child: BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 5.0, sigmaY: 5.0),
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.0),
-          ),
-          child: Container(
-            decoration: BoxDecoration(
-              color:
-                  Colors.white.withOpacity(0.1), // Adjust the opacity as needed
-            ),
-          ),
-        ),
+        style: ElevatedButton.styleFrom(
+            fixedSize: Size(300, 48),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+            backgroundColor: color,
+            foregroundColor: AppColors.kBlack),
       ),
     );
   }
