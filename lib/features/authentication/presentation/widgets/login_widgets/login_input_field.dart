@@ -9,7 +9,7 @@ Widget loginInputField(IconData icon, TextInputType inputType,
       return Padding(
       padding: EdgeInsets.symmetric(vertical: 10),
       child: Material(
-        elevation: 2,
+        elevation: 1,
         borderRadius: BorderRadius.circular(16),
         child: Container(
           height: 56.h,

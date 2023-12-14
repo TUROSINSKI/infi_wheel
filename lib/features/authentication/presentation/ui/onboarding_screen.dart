@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:infi_wheel/core/utils/colors.dart';
 import 'package:infi_wheel/core/utils/strings.dart';
+import 'package:infi_wheel/features/authentication/presentation/widgets/login_widgets/login_button.dart';
 import 'package:infi_wheel/shared/widgets/agreement_text.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -88,14 +89,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         ),
                       ),
                       SizedBox(height: 28.h),
-                      OnboardButton(
+                      AuthButton(
                         text: "Sign Up",
                         color: AppColors.kOrangeWeb,
                         fun: () {
                           GoRouter.of(context).go('/signup');
                         },
                       ),
-                      OnboardButton(
+                      AuthButton(
                         text: "Sign In",
                         color: AppColors.kPlatinum,
                         fun: () {
@@ -116,31 +117,4 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 }
 
-class OnboardButton extends StatelessWidget {
-  const OnboardButton(
-      {super.key, required this.text, required this.color, required this.fun});
 
-  final String text;
-  final Color color;
-  final void Function() fun;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: ElevatedButton(
-        onPressed: fun,
-        child: Text(
-          text,
-          style: TextStyle(fontSize: 16.h),
-        ),
-        style: ElevatedButton.styleFrom(
-            fixedSize: Size(300, 48),
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-            backgroundColor: color,
-            foregroundColor: AppColors.kBlack),
-      ),
-    );
-  }
-}

@@ -20,68 +20,74 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Stack(children: [
-          CustomPaint(
-            size: Size(double.infinity, double.infinity),
-            painter: BackgroundPainter(),
-          ),
-          BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
-            return SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(height: 60.h),
-                  Align(
-                    alignment: Alignment.topCenter,
-                    child: Container(
-                      width: 200,
-                      child: Image.asset("assets/icons/applogo.png"),
-                    ),
+      resizeToAvoidBottomInset: false,
+      body: Stack(children: <Widget>[
+        Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  colors: [AppColors.kPlatinum, AppColors.kOrangeWeb],
+                  begin: Alignment.centerLeft,
+                  end: Alignment.topRight)),
+        ),
+        Column(
+          children: <Widget>[
+            // Upper Section (Image and Texts)
+            Expanded(
+              child: Center(
+                child: Hero(
+                  tag: 'signuplogo-tag',
+                  child: Image.asset(
+                    "assets/images/logo_przezroczyste_granat.png",
+                    height: 84.h,
                   ),
-                  socialBar(),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text("Or login with your email", style: TextStyle(color: AppColors.kOxfordBlue),),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                ),
+              ),
+            ),
+            Material(
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(32), topRight: Radius.circular(32)),
+              elevation: 8,
+              child: Hero(
+                tag: 'signup-tag',
+                child: Container(
+                  height: MediaQuery.of(context).size.height * 0.75,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      color: AppColors.kWhite,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(32),
+                          topRight: Radius.circular(32))),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      loginInputField(
-                          Icons.email,
-                          TextInputType.emailAddress,
-                          TextInputAction.next,
-                          "Email",
-                          false, (value) {
-                        context.read<AuthBloc>().add(EmailEvent(value));
-                      }),
-                      loginInputField(
-                          Icons.lock,
-                          TextInputType.visiblePassword,
-                          TextInputAction.done,
-                          "Password",
-                          true, (value) {
-                        context.read<AuthBloc>().add(PasswordEvent(value));
-                      }),
-                      Text(
-                        "Forgot password?",
-                        style: TextStyle(color: AppColors.kPlatinum),
+                      Text("Sign In using socials", style: TextStyle(color: AppColors.kOxfordBlue, fontSize: 16.h),),
+                      SizedBox(height: 16.h),
+                      socialBar(),
+                      SizedBox(height: 32.h),
+                      Text("Or use your existing account", style: TextStyle(color: AppColors.kOxfordBlue, fontSize: 16.h),),
+                      SizedBox(height: 16.h),
+                      loginInputField(Icons.mail, TextInputType.emailAddress, TextInputAction.next, 'Email', false, (value) { }),
+                      loginInputField(Icons.lock, TextInputType.visiblePassword, TextInputAction.done, 'Password', true, (value) { }),
+                      SizedBox(height: 28.h),
+                      AuthButton(
+                        text: "Sign Up",
+                        color: AppColors.kOrangeWeb,
+                        fun: () {
+                          GoRouter.of(context).go('/signup');
+                        },
                       ),
-                      SizedBox(height: 24.h),
-                      loginAndRegButton("Login", AppColors.kOrangeWeb, AppColors.kOxfordBlue, () {
-                        AuthController(context: context).handleAuth("email");
-                      }),
-                      SizedBox(height: 40),
-                      loginAndRegButton("Register", AppColors.kOxfordBlue, AppColors.kWhite, () {GoRouter.of(context).go('/signup');}),
+                      AuthButton(
+                        text: "Go back",
+                        color: AppColors.kPlatinum, fun: () {GoRouter.of(context).go('/');},
+                      ),
                     ],
                   ),
-                  // socialBar(),
-                ],
+                ),
               ),
-            );
-          })
-        ]));
+            ),
+          ],
+        ),
+      ]),
+    );
   }
 }

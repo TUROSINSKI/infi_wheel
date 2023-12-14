@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:infi_wheel/core/utils/colors.dart';
 import 'package:infi_wheel/core/utils/strings.dart';
+import 'package:infi_wheel/features/authentication/presentation/widgets/login_widgets/login_button.dart';
+import 'package:infi_wheel/features/authentication/presentation/widgets/login_widgets/login_input_field.dart';
 import 'package:infi_wheel/shared/widgets/agreement_text.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -11,6 +13,7 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Stack(children: <Widget>[
         Container(
           decoration: BoxDecoration(
@@ -21,18 +24,13 @@ class SignUpScreen extends StatelessWidget {
         ),
         Column(
           children: <Widget>[
-            // Upper Section (Image and Texts)
             Expanded(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: Align(
-                  alignment: Alignment.topCenter,
-                  child: Hero(
-                    tag: 'signuplogo-tag',
-                    child: Image.asset(
-                      "assets/images/logo_przezroczyste_granat.png",
-                      height: 80.h,
-                    ),
+              child: Center(
+                child: Hero(
+                  tag: 'signuplogo-tag',
+                  child: Image.asset(
+                    "assets/images/logo_przezroczyste_granat.png",
+                    height: 80.h,
                   ),
                 ),
               ),
@@ -54,40 +52,24 @@ class SignUpScreen extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          'Welcome to InfiWheel',
-                          style: TextStyle(
-                              color: AppColors.kOxfordBlue,
-                              fontSize: 24.h,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          onboardingText,
-                          style: TextStyle(
-                            color: AppColors.kOxfordBlue,
-                            fontSize: 16.h,
-                          ),
-                        ),
-                      ),
+                      Text("Sign up using your email", style: TextStyle(color: AppColors.kOxfordBlue, fontSize: 16.h),),
+                      SizedBox(height: 16.h),
+                      loginInputField(Icons.person, TextInputType.text, TextInputAction.next, 'Username', false, (value) { }),
+                      loginInputField(Icons.mail, TextInputType.emailAddress, TextInputAction.next, 'Email', false, (value) { }),
+                      loginInputField(Icons.lock, TextInputType.visiblePassword, TextInputAction.next, 'Password', true, (value) { }),
+                      loginInputField(Icons.repeat, TextInputType.visiblePassword, TextInputAction.done, 'Confirm password', true, (value) { }),
                       SizedBox(height: 28.h),
-                      OnboardButton(
+                      AuthButton(
                         text: "Sign Up",
                         color: AppColors.kOrangeWeb,
                         fun: () {
                           GoRouter.of(context).go('/signup');
                         },
                       ),
-                      OnboardButton(
+                      AuthButton(
                         text: "Go back",
                         color: AppColors.kPlatinum, fun: () {GoRouter.of(context).go('/');},
                       ),
-                      SizedBox(height: 28.h),
-                      AgreementText(),
                     ],
                   ),
                 ),
@@ -96,35 +78,6 @@ class SignUpScreen extends StatelessWidget {
           ],
         ),
       ]),
-    );
-  }
-}
-
-class OnboardButton extends StatelessWidget {
-  const OnboardButton(
-      {super.key, required this.text, required this.color, required this.fun});
-
-  final String text;
-  final Color color;
-  final void Function() fun;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: ElevatedButton(
-        onPressed: fun,
-        child: Text(
-          text,
-          style: TextStyle(fontSize: 16.h),
-        ),
-        style: ElevatedButton.styleFrom(
-            fixedSize: Size(300, 48),
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-            backgroundColor: color,
-            foregroundColor: AppColors.kBlack),
-      ),
     );
   }
 }
