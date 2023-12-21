@@ -55,4 +55,3 @@ class AuthenticationBloc
     return super.close();
   }
 }
-
