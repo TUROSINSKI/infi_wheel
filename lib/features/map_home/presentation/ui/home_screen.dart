@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:infi_wheel/core/utils/colors.dart';
 import 'package:infi_wheel/core/utils/constants.dart';
+import 'package:infi_wheel/features/map_home/presentation/widgets/temp_cars_list.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -43,15 +44,45 @@ class HomeScreen extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(2.5)),
                 ),
               ),
+              // Expanded(
+              //   child: ListView.builder(
+              //     controller: controller,
+              //     itemCount: 50,
+              //     itemBuilder: (context, index) {
+              //       final int number = index;
+              //       return buildList(number);
+              //     },
+              //   ),
+              // ),
               Expanded(
-                child: ListView.builder(
+                child: GridView.builder(
                   controller: controller,
-                  itemCount: 50,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 16,
+                    crossAxisSpacing: 16,
+                  ),
+                  itemCount: cars.length,
+                  padding: EdgeInsets.all(16),
                   itemBuilder: (context, index) {
-                    final int number = index;
-                    return buildList(number);
+                    return Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: AppColors.kOxfordBlue, width: 1.0),
+                        borderRadius: BorderRadius.all(Radius.circular(16))
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text(cars[index].brand, style: TextStyle(color: AppColors.kBlack),),
+                          Text(cars[index].model, style: TextStyle(color: AppColors.kBlack),),
+                          Text(cars[index].power, style: TextStyle(color: AppColors.kBlack),),
+                          Text(cars[index].productionDate, style: TextStyle(color: AppColors.kBlack),),
+                          Text(cars[index].type, style: TextStyle(color: AppColors.kBlack),),
+                        ],
+                      )
+                    );
                   },
-                ),
+                )
               ),
             ]),
           ),

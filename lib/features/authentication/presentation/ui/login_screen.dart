@@ -70,10 +70,10 @@ class LoginScreen extends StatelessWidget {
                       loginInputField(Icons.lock, TextInputType.visiblePassword, TextInputAction.done, 'Password', true, (value) { }),
                       SizedBox(height: 28.h),
                       AuthButton(
-                        text: "Sign Up",
+                        text: "Sign In",
                         color: AppColors.kOrangeWeb,
                         fun: () {
-                          GoRouter.of(context).go('/signup');
+                          GoRouter.of(context).go('/home');
                         },
                       ),
                       AuthButton(
