@@ -41,36 +41,38 @@ class SignUpScreen extends StatelessWidget {
               elevation: 8,
               child: Hero(
                 tag: 'signup-tag',
-                child: Container(
-                  height: MediaQuery.of(context).size.height * 0.8,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                      color: AppColors.kWhite,
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(32),
-                          topRight: Radius.circular(32))),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text("Sign up using your email", style: TextStyle(color: AppColors.kOxfordBlue, fontSize: 16.h),),
-                      SizedBox(height: 16.h),
-                      loginInputField(Icons.person, TextInputType.text, TextInputAction.next, 'Username', false, (value) { }),
-                      loginInputField(Icons.mail, TextInputType.emailAddress, TextInputAction.next, 'Email', false, (value) { }),
-                      loginInputField(Icons.lock, TextInputType.visiblePassword, TextInputAction.next, 'Password', true, (value) { }),
-                      loginInputField(Icons.repeat, TextInputType.visiblePassword, TextInputAction.done, 'Confirm password', true, (value) { }),
-                      SizedBox(height: 28.h),
-                      AuthButton(
-                        text: "Sign Up",
-                        color: AppColors.kOrangeWeb,
-                        fun: () {
-                          GoRouter.of(context).go('/signup');
-                        },
-                      ),
-                      AuthButton(
-                        text: "Go back",
-                        color: AppColors.kPlatinum, fun: () {GoRouter.of(context).go('/');},
-                      ),
-                    ],
+                child: SingleChildScrollView(
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.8,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                        color: AppColors.kWhite,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(32),
+                            topRight: Radius.circular(32))),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Sign up using your email", style: TextStyle(color: AppColors.kOxfordBlue, fontSize: 16.h),),
+                        SizedBox(height: 16.h),
+                        loginInputField(Icons.person, TextInputType.text, TextInputAction.next, 'Username', false, (value) { }),
+                        loginInputField(Icons.mail, TextInputType.emailAddress, TextInputAction.next, 'Email', false, (value) { }),
+                        loginInputField(Icons.lock, TextInputType.visiblePassword, TextInputAction.next, 'Password', true, (value) { }),
+                        loginInputField(Icons.repeat, TextInputType.visiblePassword, TextInputAction.done, 'Confirm password', true, (value) { }),
+                        SizedBox(height: 28.h),
+                        AuthButton(
+                          text: "Sign Up",
+                          color: AppColors.kOrangeWeb,
+                          fun: () {
+                            GoRouter.of(context).go('/signup');
+                          },
+                        ),
+                        AuthButton(
+                          text: "Go back",
+                          color: AppColors.kPlatinum, fun: () {GoRouter.of(context).go('/');},
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

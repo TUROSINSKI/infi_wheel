@@ -57,55 +57,57 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     child: toHeroContext.widget,
                   );
                 },
-                child: Container(
-                  height: MediaQuery.of(context).size.height * 0.5,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                      color: AppColors.kWhite,
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(32),
-                          topRight: Radius.circular(32))),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          'Welcome to InfiWheel',
-                          style: TextStyle(
-                              color: AppColors.kOxfordBlue,
-                              fontSize: 24.h,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          onboardingText,
-                          style: TextStyle(
-                            color: AppColors.kOxfordBlue,
-                            fontSize: 16.h,
+                child: SingleChildScrollView(
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.5,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                        color: AppColors.kWhite,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(32),
+                            topRight: Radius.circular(32))),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            'Welcome to InfiWheel',
+                            style: TextStyle(
+                                color: AppColors.kOxfordBlue,
+                                fontSize: 24.h,
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
-                      ),
-                      SizedBox(height: 28.h),
-                      AuthButton(
-                        text: "Sign Up",
-                        color: AppColors.kOrangeWeb,
-                        fun: () {
-                          GoRouter.of(context).go('/signup');
-                        },
-                      ),
-                      AuthButton(
-                        text: "Sign In",
-                        color: AppColors.kPlatinum,
-                        fun: () {
-                          GoRouter.of(context).go('/login');
-                        },
-                      ),
-                      SizedBox(height: 28.h),
-                      AgreementText(),
-                    ],
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            onboardingText,
+                            style: TextStyle(
+                              color: AppColors.kOxfordBlue,
+                              fontSize: 16.h,
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 28.h),
+                        AuthButton(
+                          text: "Sign Up",
+                          color: AppColors.kOrangeWeb,
+                          fun: () {
+                            GoRouter.of(context).go('/signup');
+                          },
+                        ),
+                        AuthButton(
+                          text: "Sign In",
+                          color: AppColors.kPlatinum,
+                          fun: () {
+                            GoRouter.of(context).go('/login');
+                          },
+                        ),
+                        SizedBox(height: 28.h),
+                        AgreementText(),
+                      ],
+                    ),
                   ),
                 ),
               ),
