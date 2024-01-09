@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:infi_wheel/core/utils/colors.dart';
 import 'package:infi_wheel/core/utils/constants.dart';
@@ -13,6 +14,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(),
         body: Stack(
       children: <Widget>[
         GoogleMap(
@@ -65,21 +67,24 @@ class HomeScreen extends StatelessWidget {
                   itemCount: cars.length,
                   padding: EdgeInsets.all(16),
                   itemBuilder: (context, index) {
-                    return Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(color: AppColors.kOxfordBlue, width: 1.0),
-                        borderRadius: BorderRadius.all(Radius.circular(16))
+                    return GestureDetector(
+                      onTap: () => GoRouter.of(context).go('/details'),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(color: AppColors.kOxfordBlue, width: 1.0),
+                          borderRadius: BorderRadius.all(Radius.circular(16))
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text(cars[index].brand, style: TextStyle(color: AppColors.kBlack),),
+                            Text(cars[index].model, style: TextStyle(color: AppColors.kBlack),),
+                            Text(cars[index].power, style: TextStyle(color: AppColors.kBlack),),
+                            Text(cars[index].productionDate, style: TextStyle(color: AppColors.kBlack),),
+                            Text(cars[index].type, style: TextStyle(color: AppColors.kBlack),),
+                          ],
+                        )
                       ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(cars[index].brand, style: TextStyle(color: AppColors.kBlack),),
-                          Text(cars[index].model, style: TextStyle(color: AppColors.kBlack),),
-                          Text(cars[index].power, style: TextStyle(color: AppColors.kBlack),),
-                          Text(cars[index].productionDate, style: TextStyle(color: AppColors.kBlack),),
-                          Text(cars[index].type, style: TextStyle(color: AppColors.kBlack),),
-                        ],
-                      )
                     );
                   },
                 )
