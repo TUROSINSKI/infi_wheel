@@ -3,7 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:infi_wheel/features/authentication/presentation/providers/register/register_blocs.dart';
+import 'package:infi_wheel/features/authentication/presentation/blocs/register/register_blocs.dart';
 import 'package:infi_wheel/shared/widgets/toast.dart';
 
 class RegisterController {

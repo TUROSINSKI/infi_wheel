@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:infi_wheel/features/authentication/presentation/providers/auth/auth_blocs.dart';
-import 'package:infi_wheel/features/authentication/presentation/providers/onboarding_providers/onboarding_blocs.dart';
-import 'package:infi_wheel/features/authentication/presentation/providers/register/register_blocs.dart';
+import 'package:infi_wheel/features/authentication/presentation/blocs/auth/auth_blocs.dart';
+import 'package:infi_wheel/features/authentication/presentation/blocs/onboarding_providers/onboarding_blocs.dart';
+import 'package:infi_wheel/features/authentication/presentation/blocs/register/register_blocs.dart';
 
 class BlocProviders {
   static get allBlocProviders => [
