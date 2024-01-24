@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:infi_wheel/features/authentication/presentation/providers/register/register_events.dart';
-import 'package:infi_wheel/features/authentication/presentation/providers/register/register_states.dart';
+import 'package:infi_wheel/features/authentication/presentation/blocs/register/register_events.dart';
+import 'package:infi_wheel/features/authentication/presentation/blocs/register/register_states.dart';
 
 class RegisterBloc extends Bloc<RegisterEvent, RegisterState>{
   RegisterBloc():super(const RegisterState()){
