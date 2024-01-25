@@ -1,4 +1,5 @@
 class CarModel {
+  final int id;
   final String manufacturer;
   final String model;
   final String type;
@@ -16,6 +17,7 @@ class CarModel {
   final String ac;
 
   CarModel({
+    required this.id,
     required this.manufacturer,
     required this.model,
     required this.type,
