@@ -17,14 +17,14 @@ class Car {
     required this.type,
   });
 
-  factory Car.fromModel(CarModel model) {
-    return Car(
-      id: model.id,
-      brand: model.brand,
-      model: model.model,
-      productionDate: model.productionDate,
-      power: model.power,
-      type: model.type,
-    );
-  }
+  // factory Car.fromModel(CarModel model) {
+  //   return Car(
+  //     id: model.id,
+  //     brand: model.brand,
+  //     model: model.model,
+  //     productionDate: model.productionDate,
+  //     power: model.power,
+  //     type: model.type,
+  //   );
+  // }
 }
