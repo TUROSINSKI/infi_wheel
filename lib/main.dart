@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:infi_wheel/core/routes/route_config.dart';
 import 'package:infi_wheel/core/theme/theme_data.dart';
 import 'package:infi_wheel/firebase_options.dart';
+import 'package:infi_wheel/injection_container.dart';
 import 'package:infi_wheel/shared/bloc_providers.dart';
 
 void main() async{
@@ -12,6 +13,7 @@ void main() async{
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  setupLocator();
   runApp(const MyApp());
 }
 
