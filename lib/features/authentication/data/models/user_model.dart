@@ -1,55 +1,37 @@
-import 'package:equatable/equatable.dart';
-import 'package:infi_wheel/features/authentication/domain/entities/user_entity.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-class UserModel extends Equatable {
-  final String id;
-  final String username;
+part 'user_model.g.dart';
+
+@JsonSerializable()
+class UserModel {
+  final String userCode;
+  final String firstName;
+  final String surname;
   final String email;
-
-  const UserModel({
-    required this.id,
-    required this.username,
-    required this.email,
-  });
-
-  static const empty = UserModel(
-    id: '',
-    username: '',
-    email: '',
-  );
-
-  UserModel copyWith({
-    String? id,
-    String? username,
-    String? email,
-  }) {
-    return UserModel(
-      id: id ?? this.id,
-      username: username ?? this.username,
-      email: email ?? this.email,
-    );
-  }
-
-  bool get isEmpty => this == UserModel.empty;
-
-  bool get isNotEmpty => this != UserModel.empty;
-
-  UserEntity toEntity() {
-    return UserEntity(
-      id: id,
-      username: username,
-      email: email,
-    );
-  }
-
- static UserModel fromEntity(UserEntity entity) {
-    return UserModel(
-      id: entity.id,
-      username: entity.username,
-      email: entity.email,
-    );
-  }
+  final String username;
+  final String password;
+  final int age;
+  final String driverLicence;
+  final int phoneNumber;
 
   @override
-  List<Object?> get props => [id, username, email];
+  String toString() =>
+      '$userCode, $firstName, $surname, $email, $username, $password, $age, $driverLicence, $phoneNumber';
+
+  UserModel({
+    required this.userCode,
+    required this.firstName,
+    required this.surname,
+    required this.email,
+    required this.username,
+    required this.password,
+    required this.age,
+    required this.driverLicence,
+    required this.phoneNumber,
+  });
+
+  factory UserModel.fromJson(Map<String, dynamic> json) =>
+      _$UserModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$UserModelToJson(this);
 }

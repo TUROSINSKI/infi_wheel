@@ -6,7 +6,6 @@ import 'package:go_router/go_router.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:infi_wheel/core/utils/colors.dart';
 import 'package:infi_wheel/core/utils/constants.dart';
-import 'package:infi_wheel/features/map_home/presentation/widgets/temp_cars_list.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -56,39 +55,39 @@ class HomeScreen extends StatelessWidget {
               //     },
               //   ),
               // ),
-              Expanded(
-                child: GridView.builder(
-                  controller: controller,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 16,
-                    crossAxisSpacing: 16,
-                  ),
-                  itemCount: cars.length,
-                  padding: EdgeInsets.all(16),
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onTap: () => GoRouter.of(context).go('/details'),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(color: AppColors.kOxfordBlue, width: 1.0),
-                          borderRadius: BorderRadius.all(Radius.circular(16))
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(cars[index].brand, style: TextStyle(color: AppColors.kBlack),),
-                            Text(cars[index].model, style: TextStyle(color: AppColors.kBlack),),
-                            Text(cars[index].power, style: TextStyle(color: AppColors.kBlack),),
-                            Text(cars[index].productionDate, style: TextStyle(color: AppColors.kBlack),),
-                            Text(cars[index].type, style: TextStyle(color: AppColors.kBlack),),
-                          ],
-                        )
-                      ),
-                    );
-                  },
-                )
-              ),
+              // Expanded(
+              //   child: GridView.builder(
+              //     controller: controller,
+              //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              //       crossAxisCount: 2,
+              //       mainAxisSpacing: 16,
+              //       crossAxisSpacing: 16,
+              //     ),
+              //     itemCount: cars.length,
+              //     padding: EdgeInsets.all(16),
+              //     itemBuilder: (context, index) {
+              //       return GestureDetector(
+              //         onTap: () => GoRouter.of(context).go('/details'),
+              //         child: Container(
+              //           decoration: BoxDecoration(
+              //             border: Border.all(color: AppColors.kOxfordBlue, width: 1.0),
+              //             borderRadius: BorderRadius.all(Radius.circular(16))
+              //           ),
+              //           child: Column(
+              //             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //             children: [
+              //               Text(cars[index].brand, style: TextStyle(color: AppColors.kBlack),),
+              //               Text(cars[index].model, style: TextStyle(color: AppColors.kBlack),),
+              //               Text(cars[index].power, style: TextStyle(color: AppColors.kBlack),),
+              //               Text(cars[index].productionDate, style: TextStyle(color: AppColors.kBlack),),
+              //               Text(cars[index].type, style: TextStyle(color: AppColors.kBlack),),
+              //             ],
+              //           )
+              //         ),
+              //       );
+              //     },
+              //   )
+              // ),
             ]),
           ),
         ),
