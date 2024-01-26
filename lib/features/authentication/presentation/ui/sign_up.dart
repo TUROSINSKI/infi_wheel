@@ -70,6 +70,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       end: Alignment.topRight)),
             ),
             Column(
+              mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 Expanded(
                   child: Center(
