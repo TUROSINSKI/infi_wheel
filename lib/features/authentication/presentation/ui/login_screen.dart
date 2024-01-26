@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:infi_wheel/core/utils/colors.dart';
-import 'package:infi_wheel/features/authentication/data/services/auth_controller.dart';
-import 'package:infi_wheel/features/authentication/presentation/blocs/auth/auth_blocs.dart';
-import 'package:infi_wheel/features/authentication/presentation/blocs/auth/auth_events.dart';
-import 'package:infi_wheel/features/authentication/presentation/blocs/auth/auth_states.dart';
 import 'package:infi_wheel/features/authentication/presentation/widgets/login_widgets/login_button.dart';
 import 'package:infi_wheel/features/authentication/presentation/widgets/login_widgets/login_input_field.dart';
-import 'package:infi_wheel/features/authentication/presentation/widgets/login_widgets/login_large_text.dart';
 import 'package:infi_wheel/features/authentication/presentation/widgets/login_widgets/social_bar.dart';
 
-import '../../../../shared/widgets/background_custom_painter.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+
+  TextEditingController _usernameController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -67,8 +69,8 @@ class LoginScreen extends StatelessWidget {
                         SizedBox(height: 32.h),
                         Text("Or use your existing account", style: TextStyle(color: AppColors.kOxfordBlue, fontSize: 16.h),),
                         SizedBox(height: 16.h),
-                        loginInputField(Icons.mail, TextInputType.emailAddress, TextInputAction.next, 'Email', false, (value) { }),
-                        loginInputField(Icons.lock, TextInputType.visiblePassword, TextInputAction.done, 'Password', true, (value) { }),
+                        loginInputField(Icons.mail, TextInputType.emailAddress, TextInputAction.next, 'Email', false, _usernameController),
+                        loginInputField(Icons.lock, TextInputType.visiblePassword, TextInputAction.done, 'Password', true, _passwordController ),
                         SizedBox(height: 28.h),
                         AuthButton(
                           text: "Sign In",

@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:infi_wheel/SimpleBlocObserver.dart';
 import 'package:infi_wheel/core/routes/route_config.dart';
 import 'package:infi_wheel/core/theme/theme_data.dart';
 import 'package:infi_wheel/firebase_options.dart';
@@ -14,6 +15,7 @@ void main() async{
     options: DefaultFirebaseOptions.currentPlatform,
   );
   setupLocator();
+  Bloc.observer = SimpleBlocObserver();
   runApp(const MyApp());
 }
 

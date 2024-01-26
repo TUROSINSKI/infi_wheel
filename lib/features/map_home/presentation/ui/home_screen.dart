@@ -103,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           onTap: () =>
                                               showItemDetails(context, car),
                                           child: Image.network(
-                                            'https://i.pinimg.com/236x/3e/33/e1/3e33e1b46cadc17ae311e7a2d990b341.jpg',
+                                            '${car.url}',
                                           ),
                                         ),
                                       ),
@@ -174,7 +174,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(8),
                         child: Image.network(
-                          'https://i.pinimg.com/236x/3e/33/e1/3e33e1b46cadc17ae311e7a2d990b341.jpg',
+                          '${car.url}',
                         ),
                       ),
                     ),

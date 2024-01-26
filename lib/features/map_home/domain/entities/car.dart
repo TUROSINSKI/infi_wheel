@@ -15,6 +15,7 @@ class Car {
   final String registrationPlate;
   final String registrationNumber;
   final String ac;
+  final String url;
 
   Car({
     required this.id,
@@ -33,5 +34,6 @@ class Car {
     required this.registrationPlate,
     required this.registrationNumber,
     required this.ac,
+    required this.url,
   });
 }

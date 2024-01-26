@@ -15,10 +15,11 @@ class CarModel {
   final String registrationPlate;
   final String registrationNumber;
   final String ac;
+  final String url;
 
   @override
   String toString() =>
-      '$manufacturer, $model, $type, $subtype, $yearOfProduction, $vinNumber, $engineCapacity, $power, $fuelType, $transmission, $numberOfDoors, $numberOfSeats, $registrationPlate, $registrationNumber, $ac';
+      '$manufacturer, $model, $type, $subtype, $yearOfProduction, $vinNumber, $engineCapacity, $power, $fuelType, $transmission, $numberOfDoors, $numberOfSeats, $registrationPlate, $registrationNumber, $ac, $url';
 
   CarModel({
     required this.id,
@@ -37,6 +38,7 @@ class CarModel {
     required this.registrationPlate,
     required this.registrationNumber,
     required this.ac,
+    required this.url,
   });
 
   factory CarModel.fromJson(Map<String, dynamic> json) {
@@ -57,6 +59,7 @@ class CarModel {
       registrationNumber: json['registration_number'] as String,
       ac: json['ac'] as String,
       vinNumber: json['vin_number'] as String,
+      url: json['url'] as String,
     );
   }
 
@@ -78,6 +81,7 @@ class CarModel {
       'registration_number': registrationNumber,
       'ac': ac,
       'vin_number': vinNumber,
+      'url': url,
     };
   }
 }
