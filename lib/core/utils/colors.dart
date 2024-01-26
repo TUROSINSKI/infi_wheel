@@ -6,6 +6,7 @@ class AppColors {
   static const Color kOrangeWeb = Color(0xFFFCA311);
   static const Color kPlatinum = Color(0xFFE5E5E5);
   static const Color kWhite = Color(0xFFFFFFFF);
+  static const Color kSnowyGrey = Color(0xFFF1F1F1);
 }
 
 class AppDarkColors {
