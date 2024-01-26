@@ -29,7 +29,17 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        drawer: Drawer(),
+        drawer: Drawer(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                buildDrawerHeader(context),
+                buildDrawerMenu(context),
+              ],
+            ),
+          ),
+        ),
         body: Stack(
           children: <Widget>[
             GoogleMap(
@@ -218,4 +228,31 @@ class _HomeScreenState extends State<HomeScreen> {
           );
         });
   }
+  
+  Widget buildDrawerHeader(BuildContext context) => Container(
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.only(bottomLeft: Radius.circular(8), bottomRight: Radius.circular(8)),
+      gradient: LinearGradient(
+                  colors: [AppColors.kPlatinum, AppColors.kOrangeWeb],
+                  begin: Alignment.bottomLeft,
+                  end: Alignment.topRight)
+    ),
+    height: MediaQuery.of(context).size.height * 0.15,
+    padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+    child: Center(child: Text('InfiWheel', style: TextStyle(color: AppColors.kOxfordBlue, fontWeight: FontWeight.bold, fontSize: 24, letterSpacing: 1))),
+  );
+  
+  Widget buildDrawerMenu(BuildContext context) => Container(
+    padding: const EdgeInsets.all(20),
+    child: Wrap(
+      runSpacing: 16,
+      children: [
+        ListTile(
+          leading: const Icon(Icons.logout, color: Colors.redAccent,),
+          title: const Text('Logout', style: TextStyle(color: AppColors.kBlack, fontWeight: FontWeight.bold),),
+          onTap: () => GoRouter.of(context).go('/'),
+        )
+      ],
+    ),
+  );
 }

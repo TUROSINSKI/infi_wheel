@@ -28,7 +28,7 @@ class UserService {
       body: json.encode(user.toJson()),
     );
 
-    if (response.statusCode == 201) {
+    if (response.statusCode == 200) {
       return true;
     } else {
       throw Exception('Failed to sign in user');
