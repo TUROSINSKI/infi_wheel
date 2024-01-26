@@ -75,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       if (state is CarsLoading) {
                         return Center(
                             child: CircularProgressIndicator(
-                          color: AppColors.kBlack,
+                          color: AppColors.kOrangeWeb,
                         ));
                       } else if (state is CarsLoaded) {
                         return GridView.builder(
@@ -169,47 +169,47 @@ class _HomeScreenState extends State<HomeScreen> {
           double dialogWidth = MediaQuery.of(context).size.width * 0.8;
           return AlertDialog(
             title: Center(
-                child: Text(car.manufacturer,
+                child: Text(car.manufacturer+" "+car.model,
                     style: TextStyle(color: AppColors.kBlack, fontWeight: FontWeight.bold))),
             content: SizedBox(
               height: dialogHeight,
               width: dialogWidth,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 20.0),
-                    child: Center(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8),
-                        child: Image.network(
-                          '${car.url}',
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 20.0),
+                      child: Center(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.network(
+                            '${car.url}',
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  Text('Model: ${car.model}',
-                      style: TextStyle(color: AppColors.kBlack, fontSize: 16)),
-                  Text('Type: ${car.type}',
-                      style: TextStyle(color: AppColors.kBlack, fontSize: 16)),
-                  Text('Subtype: ${car.subtype}',
-                      style: TextStyle(color: AppColors.kBlack, fontSize: 16)),
-                  Text('Year of production: ${car.yearOfProduction}',
-                      style: TextStyle(color: AppColors.kBlack, fontSize: 16)),
-                  Text('Engine capacity: ${car.engineCapacity}',
-                      style: TextStyle(color: AppColors.kBlack, fontSize: 16)),
-                  Text('Power: ${car.power}',
-                      style: TextStyle(color: AppColors.kBlack, fontSize: 16)),
-                  Text('Fuel type: ${car.fuelType}',
-                      style: TextStyle(color: AppColors.kBlack, fontSize: 16)),
-                  Text('Transmission: ${car.transmission}',
-                      style: TextStyle(color: AppColors.kBlack, fontSize: 16)),
-                  Text('Number of doors: ${car.numberOfDoors}',
-                      style: TextStyle(color: AppColors.kBlack, fontSize: 16)),
-                  Text('Number of seats: ${car.numberOfSeats}',
-                      style: TextStyle(color: AppColors.kBlack, fontSize: 16)),
-                ],
+                    Text('Type: ${car.type}',
+                        style: TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                    Text('Subtype: ${car.subtype}',
+                        style: TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                    Text('Year of production: ${car.yearOfProduction}',
+                        style: TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                    Text('Engine capacity: ${car.engineCapacity}',
+                        style: TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                    Text('Power: ${car.power}',
+                        style: TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                    Text('Fuel type: ${car.fuelType}',
+                        style: TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                    Text('Transmission: ${car.transmission}',
+                        style: TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                    Text('Number of doors: ${car.numberOfDoors}',
+                        style: TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                    Text('Number of seats: ${car.numberOfSeats}',
+                        style: TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                  ],
+                ),
               ),
             ),
             actions: <Widget>[
