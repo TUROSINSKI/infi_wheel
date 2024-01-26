@@ -9,6 +9,7 @@ import 'package:infi_wheel/features/authentication/presentation/blocs/signup/sig
 import 'package:infi_wheel/features/authentication/presentation/widgets/login_widgets/login_button.dart';
 import 'package:infi_wheel/features/authentication/presentation/widgets/login_widgets/login_input_field.dart';
 import 'package:infi_wheel/shared/widgets/agreement_text.dart';
+import 'package:infi_wheel/shared/widgets/loading_screen.dart';
 import 'package:infi_wheel/shared/widgets/toast.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -45,40 +46,43 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Stack(children: <Widget>[
-        Container(
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  colors: [AppColors.kPlatinum, AppColors.kOrangeWeb],
-                  begin: Alignment.centerLeft,
-                  end: Alignment.topRight)),
-        ),
-        Column(
-          children: <Widget>[
-            Expanded(
-              child: Center(
-                child: Hero(
-                  tag: 'signuplogo-tag',
-                  child: Image.asset(
-                    "assets/images/logo_przezroczyste_granat.png",
-                    height: 80.h,
-                  ),
-                ),
-              ),
-            ),
-            BlocConsumer<SignupBloc, SignupState>(
-              listener: (context, state) {
-                if (state is SignupSuccess) {
+    return BlocConsumer<SignupBloc, SignupState>(
+      listener: (context, state) {
+        if (state is SignupSuccess) {
                   toastInfo(message: "Now you can Sign In!");
                   GoRouter.of(context).go('/');
                 } else if (state is SignupFailure) {
                   toastInfo(message: state.error);
                 }
-              },
-              builder: (context, state) {
-                return Material(
+      },
+      builder: (context, state) {
+        if (state is SignupLoading) {
+          return LoadingScreen();
+        } else {
+          return Scaffold(
+          resizeToAvoidBottomInset: false,
+          body: Stack(children: <Widget>[
+            Container(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: [AppColors.kPlatinum, AppColors.kOrangeWeb],
+                      begin: Alignment.centerLeft,
+                      end: Alignment.topRight)),
+            ),
+            Column(
+              children: <Widget>[
+                Expanded(
+                  child: Center(
+                    child: Hero(
+                      tag: 'signuplogo-tag',
+                      child: Image.asset(
+                        "assets/images/logo_przezroczyste_granat.png",
+                        height: 80.h,
+                      ),
+                    ),
+                  ),
+                ),
+                Material(
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(32),
                       topRight: Radius.circular(32)),
@@ -160,12 +164,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                     ),
                   ),
-                );
-              },
+                ),
+              ],
             ),
-          ],
-        ),
-      ]),
+          ]),
+        );
+        }
+        
+      },
     );
   }
 }

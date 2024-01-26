@@ -16,8 +16,13 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
   Future<void> _onSignupSubmitted(
     SignupSubmitted event, Emitter<SignupState> emit) async {
       emit(SignupLoading());
+      final stopwatch = Stopwatch()..start();
       try {
         bool success = await signupUseCase(event.user);
+        final timeToDelay = Duration(seconds: 2) - stopwatch.elapsed;
+        if (timeToDelay > Duration.zero){
+          await Future.delayed(timeToDelay);
+        }
         if (success) {
           emit(SignupSuccess());
         } else {
