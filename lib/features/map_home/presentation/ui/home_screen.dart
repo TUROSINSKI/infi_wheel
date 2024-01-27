@@ -20,6 +20,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   void initState() {
     super.initState();
@@ -29,6 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        key: _scaffoldKey,
         drawer: Drawer(
           child: SingleChildScrollView(
             child: Column(
@@ -49,9 +52,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 zoom: 17,
               ),
             ),
+            Positioned(
+              top: 40.h,
+              left: 20,
+              child: FloatingActionButton(elevation: 2.0, shape: CircleBorder(),onPressed: () => _scaffoldKey.currentState?.openDrawer(), child: Icon(Icons.menu, color: AppColors.kOxfordBlue,),),
+            ),
             DraggableScrollableSheet(
-              initialChildSize: 0.2.h,
-              minChildSize: 0.05.h,
+              initialChildSize: 0.25.h,
+              minChildSize: 0.1.h,
               maxChildSize: 0.6.h,
               builder: (context, controller) => Material(
                 elevation: 16,
@@ -79,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ));
                       } else if (state is CarsLoaded) {
                         return Padding(
-                          padding: const EdgeInsets.only(top:16.0),
+                          padding: const EdgeInsets.only(top: 16.0),
                           child: GridView.builder(
                             controller: controller,
                             gridDelegate:
@@ -111,17 +119,23 @@ class _HomeScreenState extends State<HomeScreen> {
                                       Expanded(
                                         child: ClipRRect(
                                           borderRadius: BorderRadius.circular(8),
-                                          child: GestureDetector(
-                                            onTap: () =>
-                                                showItemDetails(context, car),
-                                            child: Image.network(
-                                              '${car.url}',
+                                          child: Container(
+                                            height: double.maxFinite,
+                                            width: double.maxFinite,
+                                            child: GestureDetector(
+                                              onTap: () =>
+                                                  showItemDetails(context, car),
+                                              child: Image.network(
+                                                '${car.url}',
+                                                fit: BoxFit.cover,
+                                              ),
                                             ),
                                           ),
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsets.only(top: 8.0),
+                                        padding:
+                                            const EdgeInsets.only(top: 8.0),
                                         child: Text(
                                           '${car.manufacturer} ${car.model}',
                                           style: TextStyle(
@@ -157,12 +171,12 @@ class _HomeScreenState extends State<HomeScreen> {
         ));
   }
 
-  Widget buildList(int index) => ListTile(
-        title: Text(
-          index.toString(),
-          style: TextStyle(fontSize: 24, color: AppColors.kBlack),
-        ),
-      );
+  // Widget buildList(int index) => ListTile(
+  //       title: Text(
+  //         index.toString(),
+  //         style: TextStyle(fontSize: 24, color: AppColors.kBlack),
+  //       ),
+  //     );
 
   void showItemDetails(BuildContext context, Car car) {
     showDialog(
@@ -172,8 +186,9 @@ class _HomeScreenState extends State<HomeScreen> {
           double dialogWidth = MediaQuery.of(context).size.width * 0.8;
           return AlertDialog(
             title: Center(
-                child: Text(car.manufacturer+" "+car.model,
-                    style: TextStyle(color: AppColors.kBlack, fontWeight: FontWeight.bold))),
+                child: Text(car.manufacturer + " " + car.model,
+                    style: TextStyle(
+                        color: AppColors.kBlack, fontWeight: FontWeight.bold))),
             content: SizedBox(
               height: dialogHeight,
               width: dialogWidth,
@@ -194,23 +209,32 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     Text('Type: ${car.type}',
-                        style: TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                        style:
+                            TextStyle(color: AppColors.kBlack, fontSize: 16)),
                     Text('Subtype: ${car.subtype}',
-                        style: TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                        style:
+                            TextStyle(color: AppColors.kBlack, fontSize: 16)),
                     Text('Year of production: ${car.yearOfProduction}',
-                        style: TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                        style:
+                            TextStyle(color: AppColors.kBlack, fontSize: 16)),
                     Text('Engine capacity: ${car.engineCapacity}',
-                        style: TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                        style:
+                            TextStyle(color: AppColors.kBlack, fontSize: 16)),
                     Text('Power: ${car.power}',
-                        style: TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                        style:
+                            TextStyle(color: AppColors.kBlack, fontSize: 16)),
                     Text('Fuel type: ${car.fuelType}',
-                        style: TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                        style:
+                            TextStyle(color: AppColors.kBlack, fontSize: 16)),
                     Text('Transmission: ${car.transmission}',
-                        style: TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                        style:
+                            TextStyle(color: AppColors.kBlack, fontSize: 16)),
                     Text('Number of doors: ${car.numberOfDoors}',
-                        style: TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                        style:
+                            TextStyle(color: AppColors.kBlack, fontSize: 16)),
                     Text('Number of seats: ${car.numberOfSeats}',
-                        style: TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                        style:
+                            TextStyle(color: AppColors.kBlack, fontSize: 16)),
                   ],
                 ),
               ),
@@ -218,44 +242,62 @@ class _HomeScreenState extends State<HomeScreen> {
             actions: <Widget>[
               Center(
                 child: TextButton(
-                  style: TextButton.styleFrom(
-                    backgroundColor: AppColors.kSnowyGrey
-                  ),
+                    style: TextButton.styleFrom(
+                        backgroundColor: AppColors.kSnowyGrey),
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    child:
-                        Text('Close', style: TextStyle(color: AppColors.kBlack))),
+                    child: Text('Close',
+                        style: TextStyle(color: AppColors.kBlack))),
               )
             ],
           );
         });
   }
-  
+
   Widget buildDrawerHeader(BuildContext context) => Container(
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.only(bottomLeft: Radius.circular(8), bottomRight: Radius.circular(8)),
-      gradient: LinearGradient(
-                  colors: [AppColors.kPlatinum, AppColors.kOrangeWeb],
-                  begin: Alignment.bottomLeft,
-                  end: Alignment.topRight)
-    ),
-    height: MediaQuery.of(context).size.height * 0.15,
-    padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-    child: Center(child: Text('InfiWheel', style: TextStyle(color: AppColors.kOxfordBlue, fontWeight: FontWeight.bold, fontSize: 24, letterSpacing: 1))),
-  );
-  
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(8),
+                bottomRight: Radius.circular(8)),
+            gradient: LinearGradient(
+                colors: [AppColors.kPlatinum, AppColors.kOrangeWeb],
+                begin: Alignment.bottomLeft,
+                end: Alignment.topRight)),
+        height: MediaQuery.of(context).size.height * 0.15,
+        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+        child: Center(
+            child: Text('InfiWheel',
+                style: TextStyle(
+                    color: AppColors.kOxfordBlue,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24,
+                    letterSpacing: 1))),
+      );
+
   Widget buildDrawerMenu(BuildContext context) => Container(
-    padding: const EdgeInsets.all(20),
-    child: Wrap(
-      runSpacing: 16,
-      children: [
-        ListTile(
-          leading: const Icon(Icons.logout, color: Colors.redAccent,),
-          title: const Text('Logout', style: TextStyle(color: AppColors.kBlack, fontWeight: FontWeight.bold),),
-          onTap: () => GoRouter.of(context).go('/'),
-        )
-      ],
-    ),
-  );
+        padding: const EdgeInsets.all(20),
+        child: Wrap(
+          runSpacing: 16,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                border: Border(bottom: BorderSide(color: AppColors.kPlatinum))
+              ),
+              child: ListTile(
+                leading: const Icon(
+                  Icons.logout,
+                  color: Colors.redAccent,
+                ),
+                title: const Text(
+                  'Logout',
+                  style: TextStyle(
+                      color: AppColors.kBlack, fontWeight: FontWeight.bold),
+                ),
+                onTap: () => GoRouter.of(context).go('/'),
+              ),
+            )
+          ],
+        ),
+      );
 }
