@@ -3,12 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:infi_wheel/core/utils/colors.dart';
-import 'package:infi_wheel/core/utils/strings.dart';
 import 'package:infi_wheel/features/authentication/domain/entities/user.dart';
 import 'package:infi_wheel/features/authentication/presentation/blocs/signup/signup_bloc.dart';
 import 'package:infi_wheel/features/authentication/presentation/widgets/login_widgets/login_button.dart';
 import 'package:infi_wheel/features/authentication/presentation/widgets/login_widgets/login_input_field.dart';
-import 'package:infi_wheel/shared/widgets/agreement_text.dart';
 import 'package:infi_wheel/shared/widgets/loading_screen.dart';
 import 'package:infi_wheel/shared/widgets/toast.dart';
 
@@ -57,7 +55,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       },
       builder: (context, state) {
         if (state is SignupLoading) {
-          return LoadingScreen();
+          return const LoadingScreen();
         } else {
           return Scaffold(
           // resizeToAvoidBottomInset: false,
@@ -69,7 +67,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               child: IntrinsicHeight(
                 child: Stack(children: <Widget>[
                   Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         gradient: LinearGradient(
                             colors: [AppColors.kPlatinum, AppColors.kOrangeWeb],
                             begin: Alignment.centerLeft,
@@ -90,7 +88,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                       ),
                       Material(
-                        borderRadius: BorderRadius.only(
+                        borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(32),
                             topRight: Radius.circular(32)),
                         elevation: 8,
@@ -101,7 +99,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             child: Container(
                               // height: MediaQuery.of(context).size.height * 0.8,
                               width: double.infinity,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                   color: AppColors.kWhite,
                                   borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(32),

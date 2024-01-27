@@ -18,8 +18,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController _usernameController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   void dispose() {
@@ -45,7 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
       },
       builder: (context, state) {
         if (state is SigninLoading) {
-          return LoadingScreen();
+          return const LoadingScreen();
         } else {
           return Scaffold(
             // resizeToAvoidBottomInset: false,
@@ -57,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: IntrinsicHeight(
                   child: Stack(children: <Widget>[
                     Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           gradient: LinearGradient(
                               colors: [AppColors.kPlatinum, AppColors.kOrangeWeb],
                               begin: Alignment.centerLeft,
@@ -80,7 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         Material(
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                               topLeft: Radius.circular(32),
                               topRight: Radius.circular(32)),
                           elevation: 8,
@@ -90,7 +90,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               padding: const EdgeInsets.all(16.0),
                               child: Container(
                                 width: double.infinity,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     color: AppColors.kWhite,
                                     borderRadius: BorderRadius.only(
                                         topLeft: Radius.circular(32),

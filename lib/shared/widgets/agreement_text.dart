@@ -6,7 +6,7 @@ class AgreementText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RichText(text: TextSpan(
+    return RichText(text: const TextSpan(
       style: TextStyle(color: AppColors.kBlack),
       children: <TextSpan>[
         TextSpan(text: 'By '),

@@ -1,14 +1,10 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:infi_wheel/core/utils/colors.dart';
 import 'package:infi_wheel/core/utils/constants.dart';
-import 'package:infi_wheel/features/map_home/data/models/car_model.dart';
 import 'package:infi_wheel/features/map_home/domain/entities/car.dart';
 import 'package:infi_wheel/features/map_home/presentation/blocs/cars/cars_bloc.dart';
 
@@ -45,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         body: Stack(
           children: <Widget>[
-            GoogleMap(
+            const GoogleMap(
               zoomControlsEnabled: false,
               initialCameraPosition: CameraPosition(
                 target: Location.pPolitechnikaBialostocka,
@@ -55,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Positioned(
               top: 40.h,
               left: 20,
-              child: FloatingActionButton(elevation: 2.0, shape: CircleBorder(),onPressed: () => _scaffoldKey.currentState?.openDrawer(), child: Icon(Icons.menu, color: AppColors.kOxfordBlue,),),
+              child: FloatingActionButton(elevation: 2.0, shape: const CircleBorder(),onPressed: () => _scaffoldKey.currentState?.openDrawer(), child: const Icon(Icons.menu, color: AppColors.kOxfordBlue,),),
             ),
             DraggableScrollableSheet(
               initialChildSize: 0.25.h,
@@ -63,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
               maxChildSize: 0.6.h,
               builder: (context, controller) => Material(
                 elevation: 16,
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(16),
                     topRight: Radius.circular(16)),
                 child: Column(children: [
@@ -75,13 +71,13 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 5.0,
                     decoration: BoxDecoration(
                       color: Colors.grey[300],
-                      borderRadius: BorderRadius.all(Radius.circular(2.5)),
+                      borderRadius: const BorderRadius.all(Radius.circular(2.5)),
                     ),
                   ),
                   Expanded(child: BlocBuilder<CarsBloc, CarsState>(
                     builder: (context, state) {
                       if (state is CarsLoading) {
-                        return Center(
+                        return const Center(
                             child: CircularProgressIndicator(
                           color: AppColors.kOrangeWeb,
                         ));
@@ -91,13 +87,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: GridView.builder(
                             controller: controller,
                             gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
+                                const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2,
                               mainAxisSpacing: 16,
                               crossAxisSpacing: 16,
                             ),
                             itemCount: state.cars.length,
-                            padding: EdgeInsets.all(16),
+                            padding: const EdgeInsets.all(16),
                             itemBuilder: (context, index) {
                               Car car = state.cars[index];
                               return Container(
@@ -106,12 +102,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                     boxShadow: [
                                       BoxShadow(
                                           color: Colors.black.withOpacity(0.2),
-                                          offset: Offset(0, 1),
+                                          offset: const Offset(0, 1),
                                           spreadRadius: -2,
                                           blurRadius: 10)
                                     ],
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(16))),
+                                        const BorderRadius.all(Radius.circular(16))),
                                 child: Padding(
                                   padding: const EdgeInsets.all(16.0),
                                   child: Column(
@@ -138,7 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             const EdgeInsets.only(top: 8.0),
                                         child: Text(
                                           '${car.manufacturer} ${car.model}',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               color: AppColors.kBlack,
                                               fontWeight: FontWeight.bold),
                                         ),
@@ -151,13 +147,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         );
                       } else if (state is CarsError) {
-                        return Padding(
-                          padding: const EdgeInsets.only(top: 100.0),
+                        return const Padding(
+                          padding: EdgeInsets.only(top: 100.0),
                           child: Text('Error',
                               style: TextStyle(color: AppColors.kBlack)),
                         );
                       }
-                      return Center(
+                      return const Center(
                           child: Text(
                         'No cars found',
                         style: TextStyle(color: AppColors.kBlack),
@@ -187,7 +183,7 @@ class _HomeScreenState extends State<HomeScreen> {
           return AlertDialog(
             title: Center(
                 child: Text(car.manufacturer + " " + car.model,
-                    style: TextStyle(
+                    style: const TextStyle(
                         color: AppColors.kBlack, fontWeight: FontWeight.bold))),
             content: SizedBox(
               height: dialogHeight,
@@ -210,31 +206,31 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     Text('Type: ${car.type}',
                         style:
-                            TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                            const TextStyle(color: AppColors.kBlack, fontSize: 16)),
                     Text('Subtype: ${car.subtype}',
                         style:
-                            TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                            const TextStyle(color: AppColors.kBlack, fontSize: 16)),
                     Text('Year of production: ${car.yearOfProduction}',
                         style:
-                            TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                            const TextStyle(color: AppColors.kBlack, fontSize: 16)),
                     Text('Engine capacity: ${car.engineCapacity}',
                         style:
-                            TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                            const TextStyle(color: AppColors.kBlack, fontSize: 16)),
                     Text('Power: ${car.power}',
                         style:
-                            TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                            const TextStyle(color: AppColors.kBlack, fontSize: 16)),
                     Text('Fuel type: ${car.fuelType}',
                         style:
-                            TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                            const TextStyle(color: AppColors.kBlack, fontSize: 16)),
                     Text('Transmission: ${car.transmission}',
                         style:
-                            TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                            const TextStyle(color: AppColors.kBlack, fontSize: 16)),
                     Text('Number of doors: ${car.numberOfDoors}',
                         style:
-                            TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                            const TextStyle(color: AppColors.kBlack, fontSize: 16)),
                     Text('Number of seats: ${car.numberOfSeats}',
                         style:
-                            TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                            const TextStyle(color: AppColors.kBlack, fontSize: 16)),
                   ],
                 ),
               ),
@@ -247,7 +243,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    child: Text('Close',
+                    child: const Text('Close',
                         style: TextStyle(color: AppColors.kBlack))),
               )
             ],
@@ -256,7 +252,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget buildDrawerHeader(BuildContext context) => Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(8),
                 bottomRight: Radius.circular(8)),
@@ -266,7 +262,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 end: Alignment.topRight)),
         height: MediaQuery.of(context).size.height * 0.15,
         padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-        child: Center(
+        child: const Center(
             child: Text('InfiWheel',
                 style: TextStyle(
                     color: AppColors.kOxfordBlue,
@@ -281,7 +277,7 @@ class _HomeScreenState extends State<HomeScreen> {
           runSpacing: 16,
           children: [
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 border: Border(bottom: BorderSide(color: AppColors.kPlatinum))
               ),
               child: ListTile(

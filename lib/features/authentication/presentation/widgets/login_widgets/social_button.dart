@@ -19,8 +19,8 @@ class SocialButton extends StatelessWidget {
       child: SizedBox(
         height: 50,
         child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 10),
-          padding: EdgeInsets.all(2),
+          margin: const EdgeInsets.symmetric(horizontal: 10),
+          padding: const EdgeInsets.all(2),
           height: 60,
           width: 60,
           decoration: BoxDecoration(
@@ -46,7 +46,7 @@ class SocialButton extends StatelessWidget {
             content: SizedBox(
               height: dialogHeight,
               width: dialogWidth,
-                child: Center(
+                child: const Center(
                     child: Text("Coming soon...",
                         style: TextStyle(
                           color: AppColors.kOxfordBlue,
@@ -62,7 +62,7 @@ class SocialButton extends StatelessWidget {
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
-                      child: Text('Close',
+                      child: const Text('Close',
                           style: TextStyle(color: AppColors.kOxfordBlue))),
                 ),
               )

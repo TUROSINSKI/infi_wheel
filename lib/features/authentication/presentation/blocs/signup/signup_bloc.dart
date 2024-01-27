@@ -19,7 +19,7 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
       final stopwatch = Stopwatch()..start();
       try {
         bool success = await signupUseCase(event.user);
-        final timeToDelay = Duration(seconds: 2) - stopwatch.elapsed;
+        final timeToDelay = const Duration(seconds: 2) - stopwatch.elapsed;
         if (timeToDelay > Duration.zero){
           await Future.delayed(timeToDelay);
         }

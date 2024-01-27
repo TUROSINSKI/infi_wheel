@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:infi_wheel/core/utils/colors.dart';
 import 'package:infi_wheel/features/authentication/presentation/widgets/login_widgets/social_button.dart';
 
 Widget socialBar() {

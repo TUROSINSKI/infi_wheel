@@ -18,7 +18,7 @@ class SigninBloc extends Bloc<SigninEvent, SigninState> {
       final stopwatch = Stopwatch()..start();
       try {
         bool success = await signinUseCase(event.username, event.password);
-        final timeToDelay = Duration(seconds: 2) - stopwatch.elapsed;
+        final timeToDelay = const Duration(seconds: 2) - stopwatch.elapsed;
         if (timeToDelay > Duration.zero){
           await Future.delayed(timeToDelay);
         }

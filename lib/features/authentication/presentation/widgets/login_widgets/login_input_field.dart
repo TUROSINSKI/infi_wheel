@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:infi_wheel/core/utils/colors.dart';
 
@@ -7,7 +6,7 @@ Widget loginInputField(IconData icon, TextInputType inputType,
     TextInputAction inputAction, String hint, bool obscure, TextEditingController controller)
      {
       return Padding(
-      padding: EdgeInsets.symmetric(vertical: 10),
+      padding: const EdgeInsets.symmetric(vertical: 10),
       child: Material(
         elevation: 0.5,
         borderRadius: BorderRadius.circular(16),
@@ -21,14 +20,14 @@ Widget loginInputField(IconData icon, TextInputType inputType,
           child: Center(
             child: TextField(
               controller: controller,
-              style: TextStyle(color: AppColors.kBlack),
+              style: const TextStyle(color: AppColors.kBlack),
               decoration: InputDecoration(
                 border: InputBorder.none,
                 prefixIcon: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Icon(icon, size: 30, color: AppColors.kOxfordBlue,)),
                 hintText: hint,
-                hintStyle: TextStyle(
+                hintStyle: const TextStyle(
                   color: TextColors.kOnBoardText
                 )
               ),

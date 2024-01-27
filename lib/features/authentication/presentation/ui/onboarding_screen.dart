@@ -19,7 +19,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     return Scaffold(
       body: Stack(children: <Widget>[
         Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               gradient: LinearGradient(
                   colors: [AppColors.kPlatinum, AppColors.kOrangeWeb],
                   begin: Alignment.centerLeft,
@@ -40,7 +40,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
             ),
             Material(
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(32), topRight: Radius.circular(32)),
               elevation: 8,
               child: Hero(
@@ -61,7 +61,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   child: Container(
                     height: MediaQuery.of(context).size.height * 0.5,
                     width: double.infinity,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                         color: AppColors.kWhite,
                         borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(32),
@@ -105,7 +105,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           },
                         ),
                         SizedBox(height: 28.h),
-                        AgreementText(),
+                        const AgreementText(),
                       ],
                     ),
                   ),
