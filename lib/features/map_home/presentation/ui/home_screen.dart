@@ -78,60 +78,63 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: AppColors.kOrangeWeb,
                         ));
                       } else if (state is CarsLoaded) {
-                        return GridView.builder(
-                          controller: controller,
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            mainAxisSpacing: 16,
-                            crossAxisSpacing: 16,
-                          ),
-                          itemCount: state.cars.length,
-                          padding: EdgeInsets.all(16),
-                          itemBuilder: (context, index) {
-                            Car car = state.cars[index];
-                            return Container(
-                              decoration: BoxDecoration(
-                                  color: AppColors.kSnowyGrey,
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: Colors.black.withOpacity(0.2),
-                                        offset: Offset(0, 1),
-                                        spreadRadius: -2,
-                                        blurRadius: 10)
-                                  ],
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(16))),
-                              child: Padding(
-                                padding: const EdgeInsets.all(16.0),
-                                child: Column(
-                                  children: [
-                                    Expanded(
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(8),
-                                        child: GestureDetector(
-                                          onTap: () =>
-                                              showItemDetails(context, car),
-                                          child: Image.network(
-                                            '${car.url}',
+                        return Padding(
+                          padding: const EdgeInsets.only(top:16.0),
+                          child: GridView.builder(
+                            controller: controller,
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              mainAxisSpacing: 16,
+                              crossAxisSpacing: 16,
+                            ),
+                            itemCount: state.cars.length,
+                            padding: EdgeInsets.all(16),
+                            itemBuilder: (context, index) {
+                              Car car = state.cars[index];
+                              return Container(
+                                decoration: BoxDecoration(
+                                    color: AppColors.kSnowyGrey,
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.black.withOpacity(0.2),
+                                          offset: Offset(0, 1),
+                                          spreadRadius: -2,
+                                          blurRadius: 10)
+                                    ],
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(16))),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: Column(
+                                    children: [
+                                      Expanded(
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.circular(8),
+                                          child: GestureDetector(
+                                            onTap: () =>
+                                                showItemDetails(context, car),
+                                            child: Image.network(
+                                              '${car.url}',
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 8.0),
-                                      child: Text(
-                                        '${car.manufacturer} ${car.model}',
-                                        style: TextStyle(
-                                            color: AppColors.kBlack,
-                                            fontWeight: FontWeight.bold),
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 8.0),
+                                        child: Text(
+                                          '${car.manufacturer} ${car.model}',
+                                          style: TextStyle(
+                                              color: AppColors.kBlack,
+                                              fontWeight: FontWeight.bold),
+                                        ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            );
-                          },
+                              );
+                            },
+                          ),
                         );
                       } else if (state is CarsError) {
                         return Padding(
