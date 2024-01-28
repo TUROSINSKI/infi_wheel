@@ -51,7 +51,15 @@ class _HomeScreenState extends State<HomeScreen> {
             Positioned(
               top: 40.h,
               left: 20,
-              child: FloatingActionButton(elevation: 2.0, shape: const CircleBorder(),onPressed: () => _scaffoldKey.currentState?.openDrawer(), child: const Icon(Icons.menu, color: AppColors.kOxfordBlue,),),
+              child: FloatingActionButton(
+                elevation: 2.0,
+                shape: const CircleBorder(),
+                onPressed: () => _scaffoldKey.currentState?.openDrawer(),
+                child: const Icon(
+                  Icons.menu,
+                  color: AppColors.kOxfordBlue,
+                ),
+              ),
             ),
             DraggableScrollableSheet(
               initialChildSize: 0.25.h,
@@ -71,7 +79,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 5.0,
                     decoration: BoxDecoration(
                       color: Colors.grey[300],
-                      borderRadius: const BorderRadius.all(Radius.circular(2.5)),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(2.5)),
                     ),
                   ),
                   Expanded(child: BlocBuilder<CarsBloc, CarsState>(
@@ -106,15 +115,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                           spreadRadius: -2,
                                           blurRadius: 10)
                                     ],
-                                    borderRadius:
-                                        const BorderRadius.all(Radius.circular(16))),
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(16))),
                                 child: Padding(
                                   padding: const EdgeInsets.all(16.0),
                                   child: Column(
                                     children: [
                                       Expanded(
                                         child: ClipRRect(
-                                          borderRadius: BorderRadius.circular(8),
+                                          borderRadius:
+                                              BorderRadius.circular(8),
                                           child: Container(
                                             height: double.maxFinite,
                                             width: double.maxFinite,
@@ -205,32 +215,32 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     Text('Type: ${car.type}',
-                        style:
-                            const TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                        style: const TextStyle(
+                            color: AppColors.kBlack, fontSize: 16)),
                     Text('Subtype: ${car.subtype}',
-                        style:
-                            const TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                        style: const TextStyle(
+                            color: AppColors.kBlack, fontSize: 16)),
                     Text('Year of production: ${car.yearOfProduction}',
-                        style:
-                            const TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                        style: const TextStyle(
+                            color: AppColors.kBlack, fontSize: 16)),
                     Text('Engine capacity: ${car.engineCapacity}',
-                        style:
-                            const TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                        style: const TextStyle(
+                            color: AppColors.kBlack, fontSize: 16)),
                     Text('Power: ${car.power}',
-                        style:
-                            const TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                        style: const TextStyle(
+                            color: AppColors.kBlack, fontSize: 16)),
                     Text('Fuel type: ${car.fuelType}',
-                        style:
-                            const TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                        style: const TextStyle(
+                            color: AppColors.kBlack, fontSize: 16)),
                     Text('Transmission: ${car.transmission}',
-                        style:
-                            const TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                        style: const TextStyle(
+                            color: AppColors.kBlack, fontSize: 16)),
                     Text('Number of doors: ${car.numberOfDoors}',
-                        style:
-                            const TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                        style: const TextStyle(
+                            color: AppColors.kBlack, fontSize: 16)),
                     Text('Number of seats: ${car.numberOfSeats}',
-                        style:
-                            const TextStyle(color: AppColors.kBlack, fontSize: 16)),
+                        style: const TextStyle(
+                            color: AppColors.kBlack, fontSize: 16)),
                   ],
                 ),
               ),
@@ -276,23 +286,34 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Wrap(
           runSpacing: 16,
           children: [
-            Container(
-              decoration: const BoxDecoration(
-                border: Border(bottom: BorderSide(color: AppColors.kPlatinum))
-              ),
-              child: ListTile(
-                leading: const Icon(
-                  Icons.logout,
-                  color: Colors.redAccent,
-                ),
-                title: const Text(
-                  'Logout',
+            ListTile(
+              leading: const Icon(Icons.person, color: AppColors.kOxfordBlue),
+              title: const Text('Profile',
                   style: TextStyle(
-                      color: AppColors.kBlack, fontWeight: FontWeight.bold),
-                ),
-                onTap: () => GoRouter.of(context).go('/'),
-              ),
-            )
+                      color: AppColors.kBlack, fontWeight: FontWeight.bold)),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: const Icon(Icons.import_contacts, color: AppColors.kOxfordBlue),
+              title: const Text('My Bookings',
+                  style: TextStyle(
+                      color: AppColors.kBlack, fontWeight: FontWeight.bold)),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: const Icon(Icons.settings, color: AppColors.kOxfordBlue),
+              title: const Text('Settings',
+                  style: TextStyle(
+                      color: AppColors.kBlack, fontWeight: FontWeight.bold)),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: const Icon(Icons.logout, color: Colors.redAccent),
+              title: const Text('Logout',
+                  style: TextStyle(
+                      color: AppColors.kBlack, fontWeight: FontWeight.bold)),
+              onTap: () => GoRouter.of(context).go('/'),
+            ),
           ],
         ),
       );

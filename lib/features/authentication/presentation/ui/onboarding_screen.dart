@@ -105,7 +105,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           },
                         ),
                         SizedBox(height: 28.h),
-                        const AgreementText(),
+                        GestureDetector(
+                          onTap: () => GoRouter.of(context).go('/terms'),
+                          child: AgreementText(),
+                        ),
                       ],
                     ),
                   ),
@@ -118,5 +121,3 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     );
   }
 }
-
-
