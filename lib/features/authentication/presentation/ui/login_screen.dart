@@ -70,12 +70,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         // Upper Section (Image and Texts)
                         Expanded(
                           child: Center(
-                            child: Hero(
-                              tag: 'signuplogo-tag',
-                              child: Image.asset(
-                                "assets/images/logo_przezroczyste_granat.png",
-                                height: 84.h,
-                              ),
+                            child: Image.asset(
+                              "assets/images/logo_przezroczyste_granat.png",
+                              height: 84.h,
                             ),
                           ),
                         ),
@@ -84,75 +81,72 @@ class _LoginScreenState extends State<LoginScreen> {
                               topLeft: Radius.circular(32),
                               topRight: Radius.circular(32)),
                           elevation: 8,
-                          child: Hero(
-                            tag: 'signup-tag',
-                            child: Padding(
-                              padding: const EdgeInsets.all(16.0),
-                              child: Container(
-                                width: double.infinity,
-                                decoration: const BoxDecoration(
-                                    color: AppColors.kWhite,
-                                    borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(32),
-                                        topRight: Radius.circular(32))),
-                                child: SingleChildScrollView(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        "Sign In using socials",
-                                        style: TextStyle(
-                                            color: AppColors.kOxfordBlue,
-                                            fontSize: 16.h),
-                                      ),
-                                      SizedBox(height: 16.h),
-                                      socialBar(),
-                                      SizedBox(height: 32.h),
-                                      Text(
-                                        "Or use your existing account",
-                                        style: TextStyle(
-                                            color: AppColors.kOxfordBlue,
-                                            fontSize: 16.h),
-                                      ),
-                                      SizedBox(height: 16.h),
-                                      loginInputField(
-                                          Icons.person,
-                                          TextInputType.text,
-                                          TextInputAction.next,
-                                          'Username',
-                                          false,
-                                          _usernameController),
-                                      loginInputField(
-                                          Icons.lock,
-                                          TextInputType.visiblePassword,
-                                          TextInputAction.done,
-                                          'Password',
-                                          true,
-                                          _passwordController),
-                                      SizedBox(height: 28.h),
-                                      AuthButton(
-                                        text: "Sign In",
-                                        color: AppColors.kOrangeWeb,
-                                        fun: () {
-                                          if (_isFormValid()) {
-                                            BlocProvider.of<SigninBloc>(context).add(
-                                              SigninSubmitted(
-                                                _usernameController.text,
-                                                _passwordController.text,
-                                              ),
-                                            );
-                                          }
-                                        },
-                                      ),
-                                      AuthButton(
-                                        text: "Go back",
-                                        color: AppColors.kPlatinum,
-                                        fun: () {
-                                          GoRouter.of(context).go('/');
-                                        },
-                                      ),
-                                    ],
-                                  ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Container(
+                              width: double.infinity,
+                              decoration: const BoxDecoration(
+                                  color: AppColors.kWhite,
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(32),
+                                      topRight: Radius.circular(32))),
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "Sign In using socials",
+                                      style: TextStyle(
+                                          color: AppColors.kOxfordBlue,
+                                          fontSize: 16.h),
+                                    ),
+                                    SizedBox(height: 16.h),
+                                    socialBar(),
+                                    SizedBox(height: 32.h),
+                                    Text(
+                                      "Or use your existing account",
+                                      style: TextStyle(
+                                          color: AppColors.kOxfordBlue,
+                                          fontSize: 16.h),
+                                    ),
+                                    SizedBox(height: 16.h),
+                                    loginInputField(
+                                        Icons.person,
+                                        TextInputType.text,
+                                        TextInputAction.next,
+                                        'Username',
+                                        false,
+                                        _usernameController),
+                                    loginInputField(
+                                        Icons.lock,
+                                        TextInputType.visiblePassword,
+                                        TextInputAction.done,
+                                        'Password',
+                                        true,
+                                        _passwordController),
+                                    SizedBox(height: 28.h),
+                                    AuthButton(
+                                      text: "Sign In",
+                                      color: AppColors.kOrangeWeb,
+                                      fun: () {
+                                        if (_isFormValid()) {
+                                          BlocProvider.of<SigninBloc>(context).add(
+                                            SigninSubmitted(
+                                              _usernameController.text,
+                                              _passwordController.text,
+                                            ),
+                                          );
+                                        }
+                                      },
+                                    ),
+                                    AuthButton(
+                                      text: "Go back",
+                                      color: AppColors.kPlatinum,
+                                      fun: () {
+                                        GoRouter.of(context).go('/');
+                                      },
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),

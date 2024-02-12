@@ -78,12 +78,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     children: <Widget>[
                       Expanded(
                         child: Center(
-                          child: Hero(
-                            tag: 'signuplogo-tag',
-                            child: Image.asset(
-                              "assets/images/logo_przezroczyste_granat.png",
-                              height: 80.h,
-                            ),
+                          child: Image.asset(
+                            "assets/images/logo_przezroczyste_granat.png",
+                            height: 80.h,
                           ),
                         ),
                       ),
@@ -92,82 +89,79 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             topLeft: Radius.circular(32),
                             topRight: Radius.circular(32)),
                         elevation: 8,
-                        child: Hero(
-                          tag: 'signup-tag',
-                          child: Padding(
-                            padding: const EdgeInsets.all(20.0),
-                            child: Container(
-                              // height: MediaQuery.of(context).size.height * 0.8,
-                              width: double.infinity,
-                              decoration: const BoxDecoration(
-                                  color: AppColors.kWhite,
-                                  borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(32),
-                                      topRight: Radius.circular(32))),
-                              child: SingleChildScrollView(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      "Sign up using your email",
-                                      style: TextStyle(
-                                          color: AppColors.kOxfordBlue, fontSize: 16.h),
-                                    ),
-                                    SizedBox(height: 16.h),
-                                    loginInputField(
-                                        Icons.person,
-                                        TextInputType.text,
-                                        TextInputAction.next,
-                                        'Username',
-                                        false,
-                                        _usernameController),
-                                    loginInputField(
-                                        Icons.mail,
-                                        TextInputType.emailAddress,
-                                        TextInputAction.next,
-                                        'Email',
-                                        false,
-                                        _emailController),
-                                    loginInputField(
-                                        Icons.lock,
-                                        TextInputType.visiblePassword,
-                                        TextInputAction.next,
-                                        'Password',
-                                        true,
-                                        _passwordController),
-                                    loginInputField(
-                                        Icons.repeat,
-                                        TextInputType.visiblePassword,
-                                        TextInputAction.done,
-                                        'Confirm password',
-                                        true,
-                                        _confirmPasswordController),
-                                    SizedBox(height: 28.h),
-                                    AuthButton(
-                                      text: "Sign Up",
-                                      color: AppColors.kOrangeWeb,
-                                      fun: () {
-                                        if (_isFormValid()) {
-                                          BlocProvider.of<SignupBloc>(context)
-                                              .add(SignupSubmitted(
-                                            User(
-                                              email: _emailController.text,
-                                              username: _usernameController.text,
-                                              password: _passwordController.text,
-                                            ),
-                                          ));
-                                        }
-                                      },
-                                    ),
-                                    AuthButton(
-                                      text: "Go back",
-                                      color: AppColors.kPlatinum,
-                                      fun: () {
-                                        GoRouter.of(context).go('/');
-                                      },
-                                    ),
-                                  ],
-                                ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Container(
+                            // height: MediaQuery.of(context).size.height * 0.8,
+                            width: double.infinity,
+                            decoration: const BoxDecoration(
+                                color: AppColors.kWhite,
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(32),
+                                    topRight: Radius.circular(32))),
+                            child: SingleChildScrollView(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Sign up using your email",
+                                    style: TextStyle(
+                                        color: AppColors.kOxfordBlue, fontSize: 16.h),
+                                  ),
+                                  SizedBox(height: 16.h),
+                                  loginInputField(
+                                      Icons.person,
+                                      TextInputType.text,
+                                      TextInputAction.next,
+                                      'Username',
+                                      false,
+                                      _usernameController),
+                                  loginInputField(
+                                      Icons.mail,
+                                      TextInputType.emailAddress,
+                                      TextInputAction.next,
+                                      'Email',
+                                      false,
+                                      _emailController),
+                                  loginInputField(
+                                      Icons.lock,
+                                      TextInputType.visiblePassword,
+                                      TextInputAction.next,
+                                      'Password',
+                                      true,
+                                      _passwordController),
+                                  loginInputField(
+                                      Icons.repeat,
+                                      TextInputType.visiblePassword,
+                                      TextInputAction.done,
+                                      'Confirm password',
+                                      true,
+                                      _confirmPasswordController),
+                                  SizedBox(height: 28.h),
+                                  AuthButton(
+                                    text: "Sign Up",
+                                    color: AppColors.kOrangeWeb,
+                                    fun: () {
+                                      if (_isFormValid()) {
+                                        BlocProvider.of<SignupBloc>(context)
+                                            .add(SignupSubmitted(
+                                          User(
+                                            email: _emailController.text,
+                                            username: _usernameController.text,
+                                            password: _passwordController.text,
+                                          ),
+                                        ));
+                                      }
+                                    },
+                                  ),
+                                  AuthButton(
+                                    text: "Go back",
+                                    color: AppColors.kPlatinum,
+                                    fun: () {
+                                      GoRouter.of(context).go('/');
+                                    },
+                                  ),
+                                ],
                               ),
                             ),
                           ),
