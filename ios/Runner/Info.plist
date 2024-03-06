@@ -6,6 +6,8 @@
 	<string>This app needs access to location when open.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>This app needs access to the camera.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Explanation why your app needs access to the photo library.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>

@@ -291,7 +291,7 @@ class _HomeScreenState extends State<HomeScreen> {
               title: const Text('Profile',
                   style: TextStyle(
                       color: AppColors.kBlack, fontWeight: FontWeight.bold)),
-              onTap: () {},
+              onTap: ()=> GoRouter.of(context).go('/profile'),
             ),
             ListTile(
               leading: const Icon(Icons.import_contacts, color: AppColors.kOxfordBlue),
