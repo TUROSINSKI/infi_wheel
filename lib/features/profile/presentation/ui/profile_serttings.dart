@@ -14,14 +14,14 @@ class ProfileSettings extends StatefulWidget {
 }
 
 class _ProfileSettingsState extends State<ProfileSettings> {
-
   final ImagePicker _picker = ImagePicker();
   XFile? _image;
 
   Future<void> _pickImage() async {
     // Pick an image from the gallery or take a picture with the camera
     // This example uses the gallery
-    final XFile? pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+    final XFile? pickedFile =
+        await _picker.pickImage(source: ImageSource.gallery);
 
     setState(() {
       if (pickedFile != null) {
@@ -36,67 +36,142 @@ class _ProfileSettingsState extends State<ProfileSettings> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(onPressed: ()=> GoRouter.of(context).go("/home"), icon: Icon(CupertinoIcons.chevron_back, color: AppColors.kOxfordBlue,)),
-        title: Text("Profile", style: TextStyle(color: AppColors.kOxfordBlue),),
-        actions: [
-          IconButton(onPressed: (){}, icon: Icon(CupertinoIcons.gear, color: AppColors.kOxfordBlue,))
-        ],
+        leading: IconButton(
+            onPressed: () => GoRouter.of(context).go("/home"),
+            icon: Icon(
+              CupertinoIcons.chevron_back,
+              color: AppColors.kOxfordBlue,
+            )),
+        title: Text(
+          "Profile",
+          style: TextStyle(color: AppColors.kOxfordBlue),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Container(
-                width: 200,
-                height: 200,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: Stack(
-                  children: [
-                    SizedBox(
-                      height: 200,
-                      width: 200,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(16),
-                        // child: Image.asset("assets/images/toyota_rav_4.jpg", fit: BoxFit.cover,)),
-                        child: _image == null ? Image.asset("assets/images/toyota_rav_4.jpg", fit: BoxFit.cover,) : Image.file(File(_image!.path), fit: BoxFit.cover,),),
-                    ),
-                    Positioned(
-                      bottom: 8.0,
-                      right: 8.0,
-                      child: Container(
-                        height: 40,
-                        width: 40,
-                        decoration: BoxDecoration(
-                          color: AppColors.kWhite,
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: IconButton(onPressed: _pickImage ,icon: Icon(CupertinoIcons.photo, color: AppColors.kOxfordBlue,)),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Container(
+                  width: 200,
+                  height: 200,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(color: AppColors.kPlatinum, width: 3.0),
+                    boxShadow: [
+                      BoxShadow(
+                        color:
+                            Colors.grey.withOpacity(0.5), // Soft shadow color
+                        spreadRadius:
+                            1, // Extent of the shadow in all directions
+                        blurRadius: 7, // How blurry the shadow should be
+                        offset: Offset(0, 3), // Changes position of shadow
                       ),
-                    )
-                  ],
+                    ],
+                  ),
+                  child: Stack(
+                    children: [
+                      SizedBox(
+                        height: 200,
+                        width: 200,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(13),
+                          // child: Image.asset("assets/images/toyota_rav_4.jpg", fit: BoxFit.cover,)),
+                          child: _image == null
+                              ? Image.asset(
+                                  "assets/images/blank_profile_picture.png",
+                                  fit: BoxFit.cover,
+                                )
+                              : Image.file(
+                                  File(_image!.path),
+                                  fit: BoxFit.cover,
+                                ),
+                        ),
+                      ),
+                      Positioned(
+                        bottom: 8.0,
+                        right: 8.0,
+                        child: Container(
+                          height: 40,
+                          width: 40,
+                          decoration: BoxDecoration(
+                            color: AppColors.kWhite,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: IconButton(
+                              onPressed: _pickImage,
+                              icon: Icon(
+                                CupertinoIcons.photo,
+                                color: AppColors.kOxfordBlue,
+                              )),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("First name"),
-                ProfileDataField(),
-                Text("Surname"),
-                ProfileDataField(),
-                Text("Username"),
-                ProfileDataField(),
-                Text("Age"),
-                ProfileDataField(),
-              ],
-            ),
-          ],
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("First name"),
+                  ProfileDataField(),
+                  Text("Surname"),
+                  ProfileDataField(),
+                  Text("Username"),
+                  ProfileDataField(),
+                  Text("Age"),
+                  ProfileDataField(),
+                ],
+              ),
+              ChangeButton(text: "Change your email"),
+              ChangeButton(text: "Change your password"),
+              Padding(
+                padding: const EdgeInsets.only(top: 20, bottom: 40),
+                child: Container(
+                    width: double.maxFinite,
+                    height: 52,
+                    decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 101, 217, 109),
+                        borderRadius: BorderRadius.circular(16)),
+                    child: Center(
+                        child: Text(
+                      "Confirm",
+                      style:
+                          TextStyle(color: AppColors.kOxfordBlue, fontSize: 16, fontWeight: FontWeight.bold),
+                    ))),
+              ),
+            ],
+          ),
         ),
       ),
+    );
+  }
+}
+
+class ChangeButton extends StatelessWidget {
+  final String text;
+  const ChangeButton({
+    super.key,
+    required this.text,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: Container(
+          width: double.maxFinite,
+          height: 52,
+          decoration: BoxDecoration(
+              color: AppColors.kPlatinum,
+              borderRadius: BorderRadius.circular(16)),
+          child: Center(
+              child: Text(
+            text,
+            style: TextStyle(color: AppColors.kOxfordBlue, fontSize: 16),
+          ))),
     );
   }
 }
@@ -112,15 +187,14 @@ class ProfileDataField extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: Container(
         decoration: BoxDecoration(
-          border: Border.all(color: AppColors.kPlatinum, width: 2.0),
-          borderRadius: BorderRadius.circular(16)
-        ),
+            border: Border.all(color: AppColors.kPlatinum, width: 2.0),
+            borderRadius: BorderRadius.circular(16)),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(16),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: TextField(),
-          )),
+            borderRadius: BorderRadius.circular(16),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: TextField(),
+            )),
       ),
     );
   }
