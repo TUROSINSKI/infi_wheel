@@ -8,4 +8,6 @@ class RoutePaths {
   static const home = '/home';
   static const details = '/details';
   static const profile = '/profile';
+  static const changeEmail = '/email';
+  static const changePassword = '/password';
 }

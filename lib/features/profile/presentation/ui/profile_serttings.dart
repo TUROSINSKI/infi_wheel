@@ -18,8 +18,6 @@ class _ProfileSettingsState extends State<ProfileSettings> {
   XFile? _image;
 
   Future<void> _pickImage() async {
-    // Pick an image from the gallery or take a picture with the camera
-    // This example uses the gallery
     final XFile? pickedFile =
         await _picker.pickImage(source: ImageSource.gallery);
 
@@ -46,6 +44,20 @@ class _ProfileSettingsState extends State<ProfileSettings> {
           "Profile",
           style: TextStyle(color: AppColors.kOxfordBlue),
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 20.0),
+            child: Container(
+              width: 68,
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 101, 217, 109),
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(color: Color.fromARGB(255, 101, 217, 109), width: 2.0)
+              ),
+              child: Icon(CupertinoIcons.check_mark, color: Colors.white,),
+            ),
+          )
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -63,11 +75,11 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                     boxShadow: [
                       BoxShadow(
                         color:
-                            Colors.grey.withOpacity(0.5), // Soft shadow color
+                            Colors.grey.withOpacity(0.5),
                         spreadRadius:
-                            1, // Extent of the shadow in all directions
-                        blurRadius: 7, // How blurry the shadow should be
-                        offset: Offset(0, 3), // Changes position of shadow
+                            1,
+                        blurRadius: 7,
+                        offset: Offset(0, 3),
                       ),
                     ],
                   ),
@@ -78,7 +90,6 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                         width: 200,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(13),
-                          // child: Image.asset("assets/images/toyota_rav_4.jpg", fit: BoxFit.cover,)),
                           child: _image == null
                               ? Image.asset(
                                   "assets/images/blank_profile_picture.png",
@@ -125,23 +136,10 @@ class _ProfileSettingsState extends State<ProfileSettings> {
                   ProfileDataField(),
                 ],
               ),
-              ChangeButton(text: "Change your email"),
+              GestureDetector(
+                onTap: () => GoRouter.of(context).go('/email'),
+                child: ChangeButton(text: "Change your email")),
               ChangeButton(text: "Change your password"),
-              Padding(
-                padding: const EdgeInsets.only(top: 20, bottom: 40),
-                child: Container(
-                    width: double.maxFinite,
-                    height: 52,
-                    decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 101, 217, 109),
-                        borderRadius: BorderRadius.circular(16)),
-                    child: Center(
-                        child: Text(
-                      "Confirm",
-                      style:
-                          TextStyle(color: AppColors.kOxfordBlue, fontSize: 16, fontWeight: FontWeight.bold),
-                    ))),
-              ),
             ],
           ),
         ),
