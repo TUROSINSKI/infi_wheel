@@ -4,8 +4,8 @@ import 'package:http/http.dart' as http;
 import 'package:infi_wheel/features/authentication/data/models/user_model.dart';
 
 class UserService {
-  final String signUpUrl = 'https://infiwheel.azurewebsites.net/User/add';
-  final String signInUrl = 'https://infiwheel.azurewebsites.net/User/login';
+  final String signUpUrl = 'https://infiwheel.azurewebsites.net/User/register';
+  final String signInUrl = 'https://infiwheel.azurewebsites.net/User/authenticate';
 
   Future<bool> signUpUser(UserModel user) async {
     final response = await http.post(
@@ -14,7 +14,7 @@ class UserService {
       body: json.encode(user.toJson()),
     );
 
-    if (response.statusCode == 201) {
+    if (response.statusCode == 200) {
       return true;
     } else {
       throw Exception('Failed to sign up user');
@@ -31,6 +31,7 @@ class UserService {
     if (response.statusCode == 200) {
       return true;
     } else {
+      print(response.statusCode);
       throw Exception('Failed to sign in user');
     }
   }

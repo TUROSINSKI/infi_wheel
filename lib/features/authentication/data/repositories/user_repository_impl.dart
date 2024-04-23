@@ -33,8 +33,8 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future<bool> signIn(String username, String password) async {
-    UserModel userModel = UserModel(username: username, password: password);
+  Future<bool> signIn(String email, String password) async {
+    UserModel userModel = UserModel(email: email, password: password);
 
     try {
       bool success = await userService.signInUser(userModel);
@@ -48,7 +48,7 @@ class UserRepositoryImpl implements UserRepository {
   @override
   Future<bool> signUp(User user) async {
     UserModel userModel = UserModel(
-      userCode: user.userCode,
+      // userId: user.userId,
       firstName: user.firstName,
       surname: user.surname,
       email: user.email,

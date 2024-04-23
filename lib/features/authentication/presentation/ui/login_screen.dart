@@ -111,10 +111,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                     ),
                                     SizedBox(height: 16.h),
                                     loginInputField(
-                                        Icons.person,
+                                        Icons.mail,
                                         TextInputType.text,
                                         TextInputAction.next,
-                                        'Username',
+                                        'Email',
                                         false,
                                         _usernameController),
                                     loginInputField(

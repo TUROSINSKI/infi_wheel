@@ -1,9 +1,9 @@
 class User {
-  final String ?userCode = 'empty';
+  // final String ?userId = 'empty';
   final String ?firstName = 'empty';
   final String ?surname = 'empty';
-  final String ?email;
-  final String username;
+  final String email;
+  final String ?username;
   final String password;
   final int ?age = 18;
   final String ?driverLicence = 'empty';
@@ -22,8 +22,8 @@ class User {
   // });
 
   User({
-    this.email,
-    required this.username,
+    required this.email,
+    this.username,
     required this.password,
   });
 }
