@@ -30,6 +30,8 @@ class CarRepositoryImpl implements CarRepository {
             registrationNumber: model.registrationNumber,
             ac: model.ac,
             url: model.url,
+            xLocation: model.xLocation,
+            yLocation: model.yLocation,
           ),
         )
         .toList();

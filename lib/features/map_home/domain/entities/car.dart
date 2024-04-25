@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 class Car {
   final int id;
   final String manufacturer;
@@ -16,6 +18,8 @@ class Car {
   final String registrationNumber;
   final String ac;
   final String url;
+  final double xLocation;
+  final double yLocation;
 
   Car({
     required this.id,
@@ -35,5 +39,7 @@ class Car {
     required this.registrationNumber,
     required this.ac,
     required this.url,
+    required this.xLocation,
+    required this.yLocation,
   });
 }

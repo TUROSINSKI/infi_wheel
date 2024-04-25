@@ -41,12 +41,21 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         body: Stack(
           children: <Widget>[
-            const GoogleMap(
-              zoomControlsEnabled: false,
-              initialCameraPosition: CameraPosition(
-                target: Location.pPolitechnikaBialostocka,
-                zoom: 17,
-              ),
+            BlocBuilder<CarsBloc, CarsState>(
+              builder: (context, state) {
+                if (state is CarsLoaded){
+                  return GoogleMap(
+                  zoomControlsEnabled: false,
+                  initialCameraPosition: CameraPosition(
+                    target: Location.pPolitechnikaBialostocka,
+                    zoom: 17,
+                  ),
+                  markers: _createMarkers(state.cars),
+                );
+                } else {
+                  return Text('Unknown state');
+                }
+              },
             ),
             Positioned(
               top: 40.h,
@@ -291,10 +300,11 @@ class _HomeScreenState extends State<HomeScreen> {
               title: const Text('Profile',
                   style: TextStyle(
                       color: AppColors.kBlack, fontWeight: FontWeight.bold)),
-              onTap: ()=> GoRouter.of(context).go('/profile'),
+              onTap: () => GoRouter.of(context).go('/profile'),
             ),
             ListTile(
-              leading: const Icon(Icons.import_contacts, color: AppColors.kOxfordBlue),
+              leading: const Icon(Icons.import_contacts,
+                  color: AppColors.kOxfordBlue),
               title: const Text('My Bookings',
                   style: TextStyle(
                       color: AppColors.kBlack, fontWeight: FontWeight.bold)),
@@ -317,4 +327,21 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       );
+
+  Set<Marker> _createMarkers(List<Car> cars) {
+    return cars.map((car) {
+      return Marker(
+        markerId: MarkerId(car.id.toString()),
+        // position: LatLng(car.xLocation, car.yLocation),
+        position: Location.pPolitechnikaBialostocka,
+        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueAzure),
+        infoWindow: InfoWindow(
+          title: car.model,
+          snippet: car.manufacturer,
+        ),
+      );
+    }).toSet();
+  }
+
+
 }

@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 class CarModel {
   final int id;
   final String manufacturer;
@@ -16,10 +18,12 @@ class CarModel {
   final String registrationNumber;
   final String ac;
   final String url;
+  final double xLocation;
+  final double yLocation;
 
   @override
   String toString() =>
-      '$manufacturer, $model, $type, $subtype, $yearOfProduction, $vinNumber, $engineCapacity, $power, $fuelType, $transmission, $numberOfDoors, $numberOfSeats, $registrationPlate, $registrationNumber, $ac, $url';
+      '$manufacturer, $model, $type, $subtype, $yearOfProduction, $vinNumber, $engineCapacity, $power, $fuelType, $transmission, $numberOfDoors, $numberOfSeats, $registrationPlate, $registrationNumber, $ac, $url, $xLocation, $yLocation';
 
   CarModel({
     required this.id,
@@ -39,6 +43,8 @@ class CarModel {
     required this.registrationNumber,
     required this.ac,
     required this.url,
+    required this.xLocation,
+    required this.yLocation,
   });
 
   factory CarModel.fromJson(Map<String, dynamic> json) {
@@ -60,6 +66,8 @@ class CarModel {
       ac: json['ac'] as String,
       vinNumber: json['vin_number'] as String,
       url: json['url'] as String,
+      xLocation: json['x_location'] as double,
+      yLocation: json['y_location'] as double,
     );
   }
 
@@ -82,6 +90,8 @@ class CarModel {
       'ac': ac,
       'vin_number': vinNumber,
       'url': url,
+      'x_location': xLocation,
+      'y_location': yLocation,
     };
   }
 }
