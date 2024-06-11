@@ -1,29 +1,22 @@
 class User {
   // final String ?userId = 'empty';
-  final String ?firstName = 'empty';
-  final String ?surname = 'empty';
+  final String? firstName;
+  final String? surname;
   final String email;
-  final String ?username;
+  final String? username;
   final String password;
-  final int ?age = 18;
-  final String ?driverLicence = 'empty';
-  final int ?phoneNumber = 123456789;
-
-  // User({
-  //   this.userCode,
-  //   this.firstName,
-  //   this.surname,
-  //   required this.email,
-  //   required this.username,
-  //   required this.password,
-  //   this.age,
-  //   this.driverLicence,
-  //   this.phoneNumber,
-  // });
+  final int? age;
+  final String? driverLicence;
+  final int? phoneNumber;
 
   User({
+    this.firstName = '',
+    this.surname = '',
     required this.email,
     this.username,
     required this.password,
+    this.age = 18,
+    this.driverLicence = '',
+    this.phoneNumber = 123456789,
   });
 }

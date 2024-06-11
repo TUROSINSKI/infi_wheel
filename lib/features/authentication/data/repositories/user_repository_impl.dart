@@ -9,9 +9,17 @@ class UserRepositoryImpl implements UserRepository {
   UserRepositoryImpl(this.userService);
 
   @override
-  Future<User> getUser(String userId) {
-    // TODO: implement getUser
-    throw UnimplementedError();
+  Future<User> getUser() async {
+    try {
+      UserModel? userModel = await userService.fetchUserData();
+      if (userModel != null) {
+        return _mapUserModelToUser(userModel);
+      } else {
+        throw Exception('User not found');
+      }
+    } catch (e) {
+      throw Exception('Error fetching user: $e');
+    }
   }
 
   @override
@@ -66,4 +74,17 @@ class UserRepositoryImpl implements UserRepository {
   @override
   // TODO: implement user
   Stream<User?> get user => throw UnimplementedError();
+
+  User _mapUserModelToUser(UserModel userModel) {
+    return User(
+      firstName: userModel.firstName,
+      surname: userModel.surname,
+      email: userModel.email,
+      username: userModel.username,
+      password: userModel.password,
+      age: userModel.age,
+      driverLicence: userModel.driverLicence,
+      phoneNumber: userModel.phoneNumber,
+    );
+  }
 }

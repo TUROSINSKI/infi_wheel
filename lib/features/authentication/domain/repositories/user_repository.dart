@@ -14,5 +14,5 @@ abstract class UserRepository {
 
   Future<void> setUserData(User user);
 
-  Future<User> getUser(String userId);
+  Future<User> getUser();
 }
