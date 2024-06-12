@@ -10,4 +10,6 @@ class RoutePaths {
   static const profile = '/profile';
   static const changeEmail = '/email';
   static const changePassword = '/password';
+  static const myCars = '/mycars';
+  static const addCar = '/addcar';
 }

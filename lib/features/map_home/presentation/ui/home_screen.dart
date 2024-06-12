@@ -311,6 +311,12 @@ class _HomeScreenState extends State<HomeScreen> {
               onTap: () {},
             ),
             ListTile(
+              leading: const Icon(Icons.car_rental, color: AppColors.kOxfordBlue,),
+              title: const Text('My cars',
+              style: TextStyle(color: AppColors.kBlack, fontWeight: FontWeight.bold),),
+              onTap: () => GoRouter.of(context).go('/mycars'),
+            ),
+            ListTile(
               leading: const Icon(Icons.settings, color: AppColors.kOxfordBlue),
               title: const Text('Settings',
                   style: TextStyle(
