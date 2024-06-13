@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:infi_wheel/core/utils/colors.dart';
 import 'package:infi_wheel/features/authentication/presentation/blocs/signin/signin_bloc.dart';
@@ -20,6 +21,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final FlutterSecureStorage storage = FlutterSecureStorage();
 
   @override
   void dispose() {
@@ -36,9 +38,16 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<SigninBloc, SigninState>(
-      listener: (context, state) {
+      listener: (context, state) async {
         if (state is SigninSuccess) {
-          GoRouter.of(context).go('/home');
+          // Retrieve the role name from storage
+          String? roleName = await storage.read(key: 'role_name');
+
+          if (roleName == 'admin') {
+            GoRouter.of(context).go('/admindashboard');
+          } else {
+            GoRouter.of(context).go('/home');
+          }
         } else if (state is SigninFailure) {
           toastInfo(message: state.error);
         }

@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:infi_wheel/core/utils/colors.dart';
 import 'package:infi_wheel/core/utils/constants.dart';
-import 'package:infi_wheel/features/map_home/domain/entities/car.dart';
+import 'package:infi_wheel/features/cars/domain/entities/car.dart';
 import 'package:infi_wheel/features/map_home/presentation/blocs/cars/cars_bloc.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -308,7 +308,7 @@ class _HomeScreenState extends State<HomeScreen> {
               title: const Text('My Bookings',
                   style: TextStyle(
                       color: AppColors.kBlack, fontWeight: FontWeight.bold)),
-              onTap: () {},
+              onTap: () => GoRouter.of(context).go('/bookings'),
             ),
             ListTile(
               leading: const Icon(Icons.car_rental, color: AppColors.kOxfordBlue,),
@@ -338,8 +338,8 @@ class _HomeScreenState extends State<HomeScreen> {
     return cars.map((car) {
       return Marker(
         markerId: MarkerId(car.id.toString()),
-        // position: LatLng(car.xLocation, car.yLocation),
-        position: Location.pPolitechnikaBialostocka,
+        position: LatLng(car.xLocation, car.yLocation),
+        // position: Location.pPolitechnikaBialostocka,
         icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueAzure),
         infoWindow: InfoWindow(
           title: car.model,

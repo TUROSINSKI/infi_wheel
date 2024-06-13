@@ -4,8 +4,10 @@ import 'package:infi_wheel/core/routes/route_values.dart';
 import 'package:infi_wheel/features/authentication/presentation/ui/login_screen.dart';
 import 'package:infi_wheel/features/authentication/presentation/ui/onboarding_screen.dart';
 import 'package:infi_wheel/features/authentication/presentation/ui/sign_up.dart';
+import 'package:infi_wheel/features/booking/presentation/ui/bookings_screen.dart';
 import 'package:infi_wheel/features/cars/presentation/ui/add_car_screen.dart';
 import 'package:infi_wheel/features/cars/presentation/ui/my_cars_screen.dart';
+import 'package:infi_wheel/features/map_home/presentation/ui/admin_dashboard.dart';
 import 'package:infi_wheel/features/map_home/presentation/ui/home_screen.dart';
 import 'package:infi_wheel/features/profile/presentation/ui/change_email.dart';
 import 'package:infi_wheel/features/profile/presentation/ui/profile_serttings.dart';
@@ -22,6 +24,9 @@ class InfiWheelRouter {
   static Widget _changeEmailPageRouteBuilder(BuildContext context, GoRouterState state) => const ChangeEmailPage();
   static Widget _myCarsPageRouteBuilder(BuildContext context, GoRouterState state) => const MyCarsScreen();
   static Widget _addCarPageRouteBuilder(BuildContext context, GoRouterState state) => const AddCarScreen();
+  static Widget _bookingsPageRouteBuilder(BuildContext context, GoRouterState state) => const BookingsScreen();
+  static Widget _adminDashboardRouteBuilder(BuildContext context, GoRouterState state) => const AdminDashboard();
+
 
   static final GoRouter _router = GoRouter(
     routes: <GoRoute>[
@@ -34,6 +39,8 @@ class InfiWheelRouter {
       GoRoute(path: RoutePaths.changeEmail, builder: _changeEmailPageRouteBuilder),
       GoRoute(path: RoutePaths.myCars, builder: _myCarsPageRouteBuilder),
       GoRoute(path: RoutePaths.addCar, builder: _addCarPageRouteBuilder),
+      GoRoute(path: RoutePaths.bookings, builder: _bookingsPageRouteBuilder),
+      GoRoute(path: RoutePaths.adminDashboard, builder: _adminDashboardRouteBuilder),
     ]
   );
 

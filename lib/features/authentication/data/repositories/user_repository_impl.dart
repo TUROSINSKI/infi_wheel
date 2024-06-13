@@ -75,8 +75,20 @@ class UserRepositoryImpl implements UserRepository {
   // TODO: implement user
   Stream<User?> get user => throw UnimplementedError();
 
+  @override
+  Future<List<User>> fetchUsers() async {
+    try {
+      List<UserModel> userModels = await userService.fetchUsers();
+      List<User> users = userModels.map(_mapUserModelToUser).toList();
+      return users;
+    } catch (e) {
+      throw Exception('Error fetching users: $e');
+    }
+  }
+
   User _mapUserModelToUser(UserModel userModel) {
     return User(
+      userId: userModel.userId,
       firstName: userModel.firstName,
       surname: userModel.surname,
       email: userModel.email,

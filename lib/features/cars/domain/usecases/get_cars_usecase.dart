@@ -1,5 +1,5 @@
-import 'package:infi_wheel/features/map_home/domain/entities/car.dart';
-import 'package:infi_wheel/features/map_home/domain/repositiories/car_repository.dart';
+import 'package:infi_wheel/features/cars/domain/entities/car.dart';
+import 'package:infi_wheel/features/cars/domain/repositories/car_repository.dart';
 
 class GetCarsUseCase {
   final CarRepository repository;

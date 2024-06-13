@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:infi_wheel/features/map_home/domain/entities/car.dart';
-import 'package:infi_wheel/features/map_home/domain/usecases/get_cars_usecase.dart';
+import 'package:infi_wheel/features/cars/domain/entities/car.dart';
+import 'package:infi_wheel/features/cars/domain/usecases/get_cars_usecase.dart';
 
 part 'cars_event.dart';
 part 'cars_state.dart';

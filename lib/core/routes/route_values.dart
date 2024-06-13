@@ -12,4 +12,6 @@ class RoutePaths {
   static const changePassword = '/password';
   static const myCars = '/mycars';
   static const addCar = '/addcar';
+  static const bookings = '/bookings';
+  static const adminDashboard = '/admindashboard';
 }

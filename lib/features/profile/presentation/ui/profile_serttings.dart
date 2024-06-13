@@ -7,7 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:infi_wheel/core/utils/colors.dart';
 import 'package:infi_wheel/features/authentication/domain/entities/user.dart';
-import 'package:infi_wheel/features/authentication/presentation/blocs/bloc/get_user_bloc.dart';
+import 'package:infi_wheel/features/authentication/presentation/blocs/get_user/get_user_bloc.dart';
 import 'package:lottie/lottie.dart';
 
 class ProfileSettings extends StatefulWidget {

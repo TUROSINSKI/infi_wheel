@@ -1,6 +1,7 @@
-import 'package:infi_wheel/features/map_home/data/services/car_service.dart';
-import 'package:infi_wheel/features/map_home/domain/entities/car.dart';
-import 'package:infi_wheel/features/map_home/domain/repositiories/car_repository.dart';
+import 'package:infi_wheel/features/cars/data/models/car_model.dart';
+import 'package:infi_wheel/features/cars/data/services/car_service.dart';
+import 'package:infi_wheel/features/cars/domain/entities/car.dart';
+import 'package:infi_wheel/features/cars/domain/repositories/car_repository.dart';
 
 class CarRepositoryImpl implements CarRepository {
   final CarService carService;
@@ -35,5 +36,32 @@ class CarRepositoryImpl implements CarRepository {
           ),
         )
         .toList();
+  }
+
+  @override
+  Future<bool> addCar(Car car) async {
+    var carModel = CarModel(
+      id: car.id,
+      manufacturer: car.manufacturer,
+      model: car.model,
+      type: car.type,
+      subtype: car.subtype,
+      yearOfProduction: car.yearOfProduction,
+      vinNumber: car.vinNumber,
+      engineCapacity: car.engineCapacity,
+      power: car.power,
+      fuelType: car.fuelType,
+      transmission: car.transmission,
+      numberOfDoors: car.numberOfDoors,
+      numberOfSeats: car.numberOfSeats,
+      registrationPlate: car.registrationPlate,
+      registrationNumber: car.registrationNumber,
+      ac: car.ac,
+      url: car.url,
+      xLocation: car.xLocation,
+      yLocation: car.yLocation,
+    );
+
+    return await carService.addCar(carModel);
   }
 }

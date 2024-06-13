@@ -1,5 +1,5 @@
 class UserModel {
-  // final String ?userId;
+  final int ?userId;
   final String ?firstName;
   final String ?surname;
   final String email;
@@ -11,10 +11,10 @@ class UserModel {
 
   @override
   String toString() =>
-      '$firstName, $surname, $email, $username, $password, $age, $driverLicence, $phoneNumber';
+      '$userId, $firstName, $surname, $email, $username, $password, $age, $driverLicence, $phoneNumber';
 
   UserModel({
-    // this.userId,
+    this.userId,
     this.firstName,
     this.surname,
     required this.email,
@@ -27,7 +27,7 @@ class UserModel {
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
-      // userId: json['id'] as String,
+      userId: json['id'] as int?,
       firstName: json['firstname'] as String?,
       surname: json['surname'] as String?,
       email: json['email'] as String,
@@ -41,7 +41,7 @@ class UserModel {
 
   Map<String, dynamic> toJson() {
     return {
-      // 'id': userId,
+      'id': userId,
       'firstname': firstName,
       'surname': surname,
       'email': email,

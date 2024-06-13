@@ -89,6 +89,7 @@ class UserService {
   final String signUpUrl = 'https://infiwheel.azurewebsites.net/User/register';
   final String signInUrl = 'https://infiwheel.azurewebsites.net/User/authenticate';
   final String userDataUrl = 'https://infiwheel.azurewebsites.net/User/findToken';
+  final String fetchUsersUrl = 'https://infiwheel.azurewebsites.net/User/all';
   final FlutterSecureStorage storage = FlutterSecureStorage();
   final Dio _dio = Dio();
 
@@ -120,12 +121,22 @@ class UserService {
     if (response.statusCode == 200) {
       Map<String, dynamic> responseBody = response.data;
       String? token = responseBody['token'];
+      String? roleName = responseBody['roleModel']?['role_name'];
 
       if (token != null) {
         print(token);
         await storage.write(key: 'jwt_token', value: token);
       } else {
         throw Exception('Token not found in API response');
+      }
+
+      if (roleName != null) {
+        print('Role Name: $roleName');
+        // You can store the role name or use it as needed
+        // For example, storing it
+        await storage.write(key: 'role_name', value: roleName);
+      } else {
+        throw Exception('Role name not found in API response');
       }
 
       return true;
@@ -165,6 +176,34 @@ class UserService {
     } catch (e) {
       print('Error fetching user data: $e');
       throw Exception('Error fetching user data: $e');
+    }
+  }
+
+  Future<List<UserModel>> fetchUsers() async {
+    try {
+      final response = await _dio.get(
+        fetchUsersUrl,
+        options: Options(
+          headers: {'Content-Type': 'application/json'},
+        ),
+      );
+
+      print('API Response: ${response.statusCode}, ${response.data}');
+
+      if (response.statusCode == 200) {
+        List<dynamic> responseBody = response.data;
+
+        // Convert the response to a list of UserModels
+        List<UserModel> users = responseBody.map((user) => UserModel.fromJson(user)).toList();
+
+        return users;
+      } else {
+        print('Failed to fetch users: ${response.statusCode}');
+        throw Exception('Failed to fetch users: ${response.statusCode}');
+      }
+    } catch (e) {
+      print('Error fetching users: $e');
+      throw Exception('Error fetching users: $e');
     }
   }
 }

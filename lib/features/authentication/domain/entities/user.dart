@@ -1,5 +1,7 @@
+import 'dart:ffi';
+
 class User {
-  // final String ?userId = 'empty';
+  final int ?userId;
   final String? firstName;
   final String? surname;
   final String email;
@@ -10,6 +12,7 @@ class User {
   final int? phoneNumber;
 
   User({
+    this.userId = 0,
     this.firstName = '',
     this.surname = '',
     required this.email,
