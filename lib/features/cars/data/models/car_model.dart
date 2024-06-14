@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 class CarModel {
   final int id;

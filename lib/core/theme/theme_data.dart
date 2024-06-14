@@ -5,7 +5,7 @@ import 'package:infi_wheel/core/utils/colors.dart';
 final ThemeData lightThemeData = ThemeData(
   colorScheme: lightColorScheme,
   fontFamily: "Lato",
-  textTheme: TextTheme(
+  textTheme: const TextTheme(
     bodySmall: TextStyle(color: AppColors.kOxfordBlue),
     bodyMedium: TextStyle(color: AppColors.kOxfordBlue),
     bodyLarge: TextStyle(color: AppColors.kOxfordBlue),

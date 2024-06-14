@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
 import 'package:infi_wheel/features/authentication/domain/usecases/deleteuser_usecase.dart';
 import 'package:infi_wheel/features/authentication/presentation/blocs/delete_user/delete_user_state.dart';
 
