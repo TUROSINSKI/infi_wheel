@@ -5,6 +5,7 @@ import 'package:infi_wheel/features/authentication/presentation/ui/login_screen.
 import 'package:infi_wheel/features/authentication/presentation/ui/onboarding_screen.dart';
 import 'package:infi_wheel/features/authentication/presentation/ui/sign_up.dart';
 import 'package:infi_wheel/features/booking/presentation/ui/bookings_screen.dart';
+import 'package:infi_wheel/features/booking/presentation/ui/rent_screen.dart';
 import 'package:infi_wheel/features/cars/presentation/ui/add_car_screen.dart';
 import 'package:infi_wheel/features/cars/presentation/ui/my_cars_screen.dart';
 import 'package:infi_wheel/features/map_home/presentation/ui/admin_dashboard.dart';
@@ -26,6 +27,8 @@ class InfiWheelRouter {
   static Widget _addCarPageRouteBuilder(BuildContext context, GoRouterState state) => const AddCarScreen();
   static Widget _bookingsPageRouteBuilder(BuildContext context, GoRouterState state) => const BookingsScreen();
   static Widget _adminDashboardRouteBuilder(BuildContext context, GoRouterState state) => const AdminDashboard();
+  static Widget _rentCarRouteBuilder(BuildContext context, GoRouterState state) => const RentScreen();
+
 
 
   static final GoRouter _router = GoRouter(
@@ -41,6 +44,7 @@ class InfiWheelRouter {
       GoRoute(path: RoutePaths.addCar, builder: _addCarPageRouteBuilder),
       GoRoute(path: RoutePaths.bookings, builder: _bookingsPageRouteBuilder),
       GoRoute(path: RoutePaths.adminDashboard, builder: _adminDashboardRouteBuilder),
+      GoRoute(path: RoutePaths.rentCar, builder: _rentCarRouteBuilder),
     ]
   );
 

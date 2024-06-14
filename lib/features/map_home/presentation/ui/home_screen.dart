@@ -429,7 +429,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         markers: _createMarkers(state.cars),
                       );
                     } else {
-                      return const Center(child: Text('Unknown state'));
+                      return const Center(
+                          child: CircularProgressIndicator(
+                        color: AppColors.kOrangeWeb,
+                      ));
                     }
                   },
                 ),
@@ -605,14 +608,24 @@ class _HomeScreenState extends State<HomeScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Spacer(),
-                      Text('Welcome to', style: TextStyle(fontSize: 28, color: AppColors.kOxfordBlue),),
-                      Text('InfiWheel', style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: AppColors.kOxfordBlue)),
-                      Text('for Hosts', style: TextStyle(fontSize: 28, color: AppColors.kOxfordBlue)),
+                      Text(
+                        'Welcome to',
+                        style: TextStyle(
+                            fontSize: 28, color: AppColors.kOxfordBlue),
+                      ),
+                      Text('InfiWheel',
+                          style: TextStyle(
+                              fontSize: 40,
+                              fontWeight: FontWeight.bold,
+                              color: AppColors.kOxfordBlue)),
+                      Text('for Hosts',
+                          style: TextStyle(
+                              fontSize: 28, color: AppColors.kOxfordBlue)),
                       Spacer(),
                       Image.asset(
-                              "assets/images/logo_przezroczyste_granat.png",
-                              height: 84.h,
-                            ),
+                        "assets/images/logo_przezroczyste_granat.png",
+                        height: 84.h,
+                      ),
                       Spacer(),
                     ],
                   ),
@@ -726,8 +739,21 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           actions: <Widget>[
-            Center(
-              child: TextButton(
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SizedBox(
+                    width: 140,
+                    child: TextButton(
+                        onPressed: () => GoRouter.of(context).go('/rent'),
+                        style: TextButton.styleFrom(
+                            backgroundColor: AppColors.kOxfordBlue),
+                        child: const Text(
+                          'Rent',
+                          style: TextStyle(color: AppColors.kWhite),
+                        ))),
+              ),
+              TextButton(
                 style: TextButton.styleFrom(
                   backgroundColor: AppColors.kSnowyGrey,
                 ),
@@ -739,7 +765,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   style: TextStyle(color: AppColors.kBlack),
                 ),
               ),
-            ),
+            ]),
           ],
         );
       },
