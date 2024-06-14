@@ -2,10 +2,12 @@ import 'package:get_it/get_it.dart';
 import 'package:infi_wheel/features/authentication/data/repositories/user_repository_impl.dart';
 import 'package:infi_wheel/features/authentication/data/services/user_service.dart';
 import 'package:infi_wheel/features/authentication/domain/repositories/user_repository.dart';
+import 'package:infi_wheel/features/authentication/domain/usecases/deleteuser_usecase.dart';
 import 'package:infi_wheel/features/authentication/domain/usecases/getuser_usecase.dart';
 import 'package:infi_wheel/features/authentication/domain/usecases/getusers_usecase.dart';
 import 'package:infi_wheel/features/authentication/domain/usecases/signin_usecase.dart';
 import 'package:infi_wheel/features/authentication/domain/usecases/signup_usecase.dart';
+import 'package:infi_wheel/features/authentication/presentation/blocs/delete_user/delete_user_cubit.dart';
 import 'package:infi_wheel/features/authentication/presentation/blocs/get_user/get_user_bloc.dart';
 import 'package:infi_wheel/features/authentication/presentation/blocs/get_users/get_users_bloc.dart';
 import 'package:infi_wheel/features/authentication/presentation/blocs/signin/signin_bloc.dart';
@@ -36,6 +38,7 @@ void setupLocator() {
   getIt.registerFactory(() => GetUserUseCase(getIt()));
   getIt.registerFactory(() => AddCarUseCase(getIt()));
   getIt.registerFactory(() => GetUsersUseCase(getIt()));
+  getIt.registerFactory(() => DeleteUserUseCase(getIt()));
 
   // Blocs
   getIt.registerFactory(() => CarsBloc(getCarsUseCase: getIt()));
@@ -44,4 +47,5 @@ void setupLocator() {
   getIt.registerFactory(() => GetUserBloc(getUserUseCase: getIt()));
   getIt.registerFactory(() => AddCarBloc(addCarUseCase: getIt()));
   getIt.registerFactory(() => GetUsersBloc(getUsersUseCase: getIt()));
+  getIt.registerFactory(() => DeleteUserCubit(deleteUserUseCase: getIt()));
 }

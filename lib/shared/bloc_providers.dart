@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:infi_wheel/features/authentication/presentation/blocs/delete_user/delete_user_cubit.dart';
 import 'package:infi_wheel/features/authentication/presentation/blocs/get_user/get_user_bloc.dart';
 import 'package:infi_wheel/features/authentication/presentation/blocs/get_users/get_users_bloc.dart';
 import 'package:infi_wheel/features/authentication/presentation/blocs/signin/signin_bloc.dart';
@@ -15,5 +16,6 @@ class BlocProviders {
         BlocProvider<GetUserBloc>(create: (context) => getIt<GetUserBloc>()),
         BlocProvider<AddCarBloc>(create: (context) => getIt<AddCarBloc>()),
         BlocProvider<GetUsersBloc>(create: (context) => getIt<GetUsersBloc>()),
+        BlocProvider<DeleteUserCubit>(create: (context) => getIt<DeleteUserCubit>()),
       ];
 }

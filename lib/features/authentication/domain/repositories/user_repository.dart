@@ -15,6 +15,8 @@ abstract class UserRepository {
   Future<void> setUserData(User user);
 
   Future<List<User>> fetchUsers();
+  
+  Future<bool> deleteUser(int userId);
 
   Future<User> getUser();
 }

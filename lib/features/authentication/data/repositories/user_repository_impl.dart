@@ -86,6 +86,15 @@ class UserRepositoryImpl implements UserRepository {
     }
   }
 
+  @override
+  Future<bool> deleteUser(int userId) async {
+    try {
+      return await userService.deleteUser(userId);
+    } catch (e) {
+      throw Exception('Error deleting user: $e');
+    }
+  }
+
   User _mapUserModelToUser(UserModel userModel) {
     return User(
       userId: userModel.userId,
