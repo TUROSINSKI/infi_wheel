@@ -11,7 +11,6 @@ class GetUserUseCase {
       User user = await userRepository.getUser();
       return user;
     } catch (e) {
-      print('Error fetching user: $e');
       return null;
     }
   }

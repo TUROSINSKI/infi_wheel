@@ -34,7 +34,6 @@ class _ProfileSettingsState extends State<ProfileSettings> {
       if (pickedFile != null) {
         _image = pickedFile;
       } else {
-        print('No image selected.');
       }
     });
   }

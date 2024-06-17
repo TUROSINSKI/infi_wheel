@@ -46,7 +46,6 @@ class CarService {
     if (response.statusCode == 201) {
       return true;
     } else {
-      print(response.statusCode);
       throw Exception('Failed to add car');
     }
   }

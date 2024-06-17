@@ -11,7 +11,6 @@ class GetUsersUseCase {
       List<User> users = await userRepository.fetchUsers();
       return users;
     } catch (e) {
-      print('Error fetching users: $e');
       return [];
     }
   }

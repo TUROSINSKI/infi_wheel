@@ -29,7 +29,6 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
           emit(SignupFailure("Signup failed with response code other than 200."));
         }
       } catch (e) {
-        print('Sign up failed: $e');
         emit(SignupFailure(e.toString()));
       }
     }

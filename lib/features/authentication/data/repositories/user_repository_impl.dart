@@ -48,7 +48,6 @@ class UserRepositoryImpl implements UserRepository {
       bool success = await userService.signInUser(userModel);
       return success;
     } catch (e) {
-      print('Error signing in: $e');
       return false;
     }
   }

@@ -28,7 +28,6 @@ class SigninBloc extends Bloc<SigninEvent, SigninState> {
           emit(SigninFailure("Signup failed with response code other than 200."));
         }
       } catch (e) {
-        print('Sign up failed: $e');
         emit(SigninFailure(e.toString()));
       }
     }

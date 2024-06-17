@@ -42,14 +42,14 @@ class UserService {
       String? roleName = responseBody['roleModel']?['role_name'];
 
       if (token != null) {
-        print(token);
         await storage.write(key: 'jwt_token', value: token);
       } else {
         throw Exception('Token not found in API response');
       }
 
+      print(token);
+
       if (roleName != null) {
-        print('Role Name: $roleName');
         // You can store the role name or use it as needed
         // For example, storing it
         await storage.write(key: 'role_name', value: roleName);
@@ -66,7 +66,6 @@ class UserService {
   Future<UserModel?> fetchUserData() async {
     try {
       String? token = await storage.read(key: 'jwt_token');
-      print('Retrieved token: $token');
 
       if (token == null) {
         throw Exception('Token not found in secure storage');
@@ -81,18 +80,15 @@ class UserService {
         data: {'token': token}, // Passing token in the body
       );
 
-      print('API Response: ${response.statusCode}, ${response.data}');
 
       if (response.statusCode == 200) {
         Map<String, dynamic> responseBody = response.data;
-        print('Parsed Response: $responseBody');
+        print(responseBody);
         return UserModel.fromJson(responseBody);
       } else {
-        print('Failed to fetch user data: ${response.statusCode}');
         throw Exception('Failed to fetch user data: ${response.statusCode}');
       }
     } catch (e) {
-      print('Error fetching user data: $e');
       throw Exception('Error fetching user data: $e');
     }
   }
@@ -106,7 +102,6 @@ class UserService {
         ),
       );
 
-      print('API Response: ${response.statusCode}, ${response.data}');
 
       if (response.statusCode == 200) {
         List<dynamic> responseBody = response.data;
@@ -116,11 +111,9 @@ class UserService {
 
         return users;
       } else {
-        print('Failed to fetch users: ${response.statusCode}');
         throw Exception('Failed to fetch users: ${response.statusCode}');
       }
     } catch (e) {
-      print('Error fetching users: $e');
       throw Exception('Error fetching users: $e');
     }
   }
@@ -134,7 +127,6 @@ class UserService {
   );
 
   if (response.statusCode == 200) {
-    print('Job done mate');
     return true;
   } else {
     throw Exception('Failed to delete user');

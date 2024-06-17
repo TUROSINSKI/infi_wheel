@@ -9,7 +9,6 @@ class DeleteUserUseCase {
     try {
       return await userRepository.deleteUser(userId);
     } catch (e) {
-      print('Error deleting user: $e');
       return false;
     }
   }
