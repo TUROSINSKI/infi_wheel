@@ -18,6 +18,16 @@ class BookingRepositoryImpl implements BookingRepository {
     }
   }
 
+  @override
+  Future<List<Booking>> getUserBookings(int userId) async {
+    try {
+      List<BookingModel> bookingModels = await bookingService.fetchUserBookings(userId);
+      return bookingModels.map((model) => model.toEntity()).toList();
+    } catch (e) {
+      throw Exception('Error fetching user bookings: $e');
+    }
+  }
+
   BookingModel _mapBookingToModel(Booking booking) {
     return BookingModel(
       startDate: booking.startDate,

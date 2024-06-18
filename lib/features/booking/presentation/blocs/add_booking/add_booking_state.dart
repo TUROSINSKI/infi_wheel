@@ -19,3 +19,12 @@ class AddBookingFailure extends AddBookingState {
   @override
   List<Object> get props => [error];
 }
+
+class UserBookingsLoaded extends AddBookingState {
+  final List<Booking> bookings;
+
+  UserBookingsLoaded(this.bookings);
+
+  @override
+  List<Object> get props => [bookings];
+}

@@ -13,3 +13,12 @@ class AddBookingSubmitted extends AddBookingEvent {
   @override
   List<Object> get props => [booking];
 }
+
+class FetchUserBookings extends AddBookingEvent {
+  final int userId;
+
+  FetchUserBookings(this.userId);
+
+  @override
+  List<Object> get props => [userId];
+}

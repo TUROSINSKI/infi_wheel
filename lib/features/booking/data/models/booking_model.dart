@@ -1,3 +1,5 @@
+import 'package:infi_wheel/features/booking/domain/entities/booking.dart';
+
 class BookingModel {
   final String startDate;
   final String endDate;
@@ -28,5 +30,15 @@ class BookingModel {
       'user': {'id': userId.toString()},
       'car': {'id': carId.toString()},
     };
+  }
+
+  Booking toEntity() {
+    return Booking(
+      startDate: startDate,
+      endDate: endDate,
+      userId: userId,
+      carId: carId,
+      // Map other fields here
+    );
   }
 }
