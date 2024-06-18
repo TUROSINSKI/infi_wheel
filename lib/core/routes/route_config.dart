@@ -6,6 +6,7 @@ import 'package:infi_wheel/features/authentication/presentation/ui/onboarding_sc
 import 'package:infi_wheel/features/authentication/presentation/ui/sign_up.dart';
 import 'package:infi_wheel/features/booking/presentation/ui/bookings_screen.dart';
 import 'package:infi_wheel/features/booking/presentation/ui/rent_screen.dart';
+import 'package:infi_wheel/features/cars/domain/entities/car.dart';
 import 'package:infi_wheel/features/cars/presentation/ui/add_car_screen.dart';
 import 'package:infi_wheel/features/cars/presentation/ui/my_cars_screen.dart';
 import 'package:infi_wheel/features/map_home/presentation/ui/admin_dashboard.dart';
@@ -27,7 +28,11 @@ class InfiWheelRouter {
   static Widget _addCarPageRouteBuilder(BuildContext context, GoRouterState state) => const AddCarScreen();
   static Widget _bookingsPageRouteBuilder(BuildContext context, GoRouterState state) => const BookingsScreen();
   static Widget _adminDashboardRouteBuilder(BuildContext context, GoRouterState state) => const AdminDashboard();
-  static Widget _rentCarRouteBuilder(BuildContext context, GoRouterState state) => const RentScreen();
+  // static Widget _rentCarRouteBuilder(BuildContext context, GoRouterState state) => const RentScreen();
+  static Widget _rentCarRouteBuilder(BuildContext context, GoRouterState state) {
+    final car = state.extra as Car?;
+    return RentScreen(car: car);
+  }
 
 
 

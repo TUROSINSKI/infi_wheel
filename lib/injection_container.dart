@@ -12,6 +12,11 @@ import 'package:infi_wheel/features/authentication/presentation/blocs/get_user/g
 import 'package:infi_wheel/features/authentication/presentation/blocs/get_users/get_users_bloc.dart';
 import 'package:infi_wheel/features/authentication/presentation/blocs/signin/signin_bloc.dart';
 import 'package:infi_wheel/features/authentication/presentation/blocs/signup/signup_bloc.dart';
+import 'package:infi_wheel/features/booking/data/repositories/booking_repository_impl.dart';
+import 'package:infi_wheel/features/booking/data/services/booking_service.dart';
+import 'package:infi_wheel/features/booking/domain/repositories/booking_repository.dart';
+import 'package:infi_wheel/features/booking/domain/usecases/add_booking_usecase.dart';
+import 'package:infi_wheel/features/booking/presentation/blocs/add_booking/add_booking_bloc.dart';
 import 'package:infi_wheel/features/cars/data/repositories/car_repository_impl.dart';
 import 'package:infi_wheel/features/cars/data/services/car_service.dart';
 import 'package:infi_wheel/features/cars/domain/repositories/car_repository.dart';
@@ -26,10 +31,12 @@ void setupLocator() {
   // Services
   getIt.registerLazySingleton<CarService>(() => CarService());
   getIt.registerLazySingleton<UserService>(() => UserService());
+  getIt.registerLazySingleton<BookingService>(() => BookingService());
 
   // Repositories
   getIt.registerLazySingleton<CarRepository>(() => CarRepositoryImpl(getIt()));
   getIt.registerLazySingleton<UserRepository>(() => UserRepositoryImpl(getIt()));
+  getIt.registerLazySingleton<BookingRepository>(() => BookingRepositoryImpl(getIt()));
 
   // Use Cases
   getIt.registerFactory(() => GetCarsUseCase(getIt()));
@@ -39,6 +46,7 @@ void setupLocator() {
   getIt.registerFactory(() => AddCarUseCase(getIt()));
   getIt.registerFactory(() => GetUsersUseCase(getIt()));
   getIt.registerFactory(() => DeleteUserUseCase(getIt()));
+  getIt.registerFactory(() => AddBookingUseCase(getIt()));
 
   // Blocs
   getIt.registerFactory(() => CarsBloc(getCarsUseCase: getIt()));
@@ -48,4 +56,5 @@ void setupLocator() {
   getIt.registerFactory(() => AddCarBloc(addCarUseCase: getIt()));
   getIt.registerFactory(() => GetUsersBloc(getUsersUseCase: getIt()));
   getIt.registerFactory(() => DeleteUserCubit(deleteUserUseCase: getIt()));
+  getIt.registerFactory(() => AddBookingBloc(addBookingUseCase: getIt()));
 }

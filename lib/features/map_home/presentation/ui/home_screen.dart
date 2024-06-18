@@ -745,7 +745,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: SizedBox(
                     width: 140,
                     child: TextButton(
-                        onPressed: () => GoRouter.of(context).go('/rent'),
+                        onPressed: () => GoRouter.of(context).go('/rent', extra: car),
                         style: TextButton.styleFrom(
                             backgroundColor: AppColors.kOxfordBlue),
                         child: const Text(
