@@ -11,7 +11,7 @@ class BookingRepositoryImpl implements BookingRepository {
   @override
   Future<bool> addBooking(Booking booking) async {
     try {
-      final bookingModel = _mapBookingToModel(booking);
+      final bookingModel = BookingModel.fromEntity(booking);
       return await bookingService.addBooking(bookingModel);
     } catch (e) {
       throw Exception('Error adding booking: $e');
@@ -28,14 +28,12 @@ class BookingRepositoryImpl implements BookingRepository {
     }
   }
 
-  BookingModel _mapBookingToModel(Booking booking) {
-    return BookingModel(
-      startDate: booking.startDate,
-      endDate: booking.endDate,
-      userId: booking.userId,
-      carId: booking.carId,
-    );
+  @override
+  Future<bool> cancelBooking(int bookingId) async {
+    try {
+      return await bookingService.cancelBooking(bookingId);
+    } catch (e) {
+      throw Exception('Error cancelling booking: $e');
+    }
   }
-
-  // Implement other booking methods if needed
 }

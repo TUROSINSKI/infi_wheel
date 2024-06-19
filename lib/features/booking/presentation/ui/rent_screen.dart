@@ -5,9 +5,17 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:go_router/go_router.dart';
 import 'package:infi_wheel/core/utils/colors.dart';
 import 'package:infi_wheel/features/booking/domain/entities/booking.dart';
-import 'package:infi_wheel/features/booking/presentation/blocs/add_booking/add_booking_bloc.dart';
+import 'package:infi_wheel/features/booking/presentation/blocs/bloc/add_booking_bloc.dart';
 import 'package:infi_wheel/features/cars/domain/entities/car.dart';
 import 'package:intl/intl.dart';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:infi_wheel/features/booking/domain/entities/booking.dart';
+import 'package:infi_wheel/features/cars/domain/entities/car.dart';
+import 'package:infi_wheel/core/utils/colors.dart';
+import 'package:intl/intl.dart'; // For date formatting
 
 class RentScreen extends StatefulWidget {
   final Car? car;
@@ -19,10 +27,10 @@ class RentScreen extends StatefulWidget {
 }
 
 class _RentScreenState extends State<RentScreen> {
-
-  final storage = const FlutterSecureStorage();
+  final FlutterSecureStorage _storage = const FlutterSecureStorage();
   DateTime? _startDate;
   DateTime? _endDate;
+  final DateFormat _dateFormat = DateFormat('yyyy-MM-dd');
 
   @override
   Widget build(BuildContext context) {
@@ -31,49 +39,70 @@ class _RentScreenState extends State<RentScreen> {
         leading: IconButton(
           onPressed: () => GoRouter.of(context).go("/home"),
           icon: Icon(
-            CupertinoIcons.chevron_back,
+            Icons.arrow_back,
             color: AppColors.kOxfordBlue,
           ),
         ),
         title: Text(
-          "Rent",
-          style: TextStyle(color: AppColors.kOxfordBlue),
+          widget.car != null
+              ? '${widget.car!.manufacturer} ${widget.car!.model}'
+              : 'Rent Car', style: TextStyle(color: AppColors.kOxfordBlue),
         ),
       ),
-    body: Padding(
+      body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            if (widget.car != null) ...[
-              Image.network(widget.car!.url),
-              Text('Manufacturer: ${widget.car!.manufacturer}'),
-              Text('Model: ${widget.car!.model}'),
-              // Add more details as needed
-              const SizedBox(height: 16),
-              _buildDatePicker('Start Date', _startDate, (pickedDate) {
-                setState(() {
-                  _startDate = pickedDate;
-                });
-              }),
-              _buildDatePicker('End Date', _endDate, (pickedDate) {
-                setState(() {
-                  _endDate = pickedDate;
-                });
-              }),
-              const SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: _bookCar,
-                child: const Text('Book Car', style: TextStyle(color: AppColors.kOxfordBlue),),
-              ),
-            ] else
-              const Center(child: Text('No car details provided', style: TextStyle(color: AppColors.kOxfordBlue),)),
-          ],
-        ),
+        child: widget.car != null ? _buildCarDetails() : _buildNoCarDetails(),
       ),
     );
   }
 
-  Widget _buildDatePicker(String label, DateTime? selectedDate, Function(DateTime) onDatePicked) {
+  Widget _buildCarDetails() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Image.network(widget.car!.url),
+        const SizedBox(height: 16),
+        Text(
+          'Manufacturer: ${widget.car!.manufacturer}',
+          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        ),
+        Text(
+          'Model: ${widget.car!.model}',
+          style: const TextStyle(fontSize: 16),
+        ),
+        // Add other car details if needed
+        const SizedBox(height: 40),
+        _buildDatePicker('Start Date', _startDate, (pickedDate) {
+          setState(() {
+            _startDate = pickedDate;
+          });
+        }),
+        const SizedBox(height: 20),
+        _buildDatePicker('End Date', _endDate, (pickedDate) {
+          setState(() {
+            _endDate = pickedDate;
+          });
+        }),
+        const SizedBox(height: 40),
+        Center(
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(backgroundColor: AppColors.kOxfordBlue),
+            onPressed: _bookCar,
+            child: const Text('Book Car'),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildNoCarDetails() {
+    return const Center(
+      child: Text('No car details provided'),
+    );
+  }
+
+  Widget _buildDatePicker(
+      String label, DateTime? selectedDate, Function(DateTime) onDatePicked) {
     return GestureDetector(
       onTap: () async {
         DateTime? pickedDate = await showDatePicker(
@@ -114,7 +143,9 @@ class _RentScreenState extends State<RentScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              selectedDate != null ? DateFormat.yMMMd().format(selectedDate) : label,
+              selectedDate != null
+                  ? _dateFormat.format(selectedDate)
+                  : label,
               style: const TextStyle(fontSize: 16),
             ),
             const Icon(Icons.calendar_today, color: Colors.grey),
@@ -126,17 +157,16 @@ class _RentScreenState extends State<RentScreen> {
 
   Future<void> _bookCar() async {
     if (_startDate != null && _endDate != null && widget.car != null) {
-      print('here');
-      String? userId = await storage.read(key: 'user_id');
-      print(userId);
+      String? userIdStr = await _storage.read(key: 'user_id');
+      int? userId = userIdStr != null ? int.tryParse(userIdStr) : null;
       if (userId != null) {
         Booking booking = Booking(
+          id: 0,
           startDate: _startDate!.toIso8601String().split('T').first,
           endDate: _endDate!.toIso8601String().split('T').first,
-          userId: int.parse(userId),
-          carId: widget.car!.id,
+          userId: userId,
+          car: widget.car!, // Use the full Car object
         );
-        print('here2');
         context.read<AddBookingBloc>().add(AddBookingSubmitted(booking));
       } else {
         ScaffoldMessenger.of(context).showSnackBar(

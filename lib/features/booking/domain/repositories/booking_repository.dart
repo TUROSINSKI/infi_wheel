@@ -4,4 +4,6 @@ abstract class BookingRepository {
   Future<bool> addBooking(Booking booking);
   
   Future<List<Booking>> getUserBookings(int userId);
+
+  Future<bool> cancelBooking(int bookingId);
 }

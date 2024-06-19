@@ -50,8 +50,6 @@ class UserService {
       print(token);
 
       if (roleName != null) {
-        // You can store the role name or use it as needed
-        // For example, storing it
         await storage.write(key: 'role_name', value: roleName);
       } else {
         throw Exception('Role name not found in API response');

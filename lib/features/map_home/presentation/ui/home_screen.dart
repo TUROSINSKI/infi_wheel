@@ -350,6 +350,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:infi_wheel/core/utils/colors.dart';
 import 'package:infi_wheel/core/utils/constants.dart';
+import 'package:infi_wheel/features/authentication/presentation/blocs/get_user/get_user_bloc.dart';
 import 'package:infi_wheel/features/cars/domain/entities/car.dart';
 import 'package:infi_wheel/features/map_home/presentation/blocs/cars/cars_bloc.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -369,6 +370,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     context.read<CarsBloc>().add(FetchCarsEvent());
+    context.read<GetUserBloc>().add(GetUser());
   }
 
   @override
@@ -861,7 +863,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              onTap: () => GoRouter.of(context).go('/'),
+              onTap: () { 
+                storage.delete(key: 'jwt_token');
+                GoRouter.of(context).go('/');},
             ),
           ],
         ),

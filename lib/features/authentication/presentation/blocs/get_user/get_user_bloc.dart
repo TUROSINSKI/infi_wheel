@@ -21,13 +21,8 @@ class GetUserBloc extends Bloc<GetUserEvent, GetUserState> {
     Emitter<GetUserState> emit
   ) async {
     emit(GetUserLoading());
-    final stopwatch = Stopwatch()..start();
     try {
       User? user = await getUserUseCase.call();
-      final timeToDelay = const Duration(seconds: 2) - stopwatch.elapsed;
-      if (timeToDelay > Duration.zero) {
-        await Future.delayed(timeToDelay);
-      }
       if (user != null) {
         storage.write(key: 'user_id', value: user.userId.toString());
         emit(GetUserSuccess(user));

@@ -28,3 +28,5 @@ class UserBookingsLoaded extends AddBookingState {
   @override
   List<Object> get props => [bookings];
 }
+
+class BookingCancelled extends AddBookingState {}

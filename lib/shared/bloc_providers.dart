@@ -4,7 +4,7 @@ import 'package:infi_wheel/features/authentication/presentation/blocs/get_user/g
 import 'package:infi_wheel/features/authentication/presentation/blocs/get_users/get_users_bloc.dart';
 import 'package:infi_wheel/features/authentication/presentation/blocs/signin/signin_bloc.dart';
 import 'package:infi_wheel/features/authentication/presentation/blocs/signup/signup_bloc.dart';
-import 'package:infi_wheel/features/booking/presentation/blocs/add_booking/add_booking_bloc.dart';
+import 'package:infi_wheel/features/booking/presentation/blocs/bloc/add_booking_bloc.dart';
 import 'package:infi_wheel/features/cars/presentation/blocs/add_car/add_car_bloc.dart';
 import 'package:infi_wheel/features/map_home/presentation/blocs/cars/cars_bloc.dart';
 import 'package:infi_wheel/injection_container.dart';

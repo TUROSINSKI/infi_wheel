@@ -1,3 +1,4 @@
+import 'package:infi_wheel/features/cars/domain/entities/car.dart';
 
 class CarModel {
   final int id;
@@ -92,5 +93,54 @@ class CarModel {
       'x_location': xLocation,
       'y_location': yLocation,
     };
+  }
+
+  // Convert CarModel to Car entity
+  Car toEntity() {
+    return Car(
+      id: id,
+      manufacturer: manufacturer,
+      model: model,
+      type: type,
+      subtype: subtype,
+      yearOfProduction: yearOfProduction,
+      vinNumber: vinNumber,
+      engineCapacity: engineCapacity,
+      power: power,
+      fuelType: fuelType,
+      transmission: transmission,
+      numberOfDoors: numberOfDoors,
+      numberOfSeats: numberOfSeats,
+      registrationPlate: registrationPlate,
+      registrationNumber: registrationNumber,
+      ac: ac,
+      url: url,
+      xLocation: xLocation,
+      yLocation: yLocation,
+    );
+  }
+
+  factory CarModel.fromEntity(Car car) {
+    return CarModel(
+      id: car.id,
+      manufacturer: car.manufacturer,
+      model: car.model,
+      type: car.type,
+      subtype: car.subtype,
+      yearOfProduction: car.yearOfProduction,
+      vinNumber: car.vinNumber,
+      engineCapacity: car.engineCapacity,
+      power: car.power,
+      fuelType: car.fuelType,
+      transmission: car.transmission,
+      numberOfDoors: car.numberOfDoors,
+      numberOfSeats: car.numberOfSeats,
+      registrationPlate: car.registrationPlate,
+      registrationNumber: car.registrationNumber,
+      ac: car.ac,
+      url: car.url,
+      xLocation: car.xLocation,
+      yLocation: car.yLocation,
+    );
   }
 }
