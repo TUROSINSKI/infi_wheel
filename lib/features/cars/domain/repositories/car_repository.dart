@@ -4,4 +4,8 @@ abstract class CarRepository {
   Future<List<Car>> getCars();
 
   Future<bool> addCar(Car car);
+
+  Future<bool> deleteCar(int id);
+
+  Future<bool> updateCar(Car car);
 }

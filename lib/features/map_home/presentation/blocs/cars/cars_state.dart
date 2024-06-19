@@ -26,3 +26,9 @@ class CarsError extends CarsState {
   @override
   List<Object?> get props => [message];
 }
+
+class CarDeleting extends CarsState {}
+
+class CarDeleted extends CarsState {}
+
+class CarUpdating extends CarsState {}

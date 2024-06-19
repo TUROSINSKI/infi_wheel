@@ -66,4 +66,15 @@ class CarRepositoryImpl implements CarRepository {
 
     return await carService.addCar(carModel);
   }
+
+  @override
+  Future<bool> deleteCar(int id) async {
+    return await carService.deleteCar(id);
+  }
+
+  @override
+  Future<bool> updateCar(Car car) async {
+    var carModel = CarModel.fromEntity(car);
+    return await carService.updateCar(carModel);
+  }
 }

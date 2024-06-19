@@ -9,8 +9,10 @@ import 'package:infi_wheel/features/booking/presentation/ui/rent_screen.dart';
 import 'package:infi_wheel/features/cars/domain/entities/car.dart';
 import 'package:infi_wheel/features/cars/presentation/ui/add_car_screen.dart';
 import 'package:infi_wheel/features/cars/presentation/ui/my_cars_screen.dart';
+import 'package:infi_wheel/features/map_home/presentation/ui/admin_cars_dashboard.dart';
 import 'package:infi_wheel/features/map_home/presentation/ui/admin_dashboard.dart';
 import 'package:infi_wheel/features/map_home/presentation/ui/home_screen.dart';
+import 'package:infi_wheel/features/map_home/presentation/ui/update_car_screen.dart';
 import 'package:infi_wheel/features/profile/presentation/ui/change_email.dart';
 import 'package:infi_wheel/features/profile/presentation/ui/profile_serttings.dart';
 import 'package:infi_wheel/shared/screens/terms_and_conditions.dart';
@@ -33,6 +35,13 @@ class InfiWheelRouter {
     final car = state.extra as Car?;
     return RentScreen(car: car);
   }
+  static Widget _adminCarsRouteBuilder(BuildContext context, GoRouterState state) => const AdminCarListPage();
+  static Widget _editCarRouteBuilder(BuildContext context, GoRouterState state) {
+    final car = state.extra as Car;
+    return UpdateCarScreen(car: car);
+  }
+
+
 
 
 
@@ -50,6 +59,8 @@ class InfiWheelRouter {
       GoRoute(path: RoutePaths.bookings, builder: _bookingsPageRouteBuilder),
       GoRoute(path: RoutePaths.adminDashboard, builder: _adminDashboardRouteBuilder),
       GoRoute(path: RoutePaths.rentCar, builder: _rentCarRouteBuilder),
+      GoRoute(path: RoutePaths.adminCars, builder: _adminCarsRouteBuilder),
+      GoRoute(path: RoutePaths.editCar, builder: _editCarRouteBuilder),
     ]
   );
 

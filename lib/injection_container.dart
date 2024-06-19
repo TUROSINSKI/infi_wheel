@@ -23,7 +23,9 @@ import 'package:infi_wheel/features/cars/data/repositories/car_repository_impl.d
 import 'package:infi_wheel/features/cars/data/services/car_service.dart';
 import 'package:infi_wheel/features/cars/domain/repositories/car_repository.dart';
 import 'package:infi_wheel/features/cars/domain/usecases/add_car_usecase.dart';
+import 'package:infi_wheel/features/cars/domain/usecases/delete_car_usecase.dart';
 import 'package:infi_wheel/features/cars/domain/usecases/get_cars_usecase.dart';
+import 'package:infi_wheel/features/cars/domain/usecases/update_car_usecase.dart';
 import 'package:infi_wheel/features/cars/presentation/blocs/add_car/add_car_bloc.dart';
 import 'package:infi_wheel/features/map_home/presentation/blocs/cars/cars_bloc.dart';
 
@@ -51,9 +53,11 @@ void setupLocator() {
   getIt.registerFactory(() => AddBookingUseCase(getIt()));
   getIt.registerFactory(() => GetUserBookingsUseCase(getIt()));
   getIt.registerFactory(() => CancelBookingUseCase(getIt()));
+  getIt.registerFactory(() => DeleteCarUseCase(getIt()));
+  getIt.registerFactory(() => UpdateCarUseCase(getIt()));
 
   // Blocs
-  getIt.registerFactory(() => CarsBloc(getCarsUseCase: getIt()));
+  getIt.registerFactory(() => CarsBloc(getCarsUseCase: getIt(), deleteCarUseCase: getIt(), updateCarUseCase: getIt()));
   getIt.registerFactory(() => SignupBloc(signupUseCase: getIt()));
   getIt.registerFactory(() => SigninBloc(signinUseCase: getIt()));
   getIt.registerFactory(() => GetUserBloc(getUserUseCase: getIt()));
