@@ -4,10 +4,13 @@ import 'package:infi_wheel/features/authentication/data/models/user_model.dart';
 
 class UserService {
   final String signUpUrl = 'https://infiwheel.azurewebsites.net/User/register';
-  final String signInUrl = 'https://infiwheel.azurewebsites.net/User/authenticate';
-  final String userDataUrl = 'https://infiwheel.azurewebsites.net/User/findToken';
+  final String signInUrl =
+      'https://infiwheel.azurewebsites.net/User/authenticate';
+  final String userDataUrl =
+      'https://infiwheel.azurewebsites.net/User/findToken';
   final String fetchUsersUrl = 'https://infiwheel.azurewebsites.net/User/all';
-  final String deleteUserUrl = 'https://infiwheel.azurewebsites.net/User/delete/{id}';
+  final String deleteUserUrl =
+      'https://infiwheel.azurewebsites.net/User/delete/{id}';
   final FlutterSecureStorage storage = FlutterSecureStorage();
   final Dio _dio = Dio();
 
@@ -43,11 +46,10 @@ class UserService {
 
       if (token != null) {
         await storage.write(key: 'jwt_token', value: token);
+        print(token);
       } else {
         throw Exception('Token not found in API response');
       }
-
-      print(token);
 
       if (roleName != null) {
         await storage.write(key: 'role_name', value: roleName);
@@ -57,6 +59,7 @@ class UserService {
 
       return true;
     } else {
+      print(response.statusCode);
       throw Exception('Failed to sign in user');
     }
   }
@@ -77,7 +80,6 @@ class UserService {
         ),
         data: {'token': token}, // Passing token in the body
       );
-
 
       if (response.statusCode == 200) {
         Map<String, dynamic> responseBody = response.data;
@@ -100,12 +102,12 @@ class UserService {
         ),
       );
 
-
       if (response.statusCode == 200) {
         List<dynamic> responseBody = response.data;
 
         // Convert the response to a list of UserModels
-        List<UserModel> users = responseBody.map((user) => UserModel.fromJson(user)).toList();
+        List<UserModel> users =
+            responseBody.map((user) => UserModel.fromJson(user)).toList();
 
         return users;
       } else {
@@ -117,17 +119,26 @@ class UserService {
   }
 
   Future<bool> deleteUser(int userId) async {
-  final response = await _dio.delete(
-    deleteUserUrl.replaceFirst('{id}', userId.toString()),
-    options: Options(
-      headers: {'Content-Type': 'application/json'},
-    ),
-  );
+    print("zaczynamy");
+    print(deleteUserUrl.replaceFirst('{id}', userId.toString()));
+    String? token = await storage.read(key: 'jwt_token');
+    final response = await _dio.delete(
+      deleteUserUrl.replaceFirst('{id}', userId.toString()),
+      options: Options(
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+          },
+      ),
+    );
 
-  if (response.statusCode == 200) {
-    return true;
-  } else {
-    throw Exception('Failed to delete user');
+    print("Response received: ${response.statusCode} ${response.statusMessage}");
+
+    if (response.statusCode == 200) {
+      return true;
+    } else {
+      print(response.statusCode);
+      throw Exception('Failed to delete user');
+    }
   }
-}
 }

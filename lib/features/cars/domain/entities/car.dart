@@ -19,6 +19,7 @@ class Car {
   final String url;
   final double xLocation;
   final double yLocation;
+  final double price;
 
   Car({
     required this.id,
@@ -40,5 +41,6 @@ class Car {
     required this.url,
     required this.xLocation,
     required this.yLocation,
+    required this.price,
   });
 }

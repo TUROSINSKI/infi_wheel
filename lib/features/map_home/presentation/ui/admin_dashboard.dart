@@ -103,6 +103,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
   }
 
   void _deleteUser(int userId) {
+    print("usuwanie");
     context.read<DeleteUserCubit>().deleteUser(userId);
   }
 

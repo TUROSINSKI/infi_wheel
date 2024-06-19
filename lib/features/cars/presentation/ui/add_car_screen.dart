@@ -142,6 +142,8 @@ class _AddCarScreenState extends State<AddCarScreen> {
   final TextEditingController acController = TextEditingController();
   final TextEditingController xLocationController = TextEditingController();
   final TextEditingController yLocationController = TextEditingController();
+  final TextEditingController priceController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -190,6 +192,7 @@ class _AddCarScreenState extends State<AddCarScreen> {
                 infoInputField('AC', acController),
                 infoInputField('X Location', xLocationController),
                 infoInputField('Y Location', yLocationController),
+                infoInputField('Price', priceController),
                 SizedBox(
                   height: MediaQuery.sizeOf(context).height * 0.15,
                 )
@@ -288,6 +291,7 @@ class _AddCarScreenState extends State<AddCarScreen> {
       url: photoUrlController.text,
       xLocation: double.tryParse(xLocationController.text) ?? 0.0,
       yLocation: double.tryParse(yLocationController.text) ?? 0.0,
+      price: double.tryParse(priceController.text) ?? 0.0,
     );
 
     context.read<AddCarBloc>().add(AddCar(car));

@@ -33,6 +33,7 @@ class CarRepositoryImpl implements CarRepository {
             url: model.url,
             xLocation: model.xLocation,
             yLocation: model.yLocation,
+            price: model.price,
           ),
         )
         .toList();
@@ -60,6 +61,7 @@ class CarRepositoryImpl implements CarRepository {
       url: car.url,
       xLocation: car.xLocation,
       yLocation: car.yLocation,
+      price: car.price,
     );
 
     return await carService.addCar(carModel);

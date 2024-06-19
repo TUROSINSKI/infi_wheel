@@ -20,10 +20,11 @@ class CarModel {
   final String url;
   final double xLocation;
   final double yLocation;
+  final double price;
 
   @override
   String toString() =>
-      '$manufacturer, $model, $type, $subtype, $yearOfProduction, $vinNumber, $engineCapacity, $power, $fuelType, $transmission, $numberOfDoors, $numberOfSeats, $registrationPlate, $registrationNumber, $ac, $url, $xLocation, $yLocation';
+      '$manufacturer, $model, $type, $subtype, $yearOfProduction, $vinNumber, $engineCapacity, $power, $fuelType, $transmission, $numberOfDoors, $numberOfSeats, $registrationPlate, $registrationNumber, $ac, $url, $xLocation, $yLocation, $price';
 
   CarModel({
     required this.id,
@@ -45,6 +46,7 @@ class CarModel {
     required this.url,
     required this.xLocation,
     required this.yLocation,
+    required this.price,
   });
 
   factory CarModel.fromJson(Map<String, dynamic> json) {
@@ -68,6 +70,7 @@ class CarModel {
       url: json['url'] as String,
       xLocation: json['x_location'] as double,
       yLocation: json['y_location'] as double,
+      price: json['amount'] as double,
     );
   }
 
@@ -92,6 +95,7 @@ class CarModel {
       'url': url,
       'x_location': xLocation,
       'y_location': yLocation,
+      'amount': price,
     };
   }
 
@@ -117,6 +121,7 @@ class CarModel {
       url: url,
       xLocation: xLocation,
       yLocation: yLocation,
+      price: price,
     );
   }
 
@@ -141,6 +146,7 @@ class CarModel {
       url: car.url,
       xLocation: car.xLocation,
       yLocation: car.yLocation,
+      price: car.price,
     );
   }
 }
