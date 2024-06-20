@@ -15,6 +15,7 @@ import 'package:infi_wheel/features/authentication/presentation/blocs/signup/sig
 import 'package:infi_wheel/features/booking/data/repositories/booking_repository_impl.dart';
 import 'package:infi_wheel/features/booking/data/services/booking_service.dart';
 import 'package:infi_wheel/features/booking/domain/repositories/booking_repository.dart';
+import 'package:infi_wheel/features/booking/domain/usecases/accept_booking_usecase.dart';
 import 'package:infi_wheel/features/booking/domain/usecases/add_booking_usecase.dart';
 import 'package:infi_wheel/features/booking/domain/usecases/cancel_booking_usecase.dart';
 import 'package:infi_wheel/features/booking/domain/usecases/get_users_bookings_usecase.dart';
@@ -55,6 +56,7 @@ void setupLocator() {
   getIt.registerFactory(() => CancelBookingUseCase(getIt()));
   getIt.registerFactory(() => DeleteCarUseCase(getIt()));
   getIt.registerFactory(() => UpdateCarUseCase(getIt()));
+  getIt.registerFactory(() => AcceptBookingUseCase(getIt()));
 
   // Blocs
   getIt.registerFactory(() => CarsBloc(getCarsUseCase: getIt(), deleteCarUseCase: getIt(), updateCarUseCase: getIt()));
@@ -64,5 +66,5 @@ void setupLocator() {
   getIt.registerFactory(() => AddCarBloc(addCarUseCase: getIt()));
   getIt.registerFactory(() => GetUsersBloc(getUsersUseCase: getIt()));
   getIt.registerFactory(() => DeleteUserCubit(deleteUserUseCase: getIt()));
-  getIt.registerFactory(() => AddBookingBloc(addBookingUseCase: getIt(), getUserBookingsUseCase: getIt(), cancelBookingUseCase: getIt()));
+  getIt.registerFactory(() => AddBookingBloc(addBookingUseCase: getIt(), getUserBookingsUseCase: getIt(), cancelBookingUseCase: getIt(), acceptBookingUseCase: getIt()));
 }

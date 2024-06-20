@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:infi_wheel/features/booking/domain/entities/booking.dart';
+import 'package:infi_wheel/features/booking/domain/usecases/accept_booking_usecase.dart';
 import 'package:infi_wheel/features/booking/domain/usecases/add_booking_usecase.dart';
 import 'package:infi_wheel/features/booking/domain/usecases/cancel_booking_usecase.dart';
 import 'package:infi_wheel/features/booking/domain/usecases/get_users_bookings_usecase.dart';
@@ -12,11 +13,13 @@ class AddBookingBloc extends Bloc<AddBookingEvent, AddBookingState> {
   final AddBookingUseCase addBookingUseCase;
   final GetUserBookingsUseCase getUserBookingsUseCase;
   final CancelBookingUseCase cancelBookingUseCase;
+  final AcceptBookingUseCase acceptBookingUseCase;
 
-  AddBookingBloc({required this.addBookingUseCase, required this.getUserBookingsUseCase, required this.cancelBookingUseCase,}) : super(AddBookingInitial()) {
+  AddBookingBloc({required this.addBookingUseCase, required this.getUserBookingsUseCase, required this.cancelBookingUseCase, required this.acceptBookingUseCase}) : super(AddBookingInitial()) {
     on<AddBookingSubmitted>(_onBookingSubmitted);
     on<FetchUserBookings>(_onFetchUserBookings);
     on<CancelBooking>(_onCancelBooking);
+    on<AcceptBooking>(_onAcceptBooking);
   }
 
   Future<void> _onBookingSubmitted(
@@ -61,4 +64,21 @@ class AddBookingBloc extends Bloc<AddBookingEvent, AddBookingState> {
         emit(AddBookingFailure(e.toString()));
       }
   }
+
+  Future<void> _onAcceptBooking(
+    AcceptBooking event, Emitter<AddBookingState> emit) async {
+      emit(AddBookingLoading());
+      try {
+        bool success = await acceptBookingUseCase(event.bookingId);
+        if (success) {
+          add(FetchUserBookings(event.userId));
+          emit(BookingAccepted());
+        } else {
+          emit(AddBookingFailure('Failed to cancel booking.'));
+        }
+      } catch (e) {
+        emit(AddBookingFailure(e.toString()));
+      }
+  }
+
 }

@@ -36,4 +36,13 @@ class BookingRepositoryImpl implements BookingRepository {
       throw Exception('Error cancelling booking: $e');
     }
   }
+
+  @override
+  Future<bool> acceptBooking(int bookingId) async {
+    try {
+      return await bookingService.acceptBooking(bookingId);
+    } catch (e) {
+      throw Exception('Error accepting booking: $e');
+    }
+  }
 }

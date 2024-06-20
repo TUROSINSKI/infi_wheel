@@ -32,3 +32,13 @@ class CancelBooking extends AddBookingEvent {
   @override
   List<Object> get props => [bookingId];
 }
+
+class AcceptBooking extends AddBookingEvent {
+  final int bookingId;
+  final int userId;
+
+  AcceptBooking(this.bookingId, this.userId);
+
+  @override
+  List<Object> get props => [bookingId];
+}

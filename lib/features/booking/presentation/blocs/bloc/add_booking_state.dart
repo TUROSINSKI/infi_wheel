@@ -30,3 +30,5 @@ class UserBookingsLoaded extends AddBookingState {
 }
 
 class BookingCancelled extends AddBookingState {}
+
+class BookingAccepted extends AddBookingState {}

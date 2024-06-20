@@ -6,6 +6,7 @@ class BookingService {
   final String addBookingUrl = 'https://infiwheel.azurewebsites.net/Bookings/add';
   final String fetchUserBookingsUrl = 'https://infiwheel.azurewebsites.net/Bookings/find_user';
   final String cancelBookingUrl = 'https://infiwheel.azurewebsites.net/Bookings/cancel';
+  final String acceptBookingUrl = 'https://infiwheel.azurewebsites.net/Bookings/accept';
 
   final Dio _dio = Dio();
   final FlutterSecureStorage storage = FlutterSecureStorage();
@@ -64,6 +65,30 @@ class BookingService {
 
     final response = await _dio.put(
       '$cancelBookingUrl/$bookingId',
+      options: Options(
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+      ),
+    );
+
+    if (response.statusCode == 200) {
+      return true;
+    } else {
+      throw Exception('Failed to cancel booking');
+    }
+  }
+
+  Future<bool> acceptBooking(int bookingId) async {
+    String? token = await storage.read(key: 'jwt_token');
+    if (token == null) {
+      throw Exception('Token not found. Please login again.');
+    }
+    print(bookingId);
+
+    final response = await _dio.post(
+      '$acceptBookingUrl/$bookingId',
       options: Options(
         headers: {
           'Content-Type': 'application/json',
