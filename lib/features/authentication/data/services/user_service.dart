@@ -78,7 +78,7 @@ class UserService {
           method: 'GET',
           headers: {'Content-Type': 'application/json'},
         ),
-        data: {'token': token}, // Passing token in the body
+        data: {'token': token}, 
       );
 
       if (response.statusCode == 200) {

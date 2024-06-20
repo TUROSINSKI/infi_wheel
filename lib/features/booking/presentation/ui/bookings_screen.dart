@@ -214,7 +214,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
                     style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.kOxfordBlue),
                     onPressed: () {
-                      Navigator.of(context).pop(); // Close the bottom sheet
+                      Navigator.of(context).pop();
                     },
                     child: const Text(
                       'Go back',

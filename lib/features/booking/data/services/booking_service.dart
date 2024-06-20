@@ -49,7 +49,6 @@ class BookingService {
     if (response.statusCode == 200) {
       List<dynamic> responseData = response.data;
       print(responseData);
-      // return responseData.map((booking) => BookingModel.fromJson(booking)).toList();
       return responseData.map((booking) => BookingModel.fromJson(booking as Map<String, dynamic>)).toList();
     } else {
       throw Exception('Failed to fetch user bookings');
