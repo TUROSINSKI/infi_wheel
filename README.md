@@ -1,5 +1,5 @@
 
-![Logo](https://i.imghippo.com/files/3jeBW1718921055.png)
+<img src="https://i.imghippo.com/files/3jeBW1718921055.png" alt="Logo" width="200" height="200">
 
 
 # Project Title
