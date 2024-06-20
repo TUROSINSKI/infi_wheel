@@ -27,8 +27,8 @@ Car rental mobile app
 
 ## Screenshots
 
-![App Screenshot](https://i.imghippo.com/files/6OMTZ1718921288.png)
-![App Screenshot](https://i.imghippo.com/files/LRimz1718921343.png)
-![App Screenshot](https://i.imghippo.com/files/nMyaN1718921374.png)
-![App Screenshot](https://i.imghippo.com/files/jJA7D1718921413.png)
+<img src="https://i.imghippo.com/files/6OMTZ1718921288.png" alt="App Screenshot" height="400">
+<img src="https://i.imghippo.com/files/LRimz1718921343.png" alt="App Screenshot" height="400">
+<img src="https://i.imghippo.com/files/nMyaN1718921374.png" alt="App Screenshot" height="400">
+<img src="https://i.imghippo.com/files/jJA7D1718921413.png" alt="App Screenshot" height="400">
 
