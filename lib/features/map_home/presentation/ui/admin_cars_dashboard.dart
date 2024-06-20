@@ -182,8 +182,8 @@ class _AdminCarListPageState extends State<AdminCarListPage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Delete Car"),
-          content: Text("Are you sure you want to delete this car?"),
+          title: Text("Delete Car", style: TextStyle(color: AppColors.kOxfordBlue),),
+          content: Text("Are you sure you want to delete this car?", style: TextStyle(color: AppColors.kOxfordBlue),),
           actions: [
             TextButton(
               child: Text("Cancel", style: TextStyle(color: AppColors.kOxfordBlue),),

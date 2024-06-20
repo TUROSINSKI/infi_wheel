@@ -144,9 +144,9 @@ class _BookingsScreenState extends State<BookingsScreen> {
                         ),
                         const SizedBox(height: 8),
                         Text(
-                            'Start Date: ${_dateFormat.format(DateTime.parse(booking.startDate))}'),
+                            'Start Date: ${_dateFormat.format(DateTime.parse(booking.startDate))}', style: TextStyle(color: AppColors.kOxfordBlue),),
                         Text(
-                            'End Date: ${_dateFormat.format(DateTime.parse(booking.endDate))}'),
+                            'End Date: ${_dateFormat.format(DateTime.parse(booking.endDate))}', style: TextStyle(color: AppColors.kOxfordBlue),),
                         const SizedBox(height: 16),
                         Text(
                           'Car Details',
@@ -157,10 +157,10 @@ class _BookingsScreenState extends State<BookingsScreen> {
                           ),
                         ),
                         const SizedBox(height: 8),
-                        Text('Manufacturer: ${booking.car.manufacturer}'),
-                        Text('Model: ${booking.car.model}'),
+                        Text('Manufacturer: ${booking.car.manufacturer}', style: TextStyle(color: AppColors.kOxfordBlue),),
+                        Text('Model: ${booking.car.model}', style: TextStyle(color: AppColors.kOxfordBlue),),
                         Text(
-                            'Registration plate: ${booking.car.registrationPlate}'),
+                            'Registration plate: ${booking.car.registrationPlate}', style: TextStyle(color: AppColors.kOxfordBlue),),
                         if (booking.status != null) ...[
                           const SizedBox(height: 16),
                           Text(

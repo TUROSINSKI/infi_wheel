@@ -178,13 +178,13 @@ class _ProfileSettingsState extends State<ProfileSettings> {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("First name"),
+            Text("First name", style: TextStyle(color: AppColors.kOxfordBlue),),
             ProfileDataField(controller: _firstNameController),
-            Text("Surname"),
+            Text("Surname", style: TextStyle(color: AppColors.kOxfordBlue),),
             ProfileDataField(controller: _surnameController),
-            Text("Username"),
+            Text("Username", style: TextStyle(color: AppColors.kOxfordBlue),),
             ProfileDataField(controller: _usernameController),
-            Text("Age"),
+            Text("Age", style: TextStyle(color: AppColors.kOxfordBlue),),
             ProfileDataField(controller: _ageController, keyboardType: TextInputType.number),
           ],
         ),
@@ -253,7 +253,8 @@ class ProfileDataField extends StatelessWidget {
             child: TextField(
               controller: controller,
               keyboardType: keyboardType,
-              decoration: InputDecoration(border: InputBorder.none),
+              style: TextStyle(color: AppColors.kOxfordBlue),
+              decoration: InputDecoration(border: InputBorder.none, hintStyle: TextStyle(color: AppColors.kOxfordBlue)),
             ),
           ),
         ),

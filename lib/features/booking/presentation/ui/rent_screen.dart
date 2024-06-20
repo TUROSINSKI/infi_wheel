@@ -336,7 +336,7 @@ class _RentScreenState extends State<RentScreen> {
               selectedDate != null
                   ? _dateFormat.format(selectedDate)
                   : label,
-              style: const TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16, color: AppColors.kOxfordBlue),
             ),
             const Icon(Icons.calendar_today, color: Colors.grey),
           ],
